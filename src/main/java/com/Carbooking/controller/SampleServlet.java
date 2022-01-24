@@ -1,4 +1,4 @@
-package in.fwsa.todoapp.servlet;
+package com.Carbooking.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class HelloServlet
+ * Servlet implementation class servlet
  */
-@WebServlet("/HelloServlet")
-public class HelloServlet extends HttpServlet {
+//@WebServlet("/samp")
+public class SampleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HelloServlet() {
+    public SampleServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,17 +26,16 @@ public class HelloServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("HelloServlet123 - GET Request");
-		response.getWriter().append("HelloServlet - GET Request");
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("HelloServlet - POST Request");
-		response.getWriter().append("HelloServlet - POST Request");
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
