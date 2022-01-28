@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="com.Carbooking.daoimpl.CarorderDaoImpl" %>
-    <%@ page import="java.util.*" %>
-    <%@ page import="com.Carbooking.model.CarOrder" %>
+      <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ page isELIgnored = "false" %>
     
 <!DOCTYPE html>
 <html>
@@ -128,10 +127,10 @@
     </div>
    
  </div>
-<% CarorderDaoImpl dao=new CarorderDaoImpl();
+<%-- <% CarorderDaoImpl dao=new CarorderDaoImpl();
 List <CarOrder> allbook;
 allbook=dao.allbook();
-%>
+%> --%>
 
  <div class="one">
  <a href="Admin.jsp"><button type="button" class="btn btn-primary">Back</button> </a>
@@ -141,47 +140,39 @@ allbook=dao.allbook();
 
  <h2 class="CarProducts">Booking Details</h2>
         
-        <div class="recently added list">
-        <table border="1">
-            <tbody>
-                <tr>
-                <%int count=0;
-                for(CarOrder carProduct1: allbook){
-                	%>
-                    <td>
-                        <table  ;>
-                            <tbody>
-                                <tr>
-                                    
-                                    <td class="order detail">
-                                        <span>order : <%=carProduct1.getOrder_id()%> </span><br>
-                                        <span>carid : <%=carProduct1.getCar_id()%>  </span><br>
-                                        <span>carname : <%=carProduct1.getCarname()%> </span><br>
-                                      
-                                        <span>status: <%=carProduct1.getStatus() %></span><br>
-                                       
-                                       <span>Date <%=carProduct1.getExpecteddate() %></span>
-                                      <span>Address <%=carProduct1.getAddress() %></span>
-                                       
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>  
-                            
-                    </td>
-                       <% count ++;
-                       if(count==4){ %> 
-                    	   </tr>
-                    	   <tr>              
-                     <%count=0; }}%>  
-                       
-                </tr>
-            </tbody>
-        </table>
-         
-        </div>
-    </div>
-   </div>
+    <table>
+		<tbody>
+			<td>
+			<tr>
+				<c:set var="count" value="1" />
+				<c:forEach items="${allbook}" var="adminbooking">
+				
+
+					<span>orderid:${adminbooking.order_id}</span>
+					<span>carid:${adminbooking.car_id}</span>
+					<span>carname:${adminbooking.carname}</span>
+					<span>status:${adminbooking.status}</span>
+					<span>ExpectedDate:${adminbooking.expecteddate}</span>
+					<span>Address:${adminbooking.address}</span>
+					
+					
+					
+					
+					<c:choose>
+						<c:when test="${count==5}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>
+			</td>
+		</tbody>
+	</table>
 
 </body>
 </html>

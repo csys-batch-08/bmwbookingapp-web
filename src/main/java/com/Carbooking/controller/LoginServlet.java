@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,10 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-
+import com.Carbooking.daoimpl.CarProductDaoImpl;
 import com.Carbooking.daoimpl.UserDetaildaoImpl;
 import com.Carbooking.exception.InvalidUserException;
+import com.Carbooking.model.CarProduct;
 import com.Carbooking.model.UserDetail;
 @WebServlet("/loginval")
 public class LoginServlet extends HttpServlet {
@@ -62,8 +63,19 @@ public class LoginServlet extends HttpServlet {
 					if(currentUser.getUsertype().equals("user"))
 					{
 						session.setAttribute("currentUser", currentUser);
+						 CarProductDaoImpl dao=new CarProductDaoImpl();
+						 
+						 
+						 List<CarProduct> listproduct=dao.showview();
+						 req.setAttribute("listproduct", listproduct);
 						
-					resp.sendRedirect("ShowProducts.jsp");
+						 RequestDispatcher rd=req.getRequestDispatcher("ShowProducts.jsp");
+                          rd.forward(req, resp);
+                          
+						
+						
+					
+					
 				}else if(currentUser.getUsertype().equals("admin")) {
 
 					session.setAttribute("admin",currentUser);

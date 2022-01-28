@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.Carbooking.model.*;
 import com.connection.*;
@@ -107,9 +109,9 @@ public  class PriceDetailDaoImpl {
 		  return onprice;
     }
     
-	 public  Pricedetail selectproduct(Pricedetail obj) throws ClassNotFoundException, SQLException
+	 public  List<Pricedetail> selectproduct(Pricedetail obj) throws ClassNotFoundException, SQLException
 	 {
-		
+		 List<Pricedetail> productsList=new ArrayList<Pricedetail>();
 		 Pricedetail cars=null;
 		 String search="Select * from Price_detail where car_id=?";
     	 Connection Con=Connectionutil.getDBconnection();
@@ -121,11 +123,11 @@ public  class PriceDetailDaoImpl {
     	 
     	 while(rs.next())
     	 {
-//    		 System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6));
+    		
     		 cars =new Pricedetail(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
-    		 return cars;
+    		 productsList.add(cars);
     	 }
-return cars;
+return productsList;
 	 
 
  }

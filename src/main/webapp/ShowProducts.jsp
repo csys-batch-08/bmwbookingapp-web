@@ -1,9 +1,9 @@
+
 <%@page import="com.Carbooking.model.UserDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ page import="com.Carbooking.daoimpl.CarProductDaoImpl" %>
-    <%@ page import="java.util.List" %>
-    <%@ page import="com.Carbooking.model.CarProduct" %>
+    pageEncoding="ISO-8859-1" %>
+   <%@ page isELIgnored = "false" %>
+    <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
 <html>
@@ -123,17 +123,14 @@ img:hover {
    
     .car
     {
-    padding:20px;}
-   
-    #carproduct
-    {
-    padding:30px;
-    margin: 30px;
+   padding:30px;
+   margin:30px;
     background-color:#FFE4C4;
    border:2px solid black;
-    
-   
+  
     }
+   
+    
     span
 {
 font-size:20px;
@@ -144,17 +141,17 @@ font-size:20px;
 </head>
 
 <body>
-<% UserDetail user=(UserDetail)session.getAttribute("currentUser"); 
-session.setAttribute("wallet", user.getWallet());%>
+<%-- <% UserDetail user=(UserDetail)session.getAttribute("currentUser"); 
+session.setAttribute("wallet", user.getWallet());%> --%>
 <div class="topnav" id="myTopnav">
-    <a href="#home" >ShowProduct</a>
-   <a href="AddCart.jsp">Cart</a>
-     <a href="Login.jsp" style=float:right>Logout</a>
+    <a href="ShowProducts.jsp" >ShowProduct</a>
+   <a href="cart">Cart</a>
+     <a href="index.jsp" style=float:right>Logout</a>
        
 
-    <a href="Userhistory.jsp" style=float:right>Profile</a>
+    <a href="userhistory" style=float:right>Profile</a>
      <a href="updatewallet.jsp">Recharge Wallet</a>
-     <a href="UserBooking.jsp">Booking History</a>
+     <a href="userbooking">Booking History</a>
        <a href="#" data-toggle="modal" data-target="#myModal">Contact</a>
  
      <form action="search" method="post">
@@ -168,64 +165,46 @@ session.setAttribute("wallet", user.getWallet());%>
        
       </div>
     
-   
-   
-  </div>
- 
- <form>
-<%! CarProductDaoImpl dao=new CarProductDaoImpl();
-List<CarProduct> listproduct=dao.showview();
+   <div class="one">
+   <table id="carproduct">
+		<tbody>
+			<td>
+			<tr>
+				  <c:set var="count" value="1" />
+           <c:forEach items="${listproduct}" var="carProduct">
 
-%>
+					
+					<td>
+					  <div class="car">
+                                    <img src="images/${carProduct.carName}.jpg" alt="img"><br>                                  
+                                       
+                                         <span>fueltype &nbsp;&nbsp; ${carProduct.fuelType}</span><br>
+                                        <span>cartype &nbsp;&nbsp;  ${carProduct.carType} </span><br>
+                                         <span>carmodel : ${carProduct.carModel} </span><br>
+                                           <span style="margin-left:70px;"> <a href="SelectServlet?carId=${carProduct.carId}"><button class="btn btn-primary">view</button></a></span>
+                                      
+                                         </div>
+                                       </td>  
+                                         
+					
+					<c:choose>
+						<c:when test="${count==2}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>
+			</td>
+		</tbody>
+	</table>
 
-</form>        
-        <div class="carproduct"  >
-        <table>
-            <tbody>
-                <tr>
-                <%int count=0;
-                for(CarProduct carProduct: listproduct){
-                	%>
-                    <td>
-                        <table id="carproduct">
-                            <tbody>
-                                <tr>
-                                
-                                    <td  ><img src="images/<%=carProduct.getCar_name()%>.jpg" alt="img"></td>
-                                    </tr>
-                                    <tr>
-                                    <td class="car">
-                                    
-                                        <span>carname &nbsp;: <%=carProduct.getCar_name()%>  </span><br>
-                                       
-                                         <span>fueltype &nbsp;&nbsp;: <%=carProduct.getFuelType() %></span><br>
-                                        <span>cartype &nbsp;&nbsp; : <%=carProduct.getCarType() %> </span><br>
-                                         <span>carmodel : <%=carProduct.getCarModel()%> </span><br>
-                                       
-                                      
-                                    
-                                      
-                                      <span style="margin-left:70px;"> <a href="SelectCar.jsp?car_id=<%=carProduct.getCar_id() %>"><button class="btn btn-primary">view</button></a></span>
-                                      
-                                        
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>  
-                            
-                    </td>
-                       <% count ++;
-                       if(count==3){ %> 
-                    	   </tr>
-                    	   <tr>              
-                     <%count=0; }}%>  
-                       
-                </tr>
-            </tbody>
-        </table>
-         
-        </div>
-    </div><div class="modal fade" id="myModal" role="dialog">
+ </div>
+    <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->

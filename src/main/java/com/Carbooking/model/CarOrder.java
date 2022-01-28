@@ -9,6 +9,11 @@ public class CarOrder {
 	private int order_id;
 	private String car_id;
 	private String Carname;
+	private String status;
+	private Date Expecteddate;
+	private String address;
+	private int userid;
+	private int price;
 	public CarOrder(int order_id, String car_id, String carname ,Date expecteddate, String status, String address,
 			int userid) {
 		super();
@@ -22,11 +27,7 @@ public class CarOrder {
 		this.userid = userid;
 	}
 
-	private String status;
-	private Date Expecteddate;
-	private String address;
-	private int userid;
-	private int price;
+	
 	public int getPrice() {
 		return price;
 	}

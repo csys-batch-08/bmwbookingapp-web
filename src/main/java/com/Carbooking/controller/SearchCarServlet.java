@@ -36,7 +36,7 @@ public class SearchCarServlet extends HttpServlet {
 			session.setAttribute("carname", searchlist);
 		
 			CarProduct can=new CarProduct();
-			can.setCar_name(Carname);
+			can.setCarName(Carname);
 			CarProductDaoImpl dao=new CarProductDaoImpl();
 			ResultSet rs=dao.Searchcar(can);
 			

@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-      <%@ page import="com.Carbooking.daoimpl.*" %>
-    <%@ page import="java.util.*" %>
-    <%@ page import="com.Carbooking.model.*" %>
+      <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ page isELIgnored = "false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,7 +126,7 @@ body {
    
    
   </div>
- 
+ <%-- 
   <% 
    UserDetail user=(UserDetail)session.getAttribute("currentUser"); 
    int userid=user.getUserId();
@@ -135,54 +134,39 @@ body {
   
    CarorderDaoImpl dao= new CarorderDaoImpl();
    List<CarOrder> listproduct=dao.userhistory(san);   
-	%>
+	%> --%>
           <h2 class="Userdetail">Booking Details</h2>
           
         
-        <div class="red">
-        <table>
-            <tbody>
-                <tr>
-                <%int count=0;
-                for(CarOrder userdetail: listproduct){
-                	%>
-                    <td>
-                        <table id="carproduct" ;>
-                            <tbody>
-                                <tr>
-                                     
-                                    <td class="viewall">
-                                        <h3>orderid&nbsp;&nbsp; &nbsp; : <%=userdetail.getOrder_id()%> </h3>
-                                       
-                                       <h3> Carid &nbsp;&nbsp;&nbsp; &nbsp; : <%=userdetail.getCar_id()%></h3>
-                                      
-                                       <h3>Carname : <%=userdetail.getCarname()%></h3>
-                                        <h3>status&nbsp;&nbsp; &nbsp; &nbsp;: <%= userdetail.getStatus()%></h3>
-                                    <h3>Date&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;: <%= userdetail.getExpecteddate()%></h3>
-                                    <h3>Address&nbsp; : <%=userdetail.getAddress() %></h3>
-                                           
-                                           
-                                            
-                                       
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>  
-                            
-                    </td>
-                       <% count ++;
-                       if(count==2){ %> 
-                    	   </tr>
-                    	   
-                    	   <tr>              
-                     <%count=0; }}%>  
-                       
-                </tr>
-            </tbody>
-        </table>
-         
-        </div>
-    </div>
+        <table border="1">
+		<tbody>
+			<td>
+			<tr>
+				<c:set var="count" value="1" />
+				<c:forEach items="${listproduct}" var="booking">
+
+					<td>${booking.order_id}</td>
+					<td>${booking.car_id}</td>
+					<td>${booking.carname}</td>
+					<td>${booking.status}</td>
+					<td>${booking.expecteddate}</td>
+					<td>${booking.address}</td>
+					
+					<c:choose>
+						<c:when test="${count==5}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>
+			</td>
+		</tbody>
+	</table>
        </div><div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     

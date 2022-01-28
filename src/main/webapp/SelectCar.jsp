@@ -2,9 +2,9 @@
     pageEncoding="ISO-8859-1"%>
     <%@ page import="com.Carbooking.daoimpl.CarProductDaoImpl" %>
     <%@ page import="java.util.List" %>
-    <%@ page import="com.Carbooking.model.CarProduct" %>
-      <%@ page import="com.Carbooking.model.Pricedetail" %>
-    <%@ page import ="com.Carbooking.daoimpl.PriceDetailDaoImpl" %>
+    
+    <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ page isELIgnored = "false" %>
     
 <!DOCTYPE html>
 <html>
@@ -166,7 +166,7 @@ font-size:20px;
 
  <form action="cart" method="post">
 
-<%
+<%-- <%
 CarProductDaoImpl dao=new CarProductDaoImpl();
 String carid = request.getParameter("car_id");
 CarProduct car = new CarProduct(carid);
@@ -177,7 +177,7 @@ String carids = request.getParameter("car_id");
 Pricedetail cars = new Pricedetail(carids);
 Pricedetail price = dan.selectproduct(cars);
 
-%>
+%> --%>
 
 
  <h2 class="CarProducts">Car Products</h2>
@@ -195,19 +195,26 @@ Pricedetail price = dan.selectproduct(cars);
                         <table id="carproduct">
                             <tbody>
                                 <tr>
-                                    <td><img src="images/<%=carProduct.getCar_name()%>.jpg" alt="maari"></td> 
-                                       
+                                    
+                                  
                                     <td class="cars">
                                     
-                                        <span>carid &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <%=carProduct.getCar_id()%> </span><br>
-                                        <span>carname&nbsp; : <%=carProduct.getCar_name()%>  </span><br>
-                                        <span>carmodel : <%=carProduct.getCarModel()%> </span><br>
-                                        <span>cartype &nbsp;&nbsp;&nbsp;: <%=carProduct.getCarType() %> </span><br>
-                                        <span>fueltype&nbsp;&nbsp;&nbsp;: <%=carProduct.getFuelType() %></span><br>
+                                    <c:forEach items="${car1}" var="car1">
+                                    <<span>  <img src="images/${car1.carName}.jpg" alt="img"></td></span>
+                                    
+                                        <span>carid &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ${car1.carId} </span><br>
+                                        <span>carname&nbsp; : ${car1.carName}  </span><br>
+                                        <span>carmodel : ${car1.carModel} </span><br>
+                                        <span>cartype &nbsp;&nbsp;&nbsp;: ${car1.carType} </span><br>
+                                        <span>fueltype&nbsp;&nbsp;&nbsp;: ${car1.fuelType}</span><br>
                                          
-                                          <%session.setAttribute("car_id", carProduct.getCar_id()); %>
-                                         <a href="confirmcar.jsp?car_id=<%=carProduct.getCar_id() %>">  <br><button type="submit" style=margin-left:300px; class="btn btn-primary" >Add to cart</button></a>
+                                          <%-- <%session.setAttribute("car_id", carProduct.carId; %> --%>
+                                          <c:set var="carId" value="${car1.carId}" scope="session" /> 
                                           
+                                          
+                                         <a href="cart?carId=${car1.carId}">  <br><button type="submit" style=margin-left:300px; class="btn btn-primary" >Add to cart</button></a>
+                                          </c:forEach>
+                                       
                                          </form></span>
                                         
                                     </td>
@@ -235,15 +242,17 @@ Pricedetail price = dan.selectproduct(cars);
                                 <tr>
                                     
                                     <td class="car">
+                                     <c:forEach items="${car2}" var="car2">
                                     
-                                        <span >showroomprice :<%=price.getExshowroomprice()%> </span><br>
-                                        <span>roadtax &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :<%=price.getRoadtax()%> </span><br>
-                                        <span>insrance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<%=price.getInsurance() %></span><br>
+                                        <span >showroomprice :${car2.exshowroomprice} </span><br>
+                                        <span>roadtax &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :${car2.roadtax} </span><br>
+                                        <span>insrance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:${car2.insurance}</span><br>
                                         <hr>
-                                        <span style="color:red";>Total OnroadPrice : <%=price.getOnroadprice() %> </span><br>
+                                        <span style="color:red";>Total OnroadPrice : ${car2.onroadprice} </span><br>
                                         <hr>
-                                          <%session.setAttribute("price", price.getOnroadprice()); %>
-                                       
+                                          <%-- <%session.setAttribute("price", price.getOnroadprice()); %> --%>
+                                            <c:set var="price" value="${car2.onroadprice}" scope="session" /> 
+                                       </c:forEach>
                                         <span>
                                  
                                           

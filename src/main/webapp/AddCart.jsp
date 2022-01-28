@@ -1,11 +1,8 @@
 <%@page import="org.apache.catalina.connector.Request"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="com.Carbooking.daoimpl.OrderDetailDaoImpl" %>
-    <%@ page import="java.util.List" %>
-    <%@ page import="com.Carbooking.model.OrderDetail" %>
-    <%@ page import="com.Carbooking.model.UserDetail" %>
-  
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
     
 <!DOCTYPE html>
 <html>
@@ -122,7 +119,7 @@ body {
 <body>
  <div class="topnav" id="myTopnav">
     <a href="ShowProducts.jsp" >ShowProduct</a>
-   <a href="AddCart.jsp" class="active">Cart</a>
+   <a href="cart" class="active">Cart</a>
      <a href="Login.jsp" style=float:right>Logout</a>
         <a href="Search.jsp">Search</a>
     <a href="#about" data-toggle="modal" data-target="#myModal">Contact</a>
@@ -136,7 +133,7 @@ body {
    
   </div>
  <form >
-<% OrderDetailDaoImpl dao=new OrderDetailDaoImpl();
+<%-- <% OrderDetailDaoImpl dao=new OrderDetailDaoImpl();
 UserDetail user=(UserDetail)session.getAttribute("currentUser");
 int userid=user.getUserId();
 OrderDetail ord=new OrderDetail();
@@ -144,59 +141,38 @@ ord.setUserId(userid);
 List<OrderDetail> listproduct=dao.view(ord);
 
 
-%>
+%> --%>
 
 </form>
 <h1>Cart details</h1>
 
         
-        <div class="red">
-        <table class="table table-border">
-            <tbody>
-                <tr>
-                <%int count=0;
-                for(OrderDetail order: listproduct){
-                	%>
-                    <td>
-                        <table id="carproduct">
-                            <tbody>
-                                <tr>
-                                   
-                                    <td class="car">
-                                       
-                                       <h3><span class="glyphicon glyphicon-hand-right"> orderid : <%= order.getOrder_id() %> </span></h3>
-                                        
-                                      <h3> <span class="glyphicon glyphicon-user"> userid : <%=order.getUserId()%>  </span></h3>
-                                      <h3><span><i class="fa fa-car" ></i>&nbsp;carmodel : <%=order.getCarid()%> </span></h3>
-                                      <h3> <span><i class="fa fa-inr"></i>&nbsp; price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%=order.getPrice() %> </span></h3>
-                                        <% session.setAttribute("orderid", order.getOrder_id()); %>
-                                        
-                                      
-                                      
-                                      
-                                        
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>  
-                            
-                    </td>
-                    
-                       <% count ++;
-                       if(count==3){ %> 
-                    	   </tr>
-                    	   <tr>
-                    	 
-                     <%count=0; }}
-                     %>  
-                                     
-                </tr>
-            </tbody>
-        </table>
-         
-        </div>
-    </div>
-   </div>
+        <table>
+		<tbody>
+			<td>
+			<tr>
+				<c:set var="count" value="1" />
+				<c:forEach items="${listproduct}" var="cartview">
 
+					<td>Order${cartview.order_id}</td>
+					<td>${cartview.userId}</td>
+					<td>${cartview.carid}</td>
+					<td>${cartview.price}</td>
+					
+					<c:choose>
+						<c:when test="${count==5}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>
+			</td>
+		</tbody>
+	</table>
 </body>
 </html>

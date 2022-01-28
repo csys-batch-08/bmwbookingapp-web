@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-      <%@ page import="com.Carbooking.daoimpl.UserDetaildaoImpl" %>
-    <%@ page import="java.util.*" %>
-    <%@ page import="com.Carbooking.model.UserDetail" %>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,53 +123,41 @@ body {
 
    
   </div>
-  <% UserDetaildaoImpl dao= new UserDetaildaoImpl();
+ <%--  <% UserDetaildaoImpl dao= new UserDetaildaoImpl();
 	List<UserDetail> view=new ArrayList<UserDetail>();
-	view=UserDetaildaoImpl.alluser();%>
+	view=UserDetaildaoImpl.alluser();%> --%>
 	<div class="one">
  <a href="Admin.jsp"><button type="button" class="btn btn-primary">Back</button> </a>
  </div>
           <h2 class="Userdetail">User Detail</h2>
           
         
-        <div class="recently added list">
-        <table border=1 >
-            <tbody>
-                <tr>
-                <%int count=0;
-                for(UserDetail userdetail: view){
-                	%>
-                    <td>
-                        <table id="carproducts">
-                            <tbody>
-                                <tr>
-                                     
-                                    <td class="viewall">
-                                        <span>Name : <%=userdetail.getFirst_name()%> </span><br>
-                                        <span>password : <%=userdetail.getCpassword()%>  </span><br>
-                                        <span>Email : <%=userdetail.getEmail()%> </span><br>
-                                      
-                                        <span>phone number: <%=userdetail.getPhoneno()%></span><br>
-                                            
-                                       
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>  
-                            
-                    </td>
-                       <% count ++;
-                       if(count==6){ %> 
-                    	   </tr>
-                    	   <tr>              
-                     <%count=0; }}%>  
-                       
-                </tr>
-            </tbody>
-        </table>
-         
-        </div>
-    </div>
-   </div>
+       <table border="1">
+		<tbody>
+			<td>
+			<tr>
+				<c:set var="count" value="1" />
+				<c:forEach items="${view}" var="user">
+
+					<td> Name:${user.first_name}</td>
+					<td>Password:${user.cpassword}</td>
+					<td>Email:${user.email}</td>
+					<td>Phone:${user.phoneno}</td>
+					
+					<c:choose>
+						<c:when test="${count==1}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>
+			</td>
+		</tbody>
+	</table>
 </body>
 </html>

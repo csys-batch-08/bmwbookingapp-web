@@ -122,9 +122,9 @@
 <div class="topnav" id="myTopnav">
     <a href="Admin.jsp" >Home</a>
    
-     <a href="Login.jsp" style=float:right>Logout</a>
+     <a href="index.jsp" style=float:right>Logout</a>
     <a href="ViewUser.jsp">UserHistory</a>
-    <a href="BookingDetail.jsp">Booking history</a>
+    <a href="AdminBooking">Booking history</a>
     <div class="dropdown">
       <button class="dropbtn" >CarDetails
         <i class="fa fa-caret-down"></i>
@@ -147,15 +147,15 @@
     <div class="one">
     <h2>Add a car</h2>
       <label>Enter your carid:</label><br>
-      <input type="text" name="carid" required><br><br>
+      <input type="text" name="carid" autocomplete="off" required><br><br>
       <label>Enter your Carname</label><br>
-      <input type="text" name="carname" required ><br><br>
+      <input type="text" name="carname" autocomplete="off" required ><br><br>
       <label>Enter your fueltype</label><br>
-      <input type="text" name="fueltype"  required><br><br>
+      <input type="text" name="fueltype" autocomplete="off"  required><br><br>
       <label>Enter your cartype</label><br>
-      <input type="text" name="cartype"  required><br><br>
+      <input type="text" name="cartype" autocomplete="off"  required><br><br>
       <label>Enter your carmodel</label><br>
-      <input type="text" name="carmodel"  required><br><br>
+      <input type="text" name="carmodel" autocomplete="off"  required><br><br>
       <label>Car Photo</label><br>
      <input type="file" name="carimage" required><br><br>
       <button type="submit">Add car</button>
@@ -167,13 +167,13 @@
     <div class="two">
      <h2>Update car</h2>
      <label>Enter your carid:</label><br>
-      <input type="text" name="carid" required><br><br>
+      <input type="text" name="carid" autocomplete="off" required><br><br>
       <label>Enter your fueltype</label><br>
-      <input type="text" name="fueltype" required><br><br>
+      <input type="text" name="fueltype" autocomplete="off" required><br><br>
       <label>Enter your cartype</label><br>
-      <input type="text" name="cartype"  required><br><br>
+      <input type="text" name="cartype" autocomplete="off"  required><br><br>
       <label>Enter your carmodel</label><br>
-      <input type="text" name="carmodel"  required><br><br>
+      <input type="text" name="carmodel"autocomplete="off"  required><br><br>
    
       <button type="submit">update car</button>
       </div>
@@ -183,7 +183,7 @@
  <div class="three">
  <h3>Delete car</h3>
  <label>Enter your carid:</label><br>
- <input type="text" name="carid" required><br><br>
+ <input type="text" name="carid" autocomplete="off" required><br><br>
  <button type="submit">Delete car</button>
  </div>
  </form>

@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-      <%@ page import="com.Carbooking.daoimpl.UserDetaildaoImpl" %>
-    <%@ page import="java.util.*" %>
-    <%@ page import="com.Carbooking.model.UserDetail" %>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,7 +122,7 @@ body {
    
   </div>
  
-  <% 
+<%--   <% 
    UserDetail user=(UserDetail)session.getAttribute("currentUser"); 
    int userid=user.getUserId();
    UserDetail san=new UserDetail(userid);
@@ -131,54 +130,38 @@ body {
    List<UserDetail> listproduct=dao.currentuser(san);
    
    
-	%>
+	%> --%>
           <h2 class="Userdetail">User Detail</h2>
           
-        
-        <div class="red">
         <table>
-            <tbody>
-                <tr>
-                <%int count=0;
-                for(UserDetail userdetail: listproduct){
-                	%>
-                    <td>
-                        <table id="carproduct">
-                            <tbody>
-                                <tr>
-                                     
-                                    <td class="viewall">
-                                        <h3><span class="glyphicon glyphicon-user">&nbsp;Name : <%=userdetail.getFirst_name()%> </span></h3>
-                                       
-                                       <h3> <span class="glyphicon glyphicon-envelope">&nbsp;Email : <%=userdetail.getEmail()%> </span></h3>
-                                      
-                                       <h3> <span class="glyphicon glyphicon-phone">&nbsp;phonenumber: <%=userdetail.getPhoneno()%></span></h3>
-                                        <h3> <span class="glyphicon glyphicon-user">&nbsp;userid:<%= userdetail.getUserId() %></span></h3>
-                                    
-                                           <h3><span> <i class="fa fa-rupee"></i>&nbsp;wallet:<%= userdetail.getWallet()%></h3></span>
-                                           
-                                            
-                                       
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>  
-                            
-                    </td>
-                       <% count ++;
-                       if(count==5){ %> 
-                    	   </tr>
-                    	   
-                    	   <tr>              
-                     <%count=0; }}%>  
-                       
-                </tr>
-            </tbody>
-        </table>
-         
-        </div>
-    </div>
-       </div><div class="modal fade" id="myModal" role="dialog">
+		<tbody>
+			<td>
+			<tr>
+				<c:set var="count" value="1" />
+				<c:forEach items="${listproduct1}" var="profile">
+
+					<td>Name:${profile.first_name}</td>
+					<td>Email:${profile.email}</td>
+					<td>phonenumber:${profile.phoneno}</td>
+					<td>UserId:${profile.userId}</td>
+					<td>Wallet:${profile.wallet}</td>
+					
+					<c:choose>
+						<c:when test="${count==5}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>
+			</td>
+		</tbody>
+	</table>
+        <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->

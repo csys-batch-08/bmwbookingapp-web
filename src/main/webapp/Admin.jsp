@@ -97,8 +97,8 @@
     <a href="#home" class="active">Home</a>
    
     <a href="Login.jsp" style=float:right>Logout</a>
-    <a href="ViewUser.jsp">UserHistory</a>
-    <a href="BookingDetail.jsp">Booking history</a>
+    <a href="Viewuser">UserHistory</a>
+    <a href="AdminBooking">Booking history</a>
     <div class="dropdown">
       <button class="dropbtn">Car Details
         <i class="fa fa-caret-down"></i>

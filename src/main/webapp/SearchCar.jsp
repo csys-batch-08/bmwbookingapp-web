@@ -56,7 +56,7 @@ i++;
 %>
 <tr>
 
- <td><span></span><img src="images/<%=list.getCar_name()%>.jpg" width=300px height=300px  alt="img"> </span></td><br><br>
+ <td><span></span><img src="images/<%=list.getcarName()%>.jpg" width=300px height=300px  alt="img"> </span></td><br><br>
 <span><td>Car Name:<%=list.getCar_name()%></td></span><br><br>
 <span><td>fuel type<%=list.getFuelType() %></td></span><br><br>
 

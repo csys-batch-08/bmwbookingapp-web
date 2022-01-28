@@ -2,7 +2,9 @@ package com.Carbooking.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,34 +12,65 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.Carbooking.daoimpl.CarProductDaoImpl;
 import com.Carbooking.daoimpl.OrderDetailDaoImpl;
+import com.Carbooking.model.CarProduct;
 import com.Carbooking.model.OrderDetail;
 import com.Carbooking.model.UserDetail;
+
 @WebServlet("/cart")
 public class CartServlet extends HttpServlet {
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session=req.getSession();
+		System.out.println("haiiii");
+		HttpSession session = req.getSession();
 
 //		int userid=Integer.parseInt(session.getAttribute("currentUser").toString());
-		 UserDetail user=(UserDetail)session.getAttribute("currentUser"); 
-		
-		String carid=session.getAttribute("car_id").toString();
-		
-		int price=Integer.parseInt(session.getAttribute("price").toString());
-		
-		OrderDetail obj=new OrderDetail(user.getUserId(),carid,price);
-		OrderDetailDaoImpl orderdao=new OrderDetailDaoImpl();
-	
+		UserDetail user = (UserDetail) session.getAttribute("currentUser");
+
+		String carid = session.getAttribute("carId").toString();
+		System.out.println(carid);
+
+		int price = Integer.parseInt(session.getAttribute("price").toString());
+		System.out.println(price);
+		OrderDetail obj = new OrderDetail(user.getUserId(), carid, price);
+		OrderDetailDaoImpl orderdao = new OrderDetailDaoImpl();
+
 		try {
 			int res = orderdao.insert(obj);
-			if(res > 0) {
-				resp.sendRedirect("confirmcar.jsp");
-			}else {
-				resp.sendRedirect("ShowProducts.jsp");
-			}
+			CarProductDaoImpl dao = new CarProductDaoImpl();
 			
+			
+			
+			
+			
+			String carid1 = session.getAttribute("carId").toString();
+			
+
+			CarProduct car = new CarProduct(carid);
+			List<CarProduct> confirm = dao.selectproduct(car);
+			session.setAttribute("confirmview", confirm);
+			RequestDispatcher dt1 = req.getRequestDispatcher("confirmcar.jsp");
+			dt1.forward(req, resp);
+
+			OrderDetailDaoImpl daon=new OrderDetailDaoImpl();
+			
+			int userid=user.getUserId();
+			OrderDetail ord=new OrderDetail();
+			ord.setUserId(userid);
+			List<OrderDetail> listproduct=daon.view(ord);
+			req.setAttribute("listproduct", listproduct);
+			System.out.println(listproduct);
+			RequestDispatcher dt=req.getRequestDispatcher("AddCart.jsp");
+			dt.forward(req, resp);
+
+			/*
+			 * if(res > 0) { resp.sendRedirect("confirmcar.jsp"); }else {
+			 * resp.sendRedirect("ShowProducts.jsp"); }
+			 */
+
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,7 +78,6 @@ public class CartServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 }

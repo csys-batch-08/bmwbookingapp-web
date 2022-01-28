@@ -55,7 +55,7 @@ public class CarProductDaoImpl {
 	   	stmt.setString(2, obj1.getCarType());
 	   	stmt.setString(3, obj1.getCarModel());
 	   
-	   	  stmt.setString(4, obj1.getCar_id());
+	   	  stmt.setString(4, obj1.getCarId());
 	   	  int i=stmt.executeUpdate();
 	   	 
 	} catch (ClassNotFoundException e) {
@@ -74,8 +74,8 @@ public class CarProductDaoImpl {
 		try {
 			Con = Connectionutil.getDBconnection();
 			PreparedStatement stmt=Con.prepareStatement(insert);
-	    	 stmt.setString(1, obj1.getCar_id());
-	    	 stmt.setString(2, obj1.getCar_name());
+	    	 stmt.setString(1, obj1.getCarId());
+	    	 stmt.setString(2, obj1.getCarName());
 	    	 stmt.setString(3, obj1.getFuelType());
 	    	 stmt.setString(4, obj1.getCarModel());
 	    	 stmt.setString(5, obj1.getCarType());
@@ -99,7 +99,7 @@ public class CarProductDaoImpl {
 		try {
 			Con = Connectionutil.getDBconnection();
 			 PreparedStatement stmt1=Con.prepareStatement(delete);
-	    	 stmt1.setString(1, obj1.getCar_id());
+	    	 stmt1.setString(1, obj1.getCarId());
 	    	 int i=stmt1.executeUpdate();
 	    	 
 		} catch (ClassNotFoundException e) {
@@ -112,25 +112,27 @@ public class CarProductDaoImpl {
     	
      }
 
-    	 public  static CarProduct selectproduct(CarProduct obj) throws ClassNotFoundException, SQLException
+    	 public  List<CarProduct> selectproduct(CarProduct obj) throws ClassNotFoundException, SQLException
     	 {
+
+    			List<CarProduct> productsList=new ArrayList<CarProduct>();
     		
     		 CarProduct cars=null;
     		 String search="Select * from car_details where car_id=?";
         	 Connection Con=Connectionutil.getDBconnection();
         	 PreparedStatement stmt1=Con.prepareStatement(search);
         	
-        	stmt1.setString(1, obj.getCar_id());
+        	stmt1.setString(1, obj.getCarId());
         	 ResultSet rs=stmt1.executeQuery();
         	 
         	 
         	 while(rs.next())
         	 {
-//        		 System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6));
+//        		 
         		 cars =new CarProduct(rs.getString(1),rs.getString(2),rs.getString(3) ,rs.getString(4), rs.getString(5));
-        		 return cars;
+        		 productsList.add(cars);
         	 }
-   return cars;
+   return productsList;
     	 
    
      }
@@ -143,8 +145,8 @@ public class CarProductDaoImpl {
     			try {
     				 Con = Connectionutil.getDBconnection();
     				 PreparedStatement stmt=Con.prepareStatement(search);
-    				 System.out.println(obj.getCar_name());
-    			    	stmt.setString(1, obj.getCar_name());
+    				
+    			    	stmt.setString(1, obj.getCarName());
     			    
     			    	  rs=stmt.executeQuery();
     			    	return rs;

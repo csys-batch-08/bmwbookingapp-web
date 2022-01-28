@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="com.Carbooking.daoimpl.CarProductDaoImpl" %>
-    <%@ page import="java.util.List" %>
-    <%@ page import="com.Carbooking.model.CarProduct" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
+   
     
 <!DOCTYPE html>
 <html>
@@ -160,31 +160,35 @@ img:hover {
  <a href="ShowProducts.jsp"><button type="button" class="btn btn-primary">Back</button> </a>
  </div>
  <form  method="post">
-<% CarProductDaoImpl dao=new CarProductDaoImpl();
+<%-- <% CarProductDaoImpl dao=new CarProductDaoImpl();
 String carid =session.getAttribute("car_id").toString();
 
 CarProduct car = new CarProduct(carid);
 CarProduct carProduct = dao.selectproduct(car);
-%>
+%> --%>
         
         <div class="recently added list">
        
                         <table id="carproduct">
                             <tbody>
+                            <c:forEach  items="${confirmview}" var="car1">
+                            
                                 <tr>
-                                    <td><img src="images/<%=carProduct.getCar_name() %>.jpg" alt="maari"></td>    
+                                    <td><img src="images/${car1.carName}.jpg" alt="maari"></td>    
                                     <td class="car">
                                     
-                                        <span>carid : <%=carProduct.getCar_id()%> </span><br><br>
-                                        <span>carname : <%=carProduct.getCar_name()%>  </span><br><br>
-                                        <span>carmodel : <%=carProduct.getCarModel()%> </span><br><br>
-                                        <span>cartype : Rs.<%=carProduct.getCarType() %> </span><br><br>
-                                        <span>fueltype: <%=carProduct.getFuelType() %></span><br><br>
-                                          <span>price:<%= session.getAttribute("price") %></span><br><br>
-                                       <%session.setAttribute("carname", carProduct.getCar_name()); %>
+                                        <span>carid : ${car1.carId} </span><br><br>
+                                        <span>carname : ${car1.carName}  </span><br><br>
+                                        <span>carmodel : ${car1.carModel} </span><br><br>
+                                        <span>cartype : ${car1.carType} </span><br><br>
+                                        <span>fueltype: ${car1.fuelType}</span><br><br>
+                                        <%--   <span>price:<%= session.getAttribute("price") %></span><br><br> --%>
+                                            <span>price: ${price}</span><br><br>
+                                      <%--  <%session.setAttribute("carname", carProduct.getCar_name()); %> --%>
+                                      <c:set var="carname" value="${car1.carName}" scope="session" /> 
                                       <button > <a href="CustomerDetail.jsp" class="btn btn-primary">confirm booking </a></button><br><br>
                                        <button> <a href="ShowProducts.jsp" class="btn btn-primary">Cancel booking</a></button><br><br>
-                                          
+                                          </c:forEach>
                                          </form>
                                         
                   </tr>
