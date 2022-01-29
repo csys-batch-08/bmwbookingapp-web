@@ -1,6 +1,7 @@
 package com.Carbooking.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -18,11 +19,14 @@ import com.Carbooking.daoimpl.UserDetaildaoImpl;
 import com.Carbooking.exception.InvalidUserException;
 import com.Carbooking.model.CarProduct;
 import com.Carbooking.model.UserDetail;
+
+
 @WebServlet("/loginval")
 public class LoginServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
+		PrintWriter out=resp.getWriter();
 		String username=req.getParameter("uname");
 		String password=req.getParameter("upass");
 		
@@ -41,9 +45,15 @@ public class LoginServlet extends HttpServlet {
 						try {
 							throw new InvalidUserException();
 						}catch(InvalidUserException e) {
-							session.setAttribute("invalidUser", "invalid");
-							String validate=e.getMessage();
-							resp.sendRedirect(validate);
+							/*
+							 * session.setAttribute("invalidUser", "invalid"); String
+							 * validate=e.getMessage(); resp.sendRedirect(validate);
+							 */
+							out.println("<script type=\"text/javascript\">");
+							out.println("alert('Invalid email id or password');");
+							out.println("location='Login.jsp';");
+							out.println("</script>");
+
 							
 						}
 					

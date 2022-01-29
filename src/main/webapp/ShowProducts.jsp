@@ -144,8 +144,8 @@ font-size:20px;
 <%-- <% UserDetail user=(UserDetail)session.getAttribute("currentUser"); 
 session.setAttribute("wallet", user.getWallet());%> --%>
 <div class="topnav" id="myTopnav">
-    <a href="ShowProducts.jsp" >ShowProduct</a>
-   <a href="cart">Cart</a>
+    <a href="show" >ShowProduct</a>
+   <a href="cartview">Cart</a>
      <a href="index.jsp" style=float:right>Logout</a>
        
 

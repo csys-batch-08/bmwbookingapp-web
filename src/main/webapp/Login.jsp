@@ -101,13 +101,13 @@ left:20px;
 <body>
 
 
-<%String invalid=request.getParameter("invalid");
+<%-- <%String invalid=request.getParameter("invalid");
 if(invalid!=null){
 	%>
 
 <h2><%=invalid%></h2>%>
 <%session.removeAttribute("invalid"); %>
-<%} %>
+<%} %> --%>
 
 
    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">

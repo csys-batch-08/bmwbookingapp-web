@@ -119,7 +119,7 @@ body {
 <body>
  <div class="topnav" id="myTopnav">
     <a href="ShowProducts.jsp" >ShowProduct</a>
-   <a href="cart" class="active">Cart</a>
+   <a href="cartview" class="active">Cart</a>
      <a href="Login.jsp" style=float:right>Logout</a>
         <a href="Search.jsp">Search</a>
     <a href="#about" data-toggle="modal" data-target="#myModal">Contact</a>

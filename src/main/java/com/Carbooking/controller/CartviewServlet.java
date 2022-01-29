@@ -28,7 +28,7 @@ public class CartviewServlet extends HttpServlet {
 		OrderDetail ord=new OrderDetail();
 		ord.setUserId(userid);
 		List<OrderDetail> listproduct=dao.view(ord);
-		request.setAttribute("listproduct", listproduct);
+		session.setAttribute("listproduct", listproduct);
 		System.out.println(listproduct);
 		RequestDispatcher dt=request.getRequestDispatcher("AddCart.jsp");
 		dt.forward(request, response);
