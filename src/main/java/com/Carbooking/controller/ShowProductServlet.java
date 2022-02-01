@@ -13,11 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.Carbooking.daoimpl.CarProductDaoImpl;
 import com.Carbooking.model.CarProduct;
 
-@WebServlet("\show")
+//@WebServlet("\showss")
 public class ShowProductServlet extends HttpServlet {
-    @Override
+   
+	private static final long serialVersionUID = 1L;
+
+	@Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	// TODO Auto-generated method stub
+    	
     	CarProductDaoImpl dao=new CarProductDaoImpl();
 		 
 		 

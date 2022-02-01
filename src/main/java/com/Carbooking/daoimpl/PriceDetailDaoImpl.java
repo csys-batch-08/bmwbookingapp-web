@@ -19,24 +19,42 @@ public  class PriceDetailDaoImpl {
 		
 	String insert="insert into price_detail (car_id,car_name,Exshowroom_price,road_tax,insurance,onroad_price) values(?,?,?,?,?,?)";
 
-	Connection Con;
+	Connection Con=null;
+	PreparedStatement statement=null;
 	try {
 		Con = Connectionutil.getDBconnection();
-		PreparedStatement stmt=Con.prepareStatement(insert);
-		stmt.setString(1, obj.getCar_id());
-		stmt.setString(2, obj.getCar_name());
-		stmt.setInt(3, obj.getExshowroomprice());
-		stmt.setInt(4, obj.getRoadtax());
-		stmt.setInt(5, obj.getInsurance());
-		stmt.setInt(6, obj.getOnroadprice());
-		int i=stmt.executeUpdate();
+		 statement=Con.prepareStatement(insert);
+		statement.setString(1, obj.getCar_id());
+		statement.setString(2, obj.getCar_name());
+		statement.setInt(3, obj.getExshowroomprice());
+		statement.setInt(4, obj.getRoadtax());
+		statement.setInt(5, obj.getInsurance());
+		statement.setInt(6, obj.getOnroadprice());
+		int i=statement.executeUpdate();
 		
 	} catch (ClassNotFoundException e) {
-		// TODO Auto-generated catch block
+
 		e.printStackTrace();
 	} catch (SQLException e) {
-		// TODO Auto-generated catch block
+
 		e.printStackTrace();
+	}
+	finally {
+		if (statement != null) {
+			try {
+				statement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (Con != null) {
+			try {
+				Con.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
 	}
 	
 
@@ -45,32 +63,78 @@ public  class PriceDetailDaoImpl {
     public static void update(Pricedetail obj1)
     {
   	  String update="update price_detail set Exshowroom_price=?,road_tax=?,insurance=? where car_id=? ";
-  	  Connection Con;
+  	  Connection Con=null;
+  	 PreparedStatement statement=null;
 	try {
 		Con = Connectionutil.getDBconnection();
-		 PreparedStatement stmt=Con.prepareStatement(update);
-	     stmt.setInt(1, obj1.getExshowroomprice());
-	     stmt.setInt(2, obj1.getRoadtax());
-	     stmt.setInt(3, obj1.getInsurance());
-	      stmt.setString(4, obj1.getCar_id());
-	  	  int i=stmt.executeUpdate();
+		 statement=Con.prepareStatement(update);
+	     statement.setInt(1, obj1.getExshowroomprice());
+	     statement.setInt(2, obj1.getRoadtax());
+	     statement.setInt(3, obj1.getInsurance());
+	      statement.setString(4, obj1.getCar_id());
+	  	  int i=statement.executeUpdate();
 	  	 
 	} catch (ClassNotFoundException e) {
-		// TODO Auto-generated catch block
+
 		e.printStackTrace();
 	} catch (SQLException e) {
-		// TODO Auto-generated catch block
+
 		e.printStackTrace();
+	}
+	finally {
+		if (statement != null) {
+			try {
+				statement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (Con != null) {
+			try {
+				Con.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
 	}
   	 
     }
-    public static void delete (Pricedetail obj) throws ClassNotFoundException, SQLException
+    public static void delete (Pricedetail obj) 
     {
     	String delete="delete from price_detail where car_id=?";
-    	Connection Con=Connectionutil.getDBconnection();
-    	PreparedStatement stmt=Con.prepareStatement(delete);
-    	stmt.setString(1, obj.getCar_id());
-    	int i=stmt.executeUpdate();
+    	Connection Con=null;
+    	PreparedStatement statement=null;
+		try {
+			Con = Connectionutil.getDBconnection();
+		 statement=Con.prepareStatement(delete);
+	    	statement.setString(1, obj.getCar_id());
+	    	int i=statement.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (Con != null) {
+				try {
+					Con.close();
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+				}
+			}
+		}
+    	
     	
     }
     
@@ -91,47 +155,41 @@ public  class PriceDetailDaoImpl {
 		    	 if(rs.next())
 		    	 {
 		             onprice=rs.getInt(1);
-		           
-		             
-		    		 
-//		    		 Carproduct pd=new  Carproduct(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
-//		    	 System.out.println(pd);
 		    	 }
 		    	 
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		
 		  return onprice;
     }
-    
 	 public  List<Pricedetail> selectproduct(Pricedetail obj) throws ClassNotFoundException, SQLException
 	 {
 		 List<Pricedetail> productsList=new ArrayList<Pricedetail>();
 		 Pricedetail cars=null;
 		 String search="Select * from Price_detail where car_id=?";
-    	 Connection Con=Connectionutil.getDBconnection();
-    	 PreparedStatement stmt1=Con.prepareStatement(search);
-   
-    	stmt1.setString(1, obj.getCar_id());
-    	 ResultSet rs=stmt1.executeQuery();
-    	 
-    	 
-    	 while(rs.next())
-    	 {
-    		
-    		 cars =new Pricedetail(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
-    		 productsList.add(cars);
-    	 }
+   	 Connection Con=Connectionutil.getDBconnection();
+   	 PreparedStatement stmt1=Con.prepareStatement(search);
+  
+   	stmt1.setString(1, obj.getCar_id());
+   	 ResultSet rs=stmt1.executeQuery();
+   	 
+   	 
+   	 while(rs.next())
+   	 {
+   		
+   		 cars =new Pricedetail(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
+   		 productsList.add(cars);
+   	 }
 return productsList;
 	 
 
- }
-  
+}
+	
   
 	
 

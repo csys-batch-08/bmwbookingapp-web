@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.Carbooking.daoimpl.UserDetaildaoImpl;
+import com.Carbooking.daoimpl.UserDetailDaoImpl;
 import com.Carbooking.exception.EmailAlreadyExistException;
 import com.Carbooking.exception.PhoenNumberExistException;
 import com.Carbooking.model.UserDetail;
@@ -19,7 +19,7 @@ import com.Carbooking.model.UserDetail;
 public class RegisterServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		PrintWriter out=resp.getWriter();
 		
 		String firstName=req.getParameter("first_name");
@@ -29,7 +29,7 @@ public class RegisterServlet extends HttpServlet {
 		Long phone=Long.parseLong(req.getParameter("number"));
 		
 		UserDetail ud=new UserDetail(firstName,password,email,phone);
-		UserDetaildaoImpl udd=new UserDetaildaoImpl();
+		UserDetailDaoImpl udd=new UserDetailDaoImpl();
 		
 		try {
 			ResultSet rs=udd.getEmail(ud);
@@ -52,25 +52,25 @@ public class RegisterServlet extends HttpServlet {
 			
 			
 			udd.insert(ud);
-			resp.sendRedirect("Login.jsp");
+			resp.sendRedirect("login.jsp");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (EmailAlreadyExistException e) {
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('email already exist');");
-			out.println("location='Index.jsp';");
+			out.println("location='index.jsp';");
 			out.println("</script>");
-			// TODO Auto-generated catch block
+
 			
 		} catch (PhoenNumberExistException e) {
-			// TODO Auto-generated catch block
+
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('phone number already exist');");
-			out.println("location='Index.jsp';");
+			out.println("location='index.jsp';");
 			out.println("</script>");
 		
 		}

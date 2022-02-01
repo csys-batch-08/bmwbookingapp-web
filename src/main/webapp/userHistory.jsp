@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-      <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-     <%@ page isELIgnored = "false" %>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>User Booking</title>
+<title>User History</title>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -97,17 +97,24 @@ body {
       float: right;
       display: block;
     }
-    .red
-    {
-   
-    margin-top:50px;
-    }
-    h3
-    {
-      font-size:20px;
- font-weight: bold;
-  color: navy;}
+  span
+  {
+  color:navy;
+  font-size:20px;
+  font-weight:bold;}
+  .contain
+  {
  
+ border:2px solid black;
+ width:fit-content;
+ margin-left:500px;
+  
+  
+  }
+ .one
+ {
+ margin-left:1150px;
+ }
  </style>
 </head>
 <body>
@@ -117,40 +124,38 @@ body {
      <a href="Login.jsp" style=float:right>Logout</a>
         <a href="Search.jsp">Search</a>
     <a href="#about" data-toggle="modal" data-target="#myModal">Contact</a>
-   <a href="Userhistory.jsp" style=float:right>Profile</a>
-     <a href="UserBooking.jsp" >Booking details</a>
-      
+    <a href="Userhistory.jsp" >Profile</a>
+     <a href="updatewallet.jsp">Recharge Wallet</a>
+     <a href="UserBooking.jsp"> UserHistory</a>
     
        
       </div>
    
    
   </div>
- <%-- 
-  <% 
-   UserDetail user=(UserDetail)session.getAttribute("currentUser"); 
-   int userid=user.getUserId();
-   CarOrder san=new CarOrder(userid);
-  
-   CarorderDaoImpl dao= new CarorderDaoImpl();
-   List<CarOrder> listproduct=dao.userhistory(san);   
-	%> --%>
-          <h2 class="Userdetail">Booking Details</h2>
+ 
+
+          <h2 class="Userdetail">User Detail</h2>
+           <div class="one">
+ 
+ <a href="showProducts.jsp"><button type="button" class="btn btn-primary">Back</button> </a>
+ </div>
           
-        
-        <table border="1">
+        <table>
 		<tbody>
 			<td>
 			<tr>
 				<c:set var="count" value="1" />
-				<c:forEach items="${listproduct}" var="booking">
-
-					<td>${booking.order_id}</td>
-					<td>${booking.car_id}</td>
-					<td>${booking.carname}</td>
-					<td>${booking.status}</td>
-					<td>${booking.expecteddate}</td>
-					<td>${booking.address}</td>
+				<c:forEach items="${listproduct1}" var="profile">
+				<div class="contain">
+                    <img src="https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png " style="width:200px">
+                    <br><br>
+					<span>Name:${profile.first_name}</span><br><br>
+					<span>Email:${profile.email}</span><br><br>
+					<span>phonenumber:${profile.phoneno}</span><br><br>
+					<span>UserId:${profile.userId}</span><br><br>
+					<span>Wallet:${profile.wallet}</span>
+					</div>
 					
 					<c:choose>
 						<c:when test="${count==5}">
@@ -167,7 +172,8 @@ body {
 			</td>
 		</tbody>
 	</table>
-       </div><div class="modal fade" id="myModal" role="dialog">
+	
+        <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->

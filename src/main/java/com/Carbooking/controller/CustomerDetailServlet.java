@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.Carbooking.daoimpl.CarorderDaoImpl;
 import com.Carbooking.daoimpl.OrderDetailDaoImpl;
-import com.Carbooking.daoimpl.UserDetaildaoImpl;
+import com.Carbooking.daoimpl.UserDetailDaoImpl;
 import com.Carbooking.model.CarOrder;
 import com.Carbooking.model.OrderDetail;
 import com.Carbooking.model.UserDetail;
@@ -27,6 +27,9 @@ public class CustomerDetailServlet extends HttpServlet {
 
 	
  
+	
+	private static final long serialVersionUID = 1L;
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
         
@@ -50,7 +53,6 @@ public class CustomerDetailServlet extends HttpServlet {
 		try {
 			dt = sdf.parse(request.getParameter("Expected"));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -61,7 +63,7 @@ public class CustomerDetailServlet extends HttpServlet {
 		
 		
 		
-		String Carid=(String)session.getAttribute("car_id");
+		String Carid=(String)session.getAttribute("carId");
 		String carnames=(String)session.getAttribute("carname");
 //		session.setAttribute("amount", amount);
 		OrderDetailDaoImpl order=new OrderDetailDaoImpl();
@@ -77,7 +79,7 @@ public class CustomerDetailServlet extends HttpServlet {
 		//update wallet
 		UserDetail use=new UserDetail(price,userid);
 	
-		UserDetaildaoImpl san=new UserDetaildaoImpl();
+		UserDetailDaoImpl san=new UserDetailDaoImpl();
      
 	     int res = san.updateWallet(price, userid);
 	    

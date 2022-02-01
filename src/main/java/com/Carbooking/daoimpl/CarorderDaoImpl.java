@@ -21,13 +21,13 @@ public class CarorderDaoImpl {
 	public static void insert(CarOrder obj)
 	{
 		
-//		String update="update User_details set userwallet=(select userwallet from user_details where user_id=?)-? where user_id=?)";
+
 		String insert="insert into car_orders(Order_id,Car_id,Car_name,Expecteddate,address,userid) values(?,?,?,?,?,?)";
 		  Connection Con;
 		 
 		  
 		try {
-//			int amount1=(int) session.getAttribute("amount");
+
 			Con = Connectionutil.getDBconnection();
 			PreparedStatement stmt=Con.prepareStatement(insert);
 			stmt.setInt(1, obj.getOrder_id());
@@ -42,17 +42,17 @@ public class CarorderDaoImpl {
 			int i=stmt.executeUpdate();
 			
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		
 	}
 	public List<CarOrder> allbook()  {
 		List<CarOrder> viewbooking=new ArrayList<CarOrder>();
-		String allbook="Select * from Car_orders";
+		String allbook="Select Order_id,Car_id,Car_name,Expecteddate,address,status from Car_orders";
 		Connection Con;
 		try {
 			Con = Connectionutil.getDBconnection();
@@ -88,7 +88,7 @@ public class CarorderDaoImpl {
 	{
 		List<CarOrder> productsList=new ArrayList<CarOrder>();
 		
-		String showQuery="select * from Car_orders";
+		String showQuery="select Order_id,Car_id,Car_name,address,status from Car_orders";
 		Connection con;
 		try {
 			con = Connectionutil.getDBconnection();
@@ -97,7 +97,7 @@ public class CarorderDaoImpl {
 			while(rs.next())
 			{
 				
-				CarOrder product=new CarOrder(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6));
+				CarOrder product=new CarOrder(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
 				productsList.add(product);
 				
 			}
@@ -114,7 +114,7 @@ public class CarorderDaoImpl {
 	}
 	public List<CarOrder> userhistory(CarOrder obj)  {
 		List<CarOrder> viewbooking=new ArrayList<CarOrder>();
-		String allbook="Select * from Car_orders where userid=?";
+		String allbook="Select Order_id,Car_id,Car_name,Expecteddate,address,status,userid from Car_orders where userid=?";
 		Connection Con;
 		try {
 			Con = Connectionutil.getDBconnection();
@@ -128,10 +128,10 @@ public class CarorderDaoImpl {
 			     viewbooking.add(details);
 			}
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		

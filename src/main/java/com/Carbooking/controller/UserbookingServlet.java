@@ -21,8 +21,9 @@ public class UserbookingServlet extends HttpServlet {
        
     
 	 
+	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-System.out.println("Welcome");
+
 		 
 	HttpSession session=request.getSession();
 	UserDetail user=(UserDetail)session.getAttribute("currentUser"); 
@@ -32,8 +33,8 @@ System.out.println("Welcome");
 		   CarorderDaoImpl dao= new CarorderDaoImpl();
 		   List<CarOrder> listproduct=dao.userhistory(san);   
 		   request.setAttribute("listproduct", listproduct);
-		   System.out.println(listproduct);
-		   RequestDispatcher dt=request.getRequestDispatcher("UserBooking.jsp");
+		 
+		   RequestDispatcher dt=request.getRequestDispatcher("userBooking.jsp");
 		   dt.forward(request, response);
 		
 	}

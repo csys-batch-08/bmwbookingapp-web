@@ -18,7 +18,7 @@ public class CarProductDaoImpl {
 	{
 		List<CarProduct> productsList=new ArrayList<CarProduct>();
 		
-		String showQuery="select * from Car_details";
+		String showQuery="select car_id,car_name,fueltype,cartype,car_model from Car_details";
 		Connection con;
 		try {
 			con = Connectionutil.getDBconnection();
@@ -118,7 +118,7 @@ public class CarProductDaoImpl {
     			List<CarProduct> productsList=new ArrayList<CarProduct>();
     		
     		 CarProduct cars=null;
-    		 String search="Select * from car_details where car_id=?";
+    		 String search="Select car_id,car_name,fueltype,cartype,car_model from car_details where car_id=?";
         	 Connection Con=Connectionutil.getDBconnection();
         	 PreparedStatement stmt1=Con.prepareStatement(search);
         	
@@ -136,33 +136,34 @@ public class CarProductDaoImpl {
     	 
    
      }
-    	   public  ResultSet Searchcar(CarProduct obj) 
-    	     {
-    	    	 String search="Select * from Car_details where car_name=?";
-    	    	 Connection Con;
-    	    	
-    	    	 ResultSet rs=null;
-    			try {
-    				 Con = Connectionutil.getDBconnection();
-    				 PreparedStatement stmt=Con.prepareStatement(search);
-    				
-    			    	stmt.setString(1, obj.getCarName());
-    			    
-    			    	  rs=stmt.executeQuery();
-    			    	return rs;
-    			       
-    			} catch (ClassNotFoundException e) {
-    				// TODO Auto-generated catch block
-    				e.printStackTrace();
-    			} catch (SQLException e) {
-    				// TODO Auto-generated catch block
-    				e.printStackTrace();
-    			}
-    			return rs;
-    	    	
-    	     }
-    	   
-    	   public List<CarProduct> Search( String Carname) throws ClassNotFoundException, SQLException 
+//    	   public  List <CarProduct> Searchcar(CarProduct obj) 
+//    	     {
+//    		   List<CarProduct> productsList=new ArrayList<CarProduct>();
+//    	    	 String search="Select car_id,car_name,fueltype,cartype,car_model from Car_details where car_name=?";
+//    	    	 Connection Con;
+//    	    	
+//    	    	 ResultSet rs=null;
+//    			try {
+//    				 Con = Connectionutil.getDBconnection();
+//    				 PreparedStatement stmt=Con.prepareStatement(search);
+//    				
+//    			    	stmt.setString(1, obj.getCarName());
+//    			    
+//    			    	  rs=stmt.executeQuery();
+//    			    	return productsList;
+//    			       
+//    			} catch (ClassNotFoundException e) {
+//    				// TODO Auto-generated catch block
+//    				e.printStackTrace();
+//    			} catch (SQLException e) {
+//    				// TODO Auto-generated catch block
+//    				e.printStackTrace();
+//    			}
+//    			return productsList;
+//    	    	
+//    	     }
+//    	   
+    	   public List<CarProduct> search( String Carname) throws ClassNotFoundException, SQLException 
     		{
     				
     					List<CarProduct> searchcar=new ArrayList<CarProduct>();

@@ -219,7 +219,7 @@ margin-left:1200px;
 <div class="topnav" id="myTopnav">
     <a href="#home" class="active">ShowProduct</a>
    <a href="AddCart.jsp">Cart</a>
-     <a href="Login.jsp" style=float:right>Logout</a>
+     <a href="login.jsp" style=float:right>Logout</a>
         <a href="Search.jsp">Search</a>
     <a href="#about">About</a>
      <a href="Userhistory.jsp" style=float:right>Profile</a>

@@ -15,10 +15,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
-img{
-width: 350px;
-padding:130px;
-}
+
  body {
       margin: 0;
       font-family: Arial;
@@ -46,7 +43,7 @@ padding:130px;
     }
 
     .active {
-      background-color: #04AA6D;
+      background-color: gray;
       color: white;
     }
 
@@ -109,16 +106,7 @@ padding:130px;
       display: block;
     }
   
-    .car
-    {
-      position:absolute;
-      left:730px;
-      top:440px;
-    }
-    .one
-    {
-    margin-left:1200px;
-    }
+ 
    img{
 width: 500px;
   border: 1px solid #ddd;
@@ -129,29 +117,41 @@ width: 500px;
 img:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
+span
+{
+font-size:24px;
+color:navy;
+}
 .cars
 {
 position:absolute;
-margin-left:180px;
-margin-top:100px;
+margin-left:100px;
+margin-top:50px;
+font-weight:bold;
 }
-
-span
+.car
 {
-font-size:20px;
- font-weight: bold;
-  color: navy;}
-  .list
-  {
-  padding:50px;}
+position:absolute;
+margin-left:600px;
+margin-top:-100px;
+font-weight:bold;
+}
+.CarProducts
+{
+color:red;
+}
+.one
+{
+margin-left:1150px;
+}
  
 </style>
 </head>
 <body>
 <div class="topnav" id="myTopnav">
-    <a href="#home" >ShowProduct</a>
+    <a href="#home" class="active" >ShowProduct</a>
    <a href="cartview">Cart</a>
-     <a href="Login.jsp" style=float:right>Logout</a>
+     <a href="login.jsp" style=float:right>Logout</a>
         <a href="Search.jsp">Search</a>
     <a href="#about">Contact</a>
      <a href="Userhistory.jsp" style=float:right>Profile</a>
@@ -166,21 +166,10 @@ font-size:20px;
 
  <form action="cart" method="post">
 
-<%-- <%
-CarProductDaoImpl dao=new CarProductDaoImpl();
-String carid = request.getParameter("car_id");
-CarProduct car = new CarProduct(carid);
-CarProduct carProduct = dao.selectproduct(car);
-
-PriceDetailDaoImpl dan=new PriceDetailDaoImpl();
-String carids = request.getParameter("car_id");
-Pricedetail cars = new Pricedetail(carids);
-Pricedetail price = dan.selectproduct(cars);
-
-%> --%>
 
 
- <h2 class="CarProducts">Car Products</h2>
+
+ <h2 class="CarProducts">Car Details</h2>
  <div class="one">
  
  <a href="ShowProducts.jsp"><button type="button" class="btn btn-primary">Back</button> </a>
@@ -197,10 +186,11 @@ Pricedetail price = dan.selectproduct(cars);
                                 <tr>
                                     
                                   
-                                    <td class="cars">
+                                    <td >
                                     
                                     <c:forEach items="${car1}" var="car1">
-                                    <<span>  <img src="images/${car1.carName}.jpg" alt="img"></td></span>
+                                    <span>  <img src="images/${car1.carName}.jpg" alt="img"></td></span>
+                                    <td  class="cars">
                                     
                                         <span>carid &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ${car1.carId} </span><br>
                                         <span>carname&nbsp; : ${car1.carName}  </span><br>

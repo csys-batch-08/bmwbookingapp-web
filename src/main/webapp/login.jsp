@@ -101,13 +101,7 @@ left:20px;
 <body>
 
 
-<%-- <%String invalid=request.getParameter("invalid");
-if(invalid!=null){
-	%>
 
-<h2><%=invalid%></h2>%>
-<%session.removeAttribute("invalid"); %>
-<%} %> --%>
 
 
    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -122,7 +116,7 @@ if(invalid!=null){
       <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal" style="float:right;margin-left:1100px;">Login </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="Index.jsp">Register </a>
+      <a class="nav-link" href="index.jsp">Register </a>
     </li>
   
   </ul>
@@ -146,17 +140,12 @@ if(invalid!=null){
             <label>Enter your Password:</label><br>
             <input type="password" placeholder="Password" name="upass" pattern="(?=.*[0-9])(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}"required><br><br>
             <button class="login" type="submit">Log In</button><br>
-            <a href="Forgetpassword.jsp" style="color:red;" >Forgot Password ?</a>
+            <a href="forgetPassword.jsp" style="color:red;" >Forgot Password ?</a>
            
-            <a href="Index.jsp" style="float:right;color:red">Create New Account</a>
+            <a href="index.jsp" style="float:right;color:red">Create New Account</a>
           </form>
         </div>
-        <%
-   if(session.getAttribute("invalidUser") != null){%>
-	   <h1 style="color:red;background-color:white;font-size:25px;float:right;">Invalid Credentials</h1>
-	   
-   <%session.removeAttribute("invalidUser"); }
-   %>
+ 
         <!-- Modal footer -->
         <div class="modal-footer" >
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

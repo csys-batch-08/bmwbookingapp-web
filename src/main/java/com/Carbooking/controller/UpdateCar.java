@@ -10,17 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.Carbooking.daoimpl.CarProductDaoImpl;
 import com.Carbooking.model.CarProduct;
 
-/**
- * Servlet implementation class UpdateCar
- */
+
 @WebServlet("/updatecar")
 public class UpdateCar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
   
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		doGet(request, response);
+
 		String carid=request.getParameter("carid");
 		String fueltype=request.getParameter("fueltype");
 		String cartype=request.getParameter("cartype");
@@ -29,7 +27,7 @@ public class UpdateCar extends HttpServlet {
 		CarProduct update=new CarProduct(carid,fueltype,cartype,carmodel,price);
 		CarProductDaoImpl adddao=new CarProductDaoImpl();
 		adddao.update(update);
-		response.sendRedirect("Admin.jsp");
+		response.sendRedirect("admin.jsp");
 	}
 
 }

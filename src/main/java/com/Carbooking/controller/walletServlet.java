@@ -9,24 +9,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-import com.Carbooking.daoimpl.UserDetaildaoImpl;
+import com.Carbooking.daoimpl.UserDetailDaoImpl;
 import com.Carbooking.model.UserDetail;
 @WebServlet("/wallet")
 public class walletServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		doGet(request, response);
+
 		HttpSession session=request.getSession();
 		 UserDetail user=(UserDetail)session.getAttribute("currentUser");
 	     int userid=user.getUserId();
 		Long wallet=Long.parseLong(request.getParameter("amount"));
 		
 		UserDetail use=new UserDetail(wallet,userid);
-		UserDetaildaoImpl dao=new UserDetaildaoImpl();
+		UserDetailDaoImpl dao=new UserDetailDaoImpl();
 		dao.updatewallet(use);
-		response.sendRedirect("ShowProducts.jsp");
+		response.sendRedirect("showProducts.jsp");
 	}
 
 }

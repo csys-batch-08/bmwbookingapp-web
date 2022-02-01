@@ -144,11 +144,11 @@ img:hover {
 <div class="topnav" id="myTopnav">
     <a href="#home" class="active">ShowProduct</a>
    <a href="cartview">Cart</a>
-     <a href="Login.jsp" style=float:right>Logout</a>
+     <a href="login.jsp" style=float:right>Logout</a>
         <a href="Search.jsp">Search</a>
     <a href="#about">About</a>
      <a href="Userhistory.jsp" style=float:right>Profile</a>
-         <a href="updatewallet.jsp">Recharge Wallet</a>
+         <a href="updatewallet.jsp">Recharge Wallet</a>s
     
        
       </div>
@@ -186,9 +186,11 @@ CarProduct carProduct = dao.selectproduct(car);
                                             <span>price: ${price}</span><br><br>
                                       <%--  <%session.setAttribute("carname", carProduct.getCar_name()); %> --%>
                                       <c:set var="carname" value="${car1.carName}" scope="session" /> 
-                                      <button > <a href="CustomerDetail.jsp" class="btn btn-primary">confirm booking </a></button><br><br>
+                                      <button > <a href="customerDetail.jsp" class="btn btn-primary">confirm booking </a></button><br><br>
                                        <button> <a href="ShowProducts.jsp" class="btn btn-primary">Cancel booking</a></button><br><br>
                                           </c:forEach>
+                                          </tbody>
+                                          </table>
                                          </form>
                                         
                   </tr>

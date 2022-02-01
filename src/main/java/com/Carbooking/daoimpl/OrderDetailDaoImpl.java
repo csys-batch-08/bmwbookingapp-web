@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class OrderDetailDaoImpl {
     }
 	public  int Findorder() 
     {
-   	// String search="Select Order_id from order_details where user_id=? and Car_id=?";
+  
    	 String search1 = "select max(Order_id) from order_details";
    	 Connection Con;
    
@@ -46,24 +46,20 @@ public class OrderDetailDaoImpl {
 			 try {
 				Con = Connectionutil.getDBconnection();
 				PreparedStatement stmt=Con.prepareStatement(search1);
-//			    stmt.setInt(1, obj.getUserId());
-//			    stmt.setString(2, obj.getCarid());
+
 			 
 			    	 ResultSet rs=stmt.executeQuery();
 			    	
 			    	 if(rs.next())
 			    	 {
 			             order=rs.getInt(1);
-//			             System.out.println(order);
-			             
-			    		 
-
+			            
 			    	 }
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+		
 				e.printStackTrace();
 			}
 			return order;
@@ -81,10 +77,10 @@ public class OrderDetailDaoImpl {
 	    	 int i=stmt.executeUpdate();
 	    	
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
     	
@@ -94,7 +90,7 @@ public class OrderDetailDaoImpl {
 	{
 		List<OrderDetail> productsList=new ArrayList<OrderDetail>();
 		
-		String showQuery="select * from Order_details where user_id=?";
+		String showQuery="select Order_id,user_id,car_id,price from Order_details where user_id=?";
 		Connection con;
 		try {
 			con = Connectionutil.getDBconnection();
@@ -111,10 +107,10 @@ public class OrderDetailDaoImpl {
 			
 			
 		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
 		return productsList;
@@ -123,7 +119,7 @@ public class OrderDetailDaoImpl {
     
     public boolean cartexist(int userid,String carid) throws ClassNotFoundException, SQLException {
     	Connection con = Connectionutil.getDBconnection();
-    	String query = "select * from order_details where user_id in ? and car_id in ?";
+    	String query = "select Order_id,user_id,car_id,price from order_details where user_id in ? and car_id in ?";
     	
     	PreparedStatement pstPreparedStatement = con.prepareStatement(query);
     	pstPreparedStatement.setInt(1, userid);

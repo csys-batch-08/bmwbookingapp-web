@@ -1,7 +1,7 @@
 package com.Carbooking.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,9 +18,9 @@ public class AddPriceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		doGet(request, response);
+
 		String carid=request.getParameter("carid");
 		String carname=request.getParameter("carname");
 		int showroom=Integer.parseInt(request.getParameter("showroom_price"));
@@ -30,6 +30,6 @@ public class AddPriceServlet extends HttpServlet {
 		Pricedetail prc=new Pricedetail(carid,carname,showroom,road,insurance,onroad);
 		PriceDetailDaoImpl prcdao=new PriceDetailDaoImpl();
 		prcdao.insert(prc);	
-		response.sendRedirect("Admin.jsp");}
+		response.sendRedirect("admin.jsp");}
 
 }

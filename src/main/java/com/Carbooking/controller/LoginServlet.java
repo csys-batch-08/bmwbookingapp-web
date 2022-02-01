@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.Carbooking.daoimpl.CarProductDaoImpl;
-import com.Carbooking.daoimpl.UserDetaildaoImpl;
+import com.Carbooking.daoimpl.UserDetailDaoImpl;
 import com.Carbooking.exception.InvalidUserException;
 import com.Carbooking.model.CarProduct;
 import com.Carbooking.model.UserDetail;
@@ -23,6 +23,9 @@ import com.Carbooking.model.UserDetail;
 
 @WebServlet("/loginval")
 public class LoginServlet extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
@@ -30,8 +33,8 @@ public class LoginServlet extends HttpServlet {
 		String username=req.getParameter("uname");
 		String password=req.getParameter("upass");
 		
-		//UserDetail user=new UserDetail(username, password);
-		UserDetaildaoImpl userDao=new UserDetaildaoImpl();
+		
+		UserDetailDaoImpl userDao=new UserDetailDaoImpl();
 		String rs;
 		
 
@@ -39,33 +42,21 @@ public class LoginServlet extends HttpServlet {
 			
 				
 			try {
-				try {
-					currentUser = userDao.loginval(username, password);
-					if(currentUser==null) {
-						try {
-							throw new InvalidUserException();
-						}catch(InvalidUserException e) {
-							/*
-							 * session.setAttribute("invalidUser", "invalid"); String
-							 * validate=e.getMessage(); resp.sendRedirect(validate);
-							 */
-							out.println("<script type=\"text/javascript\">");
-							out.println("alert('Invalid email id or password');");
-							out.println("location='Login.jsp';");
-							out.println("</script>");
+				currentUser = userDao.loginval(username, password);
+				if(currentUser==null) {
+					try {
+						throw new InvalidUserException();
+					}catch(InvalidUserException e) {
+						
+						out.println("<script type=\"text/javascript\">");
+						out.println("alert('Invalid email id or password');");
+						out.println("location='login.jsp';");
+						out.println("</script>");
 
-							
-						}
-					
-				}
-					
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+						
+					}
+				
+}
 			
 			session.setAttribute("username", currentUser.getFirst_name());
 			
@@ -78,9 +69,11 @@ public class LoginServlet extends HttpServlet {
 						 
 						 List<CarProduct> listproduct=dao.showview();
 						 req.setAttribute("listproduct", listproduct);
+						 System.out.println(listproduct);
+						 RequestDispatcher rd=req.getRequestDispatcher("showProducts.jsp");
+                         rd.forward(req, resp);
 						
-						 RequestDispatcher rd=req.getRequestDispatcher("ShowProducts.jsp");
-                          rd.forward(req, resp);
+						
                           
 						
 						
@@ -89,7 +82,7 @@ public class LoginServlet extends HttpServlet {
 				}else if(currentUser.getUsertype().equals("admin")) {
 
 					session.setAttribute("admin",currentUser);
-					resp.sendRedirect("Admin.jsp");
+					resp.sendRedirect("admin.jsp");
 				}
 				
 		}

@@ -47,7 +47,7 @@ public class SelectServlet extends HttpServlet {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-	RequestDispatcher dt=request.getRequestDispatcher("SelectCar.jsp");
+	RequestDispatcher dt=request.getRequestDispatcher("selectCar.jsp");
 	dt.forward(request, response);
 
 

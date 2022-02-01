@@ -16,7 +16,7 @@
 <style>
 
 img{
-    width: 350px;
+    width: 300px;
  
   padding: 10px;
 
@@ -54,7 +54,7 @@ img:hover {
     }
 
     .active {
-      background-color: #04AA6D;
+      background-color: gray;
       color: white;
     }
 
@@ -141,16 +141,15 @@ font-size:20px;
 </head>
 
 <body>
-<%-- <% UserDetail user=(UserDetail)session.getAttribute("currentUser"); 
-session.setAttribute("wallet", user.getWallet());%> --%>
+
 <div class="topnav" id="myTopnav">
-    <a href="show" >ShowProduct</a>
+    <a href="showss" class="active">ShowProduct</a>
    <a href="cartview">Cart</a>
-     <a href="index.jsp" style=float:right>Logout</a>
+     <a href="login.jsp" style=float:right>Logout</a>
        
 
     <a href="userhistory" style=float:right>Profile</a>
-     <a href="updatewallet.jsp">Recharge Wallet</a>
+     <a href="updateWallet.jsp">Recharge Wallet</a>
      <a href="userbooking">Booking History</a>
        <a href="#" data-toggle="modal" data-target="#myModal">Contact</a>
  
@@ -188,7 +187,7 @@ session.setAttribute("wallet", user.getWallet());%> --%>
                                          
 					
 					<c:choose>
-						<c:when test="${count==2}">
+						<c:when test="${count==3}">
 			</tr>
 			<tr>
 				<c:set var="count" value="1" />

@@ -20,7 +20,7 @@ public class CartviewServlet extends HttpServlet {
        
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("wow");
+		
 		HttpSession session=request.getSession();
 		OrderDetailDaoImpl dao=new OrderDetailDaoImpl();
 		UserDetail user=(UserDetail)session.getAttribute("currentUser");
@@ -29,8 +29,8 @@ public class CartviewServlet extends HttpServlet {
 		ord.setUserId(userid);
 		List<OrderDetail> listproduct=dao.view(ord);
 		session.setAttribute("listproduct", listproduct);
-		System.out.println(listproduct);
-		RequestDispatcher dt=request.getRequestDispatcher("AddCart.jsp");
+		
+		RequestDispatcher dt=request.getRequestDispatcher("addCart.jsp");
 		dt.forward(request, response);
 
 
