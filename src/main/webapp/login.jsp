@@ -136,10 +136,10 @@ left:20px;
         <div class="modal-body">
            <form action="loginval" method="post">
            <label>Enter your mail:</label><br>
-            <input type="text" placeholder="Email"  name="uname" pattern="[a-z0-9]+[@][a-zA-Z]+[.][a-z]+" required /><br>
+            <input type="text" placeholder="Email"  name="uname" pattern="[a-z0-9]+[@][a-zA-Z]+[.][a-z]+" autocomplete="off" required /><br>
             <label>Enter your Password:</label><br>
             <input type="password" placeholder="Password" name="upass" pattern="(?=.*[0-9])(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}"required><br><br>
-            <button class="login" type="submit">Log In</button><br>
+            <button class="login" type="submit" >Log In</button><br>
             <a href="forgetPassword.jsp" style="color:red;" >Forgot Password ?</a>
            
             <a href="index.jsp" style="float:right;color:red">Create New Account</a>

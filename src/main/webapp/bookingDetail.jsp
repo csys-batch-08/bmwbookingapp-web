@@ -2,15 +2,43 @@
     pageEncoding="ISO-8859-1"%>
       <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
      <%@ page isELIgnored = "false" %>
+     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+     
     
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Booking Detail</title>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 
+<link rel="style"
+	href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+    
+    
+    <link rel="style"
+	href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+	
+	
 <style>
  body {
       margin: 0;
@@ -102,35 +130,43 @@
     {
     margin-top:40px;
     margin-left:1100px;
-    }</style>
+    }
+    span
+    {
+    color:navy;
+    font-size:18px;
+    }
+    table {
+	width: 100%;
+}</style>
 </head>
 <body>
 
 
 
 
-<div class="topnav" id="myTopnav">
-    <a href="Admin.jsp" >Home</a>
+ <div class="topnav" id="myTopnav">
+    <a href="#home" class="active">Home</a>
    
-     <a href="Login.jsp" style=float:right>Logout</a>
-    <a href="ViewUser.jsp">UserHistory</a>
-    <a href="BookingDetail.jsp">Booking history</a>
+    <a href="login.jsp" style=float:right>Logout</a>
+    <a href="Viewuser">UserHistory</a>
+    <a href="AdminBooking">Booking history</a>
+    
+			 <a href="AdminProductServlet">Product</a>
     <div class="dropdown">
-      <button class="dropbtn" >CarDetails
+      <button class="dropbtn">Car Details
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-        <a href="Addcar.jsp">Add car</a>
-        <a href="PriceDetail.jsp">PriceDetail </a>
+        <a href="addcar.jsp">Add car</a>
+        <a href="priceDetail.jsp">PriceDetail </a>
        
       </div>
     </div>
+    
    
- </div>
-<%-- <% CarorderDaoImpl dao=new CarorderDaoImpl();
-List <CarOrder> allbook;
-allbook=dao.allbook();
-%> --%>
+  </div>
+
 
  <div class="one">
  <a href="Admin.jsp"><button type="button" class="btn btn-primary">Back</button> </a>
@@ -140,39 +176,42 @@ allbook=dao.allbook();
 
  <h2 class="CarProducts">Booking Details</h2>
         
-    <table>
+       <table border="1" id="myTable">
+       <thead>
+			<tr>
+				<th class="header">orderid</th>
+				<th>carid</th>
+				<th>carname</th>
+				<th>status</th>
+				<th>OrderedDate</th>
+				<th>Address</th>
+			</tr>
+			</thead>
 		<tbody>
-			<td>
-			<tr>
-				<c:set var="count" value="1" />
-				<c:forEach items="${allbook}" var="adminbooking">
+				  <c:set var="count" value="1" />
+          <c:forEach items="${allbook}" var="adminbooking">
+            <fmt:parseDate pattern="yyyy-MM-dd" value="${adminbooking.expecteddate}"
+				var="ExpectedDate" />
+				<tr>
+					<td>${adminbooking.order_id}</td>
+					<td>${adminbooking.car_id}</td>
+					<td>${adminbooking.carname}</td>
+					<td>${adminbooking.status}</td>
+					<td><fmt:formatDate pattern="dd-MM-yyyy" value="${ExpectedDate}"/>
+					<td>${adminbooking.address}</td>
+					</tr>
+					 </c:forEach>
+                                       
+                                         
 				
-
-					<span>orderid:${adminbooking.order_id}</span>
-					<span>carid:${adminbooking.car_id}</span>
-					<span>carname:${adminbooking.carname}</span>
-					<span>status:${adminbooking.status}</span>
-					<span>ExpectedDate:${adminbooking.expecteddate}</span>
-					<span>Address:${adminbooking.address}</span>
-					
-					
-					
-					
-					<c:choose>
-						<c:when test="${count==5}">
-			</tr>
-			<tr>
-				<c:set var="count" value="1" />
-			</c:when>
-			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
-			</c:forEach>
-			</tr>
-			</td>
 		</tbody>
 	</table>
-
+	<script>
+	$(document).ready(function() {
+		$('#myTable').DataTable();
+	});
+	</script>
 </body>
 </html>
+
+				

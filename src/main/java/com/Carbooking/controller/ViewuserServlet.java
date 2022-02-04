@@ -27,7 +27,7 @@ public class ViewuserServlet extends HttpServlet {
 			List<UserDetail> view=new ArrayList<UserDetail>();
 			view=UserDetailDaoImpl.alluser();
 			request.setAttribute("view", view);
-			System.out.println(view);
+			
 			RequestDispatcher dt=request.getRequestDispatcher("viewUser.jsp");
 			dt.forward(request, response);
 	

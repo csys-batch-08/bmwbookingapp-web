@@ -10,9 +10,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Show products</title>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+  
 <style>
 
 img{
@@ -25,96 +27,22 @@ img:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 
- body {
-      margin: 0;
-      font-family: sans-serif;
-     background-color:#F8F8FF;
- 
+body {
+  background: linear-gradient(70deg, #e6e6e6, #f7f7f7);
+  color: #514B64;
+  min-height: 100vh;
+}
 
-    }
+code {
+  background: #fff;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  margin: 0 0.3rem;
+}
     .carproduct
     {
     padding:50px;
     
-    }
-
-    .topnav {
-      overflow: hidden;
-      background-color: #333;
-    }
-
-    .topnav a {
-      float: left;
-      display: block;
-      color: #f2f2f2;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 17px;
-    }
-
-    .active {
-      background-color: gray;
-      color: white;
-    }
-
-    .topnav .icon {
-      display: none;
-    }
-
-    .dropdown {
-      float: left;
-      overflow: hidden;
-    }
-
-    .dropdown .dropbtn {
-      font-size: 17px;
-      border: none;
-      outline: none;
-      color: white;
-      padding: 14px 16px;
-      background-color: inherit;
-      font-family: inherit;
-      margin: 0;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-    }
-
-    .dropdown-content a {
-      float: none;
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      text-align: left;
-    }
-
-    .topnav a:hover,
-    .dropdown:hover .dropbtn {
-      background-color: #555;
-      color: white;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-
-    .topnav a.icon {
-      float: right;
-      display: block;
     }
     span
     {
@@ -134,36 +62,61 @@ img:hover {
     span
 {
 font-size:20px;
- 
-  color: navy;}
- 
+ }
+  h1 span
+  {
+  font-size:30px;
+  margin-left:30px;
+  }
+  
+ #imra
+ {
+ margin-left:-90px;}
 </style>
 </head>
 
 <body>
-
-<div class="topnav" id="myTopnav">
-    <a href="showss" class="active">ShowProduct</a>
-   <a href="cartview">Cart</a>
-     <a href="login.jsp" style=float:right>Logout</a>
-       
-
-    <a href="userhistory" style=float:right>Profile</a>
-     <a href="updateWallet.jsp">Recharge Wallet</a>
-     <a href="userbooking">Booking History</a>
-       <a href="#" data-toggle="modal" data-target="#myModal">Contact</a>
- 
-     <form action="search" method="post">
-<div class="search">
-<br>
-<input type="text" id="car" name="car" style="margin-left:220px" autocomplete="on">
-<input type="submit" value="Search">
-</div>
 </form>
-    
        
       </div>
+
+<nav class="navbar navbar-expand-lg py-3 navbar navbar-dark bg-info shadow-sm">
+  <div class="container">
+    <a href="#" class="navbar-brand">
+      <!-- Logo Image -->
+      <img src="images/bmw-logo.svg" style="width:80px" alt="" class="d-inline-block align-middle mr-2" id="imra">
+      <!-- Logo Text -->
+      <span class="text-uppercase font-weight-bold">BMW ShowRoom</span>
+    </a>
+
+    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+
+    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+     
+        <li class=" active"><a href="showss" class="nav-link">Home <span class="sr-only">(current)</span></a></li>
+        <li class="nav-item"><a href="cartview" class="nav-link">Cart</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#myModal">Contact</a></li>
+        <li class="nav-item"><a href="updateWallet.jsp" class="nav-link">RechargeWallet</a></li>
+          <li class="nav-item"><a href="userhistory" class="nav-link">Profile</a></li>
+        <li class="nav-item"><a href="userbooking" class="nav-link">BookingHistory</a></li>
+        <form class="d-flex" action="search" method="post">
+        <input class="form-control me-2" type="search" id="car" name="car" placeholder="Search" aria-label="Search" autocomplete="on" required>
+        <button class="btn btn-outline-success" type="submit">Search</button>&nbsp;&nbsp;&nbsp;
+      </form>
+        <li class="nav-item"><a href="login.jsp" class="nav-link">Logout</a></li>
+      
+        <%-- <li class="nav-item"><a href="#" class="nav-link"  ${sessionScope.username }></a></li> --%>
+         
+      </ul>
+      
+
+    </div>
     
+  </div>
+</nav>
+ 
+     <h1><span style="color:red"; > Welcome</span><span style="color:red";>${sessionScope.username }</span></h1>
    <div class="one">
    <table id="carproduct">
 		<tbody>
@@ -176,12 +129,14 @@ font-size:20px;
 					<td>
 					  <div class="car">
                                     <img src="images/${carProduct.carName}.jpg" alt="img"><br>                                  
-                                       
-                                         <span>fueltype &nbsp;&nbsp; ${carProduct.fuelType}</span><br>
-                                        <span>cartype &nbsp;&nbsp;  ${carProduct.carType} </span><br>
-                                         <span>carmodel : ${carProduct.carModel} </span><br>
+                                        <b><h1><span>${carProduct.carName}</span><br></h1></b>
+                                        <center>
+                                         <span><strong>FuelType</strong> &nbsp;&nbsp;</span> <span> :${carProduct.fuelType}</span><br>
+                                        <span ><strong>CarType</strong> &nbsp;&nbsp;</span> <span>: ${carProduct.carType} </span><br>
+                                         <span><strong>CarModel</strong></span> &nbsp;&nbsp;<span>: ${carProduct.carModel} </span><br>
+                                         
                                            <span style="margin-left:70px;"> <a href="SelectServlet?carId=${carProduct.carId}"><button class="btn btn-primary">view</button></a></span>
-                                      
+                                      </center>
                                          </div>
                                        </td>  
                                          

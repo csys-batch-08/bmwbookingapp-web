@@ -138,11 +138,11 @@ public class CarOrder {
 	
 	public CarOrder() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public CarOrder(int orderid, String carid, String carnames, Date dates, String address2,int userid) {
-		// TODO Auto-generated constructor stub
+	
 		this.order_id=orderid;
 		this.car_id=carid;
 		this.Carname=carnames;
@@ -153,14 +153,14 @@ public class CarOrder {
 
 
 
-	public CarOrder(int order, String carn, String carname, java.sql.Date dates1, String status1,String Addres) {
-		// TODO Auto-generated constructor stub
+	public CarOrder(int order, String carn, String carname, java.sql.Date dates1,String Addres,String status1) {
+		
 		this.order_id=order;
 		this.car_id=carn;
 		this.Carname=carname;
 		this.Expecteddate=dates1;
-		this.status=status1;
 		this.address=Addres;
+		this.status=status1;
 	}
 
 

@@ -2,6 +2,9 @@
     pageEncoding="ISO-8859-1"%>
       <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
      <%@ page isELIgnored = "false" %>
+     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+     
+     
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +38,7 @@ body {
     }
 
     .active {
-      background-color: #04AA6D;
+      background-color: gray;
       color: white;
     }
 
@@ -109,30 +112,36 @@ body {
   color: navy;}
  .one
  {
- margin-left:1150px;}
+ margin-left:1150px;
+ margin-top:20px;
+ }
  
  </style>
 </head>
 <body>
  <div class="topnav" id="myTopnav">
-    <a href="ShowProducts.jsp" >ShowProduct</a>
-   <a href="AddCart.jsp">Cart</a>
-     <a href="Login.jsp" style=float:right>Logout</a>
-        <a href="Search.jsp">Search</a>
+    <a href="showss" >ShowProduct</a>
+   <a href="cartview" >Cart</a>
+     <a href="login.jsp" style=float:right>Logout</a>
+       
     <a href="#about" data-toggle="modal" data-target="#myModal">Contact</a>
-   <a href="Userhistory.jsp" style=float:right>Profile</a>
-     <a href="UserBooking.jsp" >Booking details</a>
-      
+    <a href="userhistory" style=float:right>Profile</a>
+      <a href="updateWallet.jsp">Recharge Wallet</a>
+     <a href="userbooking" class="active">Booking History</a>
     
        
       </div>
+      
+    
+       
+     
    
    
-  </div>
+ 
 
           <h2 class="Userdetail">Booking Details</h2>
           <div class="one">
-           <a href="showProducts.jsp"><button type="button" class="btn btn-primary">Back</button> </a>
+           <a href="showss"><button type="button" class="btn btn-primary">Back</button> </a>
         </div>
         <table border="1">
 		<tbody>
@@ -140,13 +149,19 @@ body {
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${listproduct}" var="booking">
+				<fmt:parseDate pattern="yyyy-MM-dd" value="${booking.expecteddate}"
+				var="Expecteddate" />
 
+				
+                      
 					<td><span>Order_id:&nbsp;&nbsp;${booking.order_id}</span></td>
 					<td><span>Car_id:&nbsp;&nbsp;${booking.car_id}</span></td>
-					<td><span>${booking.carname}</span></td>
-					<td><span>${booking.status}</span></td>
-					<td><span>${booking.expecteddate}</span></td>
-					<td><span>${booking.address}</span></td>
+					<td><span>CarName:${booking.carname}</span></td>
+					
+					<td style="width:10%"><span><fmt:formatDate pattern="dd-MM-yyyy" value="${Expecteddate}"/></span></td>
+					<td><span>Status:${booking.status}</span></td>
+					
+					<td><span>Address:${booking.address}</span></td>
 					
 					<c:choose>
 						<c:when test="${count==1}">

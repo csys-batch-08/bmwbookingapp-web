@@ -3,6 +3,10 @@
     <html>
     <head>
     <title>Forget password</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Toastr -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <style>
       .forget
       {
@@ -25,8 +29,14 @@
     <input type="text" name="forget" id="forget" required><br><br>
     <label>Enter your new password:</label><br>
     <input type="text" name="password" id="password" required><br><br>
-    <button type="submit">Reset password</button>
+    <button type="submit" id="success">Reset password</button>
     </div>
+    <script type="text/javascript">
+    $('#success').click(function(event) {
+		toastr.success('Your password is reset successfully');
+   });
+    </script>
     </body>
+    
     </html>
     </form>

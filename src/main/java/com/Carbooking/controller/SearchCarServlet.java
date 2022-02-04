@@ -37,17 +37,10 @@ public class SearchCarServlet extends HttpServlet {
 				           
 				   HttpSession session = request.getSession();
 				   session.setAttribute("Carname",searchlist );
-				         
-				   
-				   
 				
 					RequestDispatcher requestDispatcher=request.getRequestDispatcher("searchCar.jsp");
 					requestDispatcher.forward(request, response);      
-				           
-				           
-		
-
-	              		       
+ 
 				  response.getWriter().print("Search Suceessfully");
 
 

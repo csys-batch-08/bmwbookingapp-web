@@ -29,6 +29,14 @@
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.webjars.npm/jquery -->
+<dependency>
+    <groupId>org.webjars.npm</groupId>
+    <artifactId>jquery</artifactId>
+    <version>3.5.1</version>
+</dependency>
+
+		
 
 	</dependencies>
 	<build>

@@ -37,7 +37,7 @@ body {
     }
 
     .active {
-      background-color: #04AA6D;
+      background-color: gray;
       color: white;
     }
 
@@ -111,7 +111,7 @@ body {
 
 .row {
 
- margin-left:500px;
+ margin-left:200px;
  background-color:gray;
  width:fit-content;
  
@@ -217,13 +217,15 @@ margin-left:1200px;
 </head>
 <body>
 <div class="topnav" id="myTopnav">
-    <a href="#home" class="active">ShowProduct</a>
-   <a href="AddCart.jsp">Cart</a>
+   <a href="showss" class="active">ShowProduct</a>
+   <a href="cartview">Cart</a>
      <a href="login.jsp" style=float:right>Logout</a>
-        <a href="Search.jsp">Search</a>
-    <a href="#about">About</a>
-     <a href="Userhistory.jsp" style=float:right>Profile</a>
-       <a href="updatewallet.jsp">Recharge Wallet</a>
+       
+
+    <a href="userhistory" style=float:right>Profile</a>
+     <a href="updateWallet.jsp">Recharge Wallet</a>
+     <a href="userbooking">Booking History</a>
+       <a href="#" data-toggle="modal" data-target="#myModal">Contact</a>
     
        
       </div><br><br><br>
@@ -231,32 +233,31 @@ margin-left:1200px;
 <form action="custdetails" method="post">
 <div class="spin">
 <div class="spinner-border text-muted"></div>
- <div class="spinner-border text-danger"></div>
  </div>
 <div class="row">
           <div class="col-50">
             <h3>Billing Address</h3>
             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="custname" name="custname" placeholder="John M. Doe" pattern="[A-Za-z]{3,}" required>
+            <input type="text" id="custname" name="custname" placeholder="John M. Doe" pattern="[A-Za-z]{3,}" autocomplete="off" required>
          
             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" pattern="^[#.0-9a-zA-Z\s,-]+$" required>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" pattern="^[#.0-9a-zA-Z\s,-]+$" autocomplete="off" required>
             <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="New York" pattern="[A-Za-z]{3,}" required>
+            <input type="text" id="city" name="city" placeholder="New York" pattern="[A-Za-z]{3,}" autocomplete="off" required>
 
             
              
            
                 <label for="zip">Pincode:</label>
-                <input type="text" id="zip" name="zip" placeholder="10001"pattern="^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$" required>
+                <input type="text" id="zip" name="zip" placeholder="10001" pattern="[6]{1}[0-9]{5}"  autocomplete="off" required>
            
               
                 <label for="state">Date</label>
-                <input type="Date" id="datefield" name="Expected" placeholder="NY" required>
+                <input type="Date" id="datefield" name="Expected" placeholder="NY" autocomplete="off" required>
             
-           
+             <marquee> <h4 style="color:red">Note: Advance amount will pay more than Rs:40000</h4></marquee>
                 <label for="state">Advance pay amount</label>
-                <input type="number"  name="advance" placeholder="NY"  min="40000" required>
+                <input type="number"  name="advance" placeholder="Enter your amount"  min="40000" autocomplete="off" required>
             
            
              <input type="submit" value="submit">

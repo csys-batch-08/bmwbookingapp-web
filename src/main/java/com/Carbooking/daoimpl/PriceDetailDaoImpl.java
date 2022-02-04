@@ -141,16 +141,17 @@ public  class PriceDetailDaoImpl {
     public static int Findproduct(String obj) 
     {
    	 String search="Select onroad_price from price_detail where car_id=?";
-   	 Connection Con;
+   	 Connection Con=null;
+   	PreparedStatement statement=null;
   
    	 int onprice=0;
 		try {
 			
 			 Con = Connectionutil.getDBconnection();
-			 PreparedStatement stmt=Con.prepareStatement(search);
-		    	stmt.setString(1, obj);
+			statement=Con.prepareStatement(search);
+		    	statement.setString(1, obj);
 		 
-		    	 ResultSet rs=stmt.executeQuery();
+		    	 ResultSet rs=statement.executeQuery();
 		    	
 		    	 if(rs.next())
 		    	 {
@@ -164,33 +165,121 @@ public  class PriceDetailDaoImpl {
 
 			e.printStackTrace();
 		}
+		finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (Con != null) {
+				try {
+					Con.close();
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+				}
+			}
+		}
+		
 		
 		  return onprice;
     }
-	 public  List<Pricedetail> selectproduct(Pricedetail obj) throws ClassNotFoundException, SQLException
+	 public  List<Pricedetail> selectproduct(Pricedetail obj) 
 	 {
 		 List<Pricedetail> productsList=new ArrayList<Pricedetail>();
 		 Pricedetail cars=null;
+		 PreparedStatement statement=null;
 		 String search="Select * from Price_detail where car_id=?";
-   	 Connection Con=Connectionutil.getDBconnection();
-   	 PreparedStatement stmt1=Con.prepareStatement(search);
-  
-   	stmt1.setString(1, obj.getCar_id());
-   	 ResultSet rs=stmt1.executeQuery();
-   	 
-   	 
-   	 while(rs.next())
-   	 {
-   		
-   		 cars =new Pricedetail(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
-   		 productsList.add(cars);
-   	 }
+   	 Connection Con=null;
+	try {
+		Con = Connectionutil.getDBconnection();
+		  statement=Con.prepareStatement(search);
+		  
+		   	statement.setString(1, obj.getCar_id());
+		   	 ResultSet rs=statement.executeQuery();
+		   	 
+		   	 
+		   	 while(rs.next())
+		   	 {
+		   		
+		   		 cars =new Pricedetail(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
+		   		 productsList.add(cars);
+		   	 }
+	} catch (ClassNotFoundException e) {
+
+		e.printStackTrace();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	finally {
+		if (statement != null) {
+			try {
+				statement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (Con != null) {
+			try {
+				Con.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+	}
+   	
 return productsList;
 	 
 
 }
 	
-  
-	
+	 public  List<Pricedetail> viewprice(Pricedetail obj) 
+	 {
+		 List<Pricedetail> productsList=new ArrayList<Pricedetail>();
+		 Pricedetail cars=null;
+		 String search="Select * from Price_detail ";
+   	 Connection Con=null;
+   	 PreparedStatement statement=null;
+	try {
+		Con = Connectionutil.getDBconnection();
+		 statement=Con.prepareStatement(search);
+	   	 ResultSet rs=statement.executeQuery();
+	   	 
+	   	 while(rs.next())
+	   	 {
+	   		
+	   		 cars =new Pricedetail(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
+	   		 productsList.add(cars);
+	   	 }
+	} catch (ClassNotFoundException e) {
+
+		e.printStackTrace();
+	} catch (SQLException e) {
+
+		e.printStackTrace();
+	}
+	finally {
+		if (statement != null) {
+			try {
+				statement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (Con != null) {
+			try {
+				Con.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+	}
+   	
+return productsList;
+	 }
 
 }

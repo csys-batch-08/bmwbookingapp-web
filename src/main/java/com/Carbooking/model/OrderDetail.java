@@ -1,7 +1,5 @@
 package com.Carbooking.model;
 
-
-import java.sql.Date;
 import java.util.Objects;
 
 public class OrderDetail {
@@ -64,7 +62,7 @@ public class OrderDetail {
 	}
 	public OrderDetail() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	public OrderDetail(int userId, String carid, int price) {
 		super();

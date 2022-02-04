@@ -59,6 +59,9 @@ public class LoginServlet extends HttpServlet {
 }
 			
 			session.setAttribute("username", currentUser.getFirst_name());
+			session.setAttribute("wallet", currentUser.getWallet());
+			
+			
 			
 				if(currentUser!=null) {
 					if(currentUser.getUsertype().equals("user"))
@@ -69,7 +72,7 @@ public class LoginServlet extends HttpServlet {
 						 
 						 List<CarProduct> listproduct=dao.showview();
 						 req.setAttribute("listproduct", listproduct);
-						 System.out.println(listproduct);
+						 
 						 RequestDispatcher rd=req.getRequestDispatcher("showProducts.jsp");
                          rd.forward(req, resp);
 						

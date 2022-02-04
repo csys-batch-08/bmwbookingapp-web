@@ -11,9 +11,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Select Car</title>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+  
 <style>
 
  body {
@@ -22,89 +24,9 @@
   background-color:#E7E9BB;
       background-size:cover;
       height:300px;
-      
-    
 
     }
 
-    .topnav {
-      overflow: hidden;
-      background-color: #333;
-    }
-
-    .topnav a {
-      float: left;
-      display: block;
-      color: #f2f2f2;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 17px;
-    }
-
-    .active {
-      background-color: gray;
-      color: white;
-    }
-
-    .topnav .icon {
-      display: none;
-    }
-
-    .dropdown {
-      float: left;
-      overflow: hidden;
-    }
-
-    .dropdown .dropbtn {
-      font-size: 17px;
-      border: none;
-      outline: none;
-      color: white;
-      padding: 14px 16px;
-      background-color: inherit;
-      font-family: inherit;
-      margin: 0;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-    }
-
-    .dropdown-content a {
-      float: none;
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      text-align: left;
-    }
-
-    .topnav a:hover,
-    .dropdown:hover .dropbtn {
-      background-color: #555;
-      color: white;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-
-    .topnav a.icon {
-      float: right;
-      display: block;
-    }
   
  
    img{
@@ -148,21 +70,38 @@ margin-left:1150px;
 </style>
 </head>
 <body>
-<div class="topnav" id="myTopnav">
-    <a href="#home" class="active" >ShowProduct</a>
-   <a href="cartview">Cart</a>
-     <a href="login.jsp" style=float:right>Logout</a>
-        <a href="Search.jsp">Search</a>
-    <a href="#about">Contact</a>
-     <a href="Userhistory.jsp" style=float:right>Profile</a>
-     <a href="updatewallet.jsp">Recharge Wallet</a>
-   
-    
+<nav class="navbar navbar-expand-lg py-3 navbar navbar-dark bg-info shadow-sm">
+  <div class="container">
+    <a href="#" class="navbar-brand">
+      <!-- Logo Image -->
+      <img src="images/bmw-logo.svg" style="width:80px" alt="" class="d-inline-block align-middle mr-2">
+      <!-- Logo Text -->
+      <span class="text-uppercase font-weight-bold">BMW ShowRoom</span>
+    </a>
+
+    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+
+    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+     
+        <li class=" active"><a href="showss" class="nav-link">Home <span class="sr-only">(current)</span></a></li>
+        <li class="nav-item"><a href="cartview" class="nav-link">Cart</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#myModal">Contact</a></li>
+        <li class="nav-item"><a href="updateWallet.jsp" class="nav-link">RechargeWallet</a></li>
+          <li class="nav-item"><a href="userhistory" class="nav-link">Profile</a></li>
+        <li class="nav-item"><a href="userbooking" class="nav-link">BookingHistory</a></li>
        
-      </div>
-   
-   
+        <li class="nav-item"><a href="login.jsp" class="nav-link">Logout</a></li>
+      
+       
+         
+      </ul>
+      
+
+    </div>
+    
   </div>
+</nav>
 
  <form action="cart" method="post">
 
@@ -172,7 +111,7 @@ margin-left:1150px;
  <h2 class="CarProducts">Car Details</h2>
  <div class="one">
  
- <a href="ShowProducts.jsp"><button type="button" class="btn btn-primary">Back</button> </a>
+ <a href="showss"><button type="button" class="btn btn-primary">Back</button> </a>
  </div>
         
         <div class="list">

@@ -28,7 +28,7 @@
     }
 
     .active {
-      background-color: #04AA6D;
+      background-color: gray;
       color: white;
     }
 
@@ -96,16 +96,18 @@
     <div class="topnav" id="myTopnav">
     <a href="#home" class="active">Home</a>
    
-    <a href="Login.jsp" style=float:right>Logout</a>
+    <a href="login.jsp" style=float:right>Logout</a>
     <a href="Viewuser">UserHistory</a>
     <a href="AdminBooking">Booking history</a>
+     <a href="AdminProductServlet">Product</a>
+     <a href="AdminPrice">PriceDetail</a>
     <div class="dropdown">
       <button class="dropbtn">Car Details
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-        <a href="Addcar.jsp">Add car</a>
-        <a href="PriceDetail.jsp">PriceDetail </a>
+        <a href="addcar.jsp">Add car</a>
+        <a href="priceDetail.jsp">PriceDetail </a>
        
       </div>
     </div>

@@ -35,7 +35,7 @@ body {
     }
 
     .active {
-      background-color: #04AA6D;
+      background-color: gray;
       color: white;
     }
 
@@ -119,26 +119,21 @@ body {
 </head>
 <body>
  <div class="topnav" id="myTopnav">
-    <a href="ShowProducts.jsp" >ShowProduct</a>
-   <a href="AddCart.jsp">Cart</a>
-     <a href="Login.jsp" style=float:right>Logout</a>
-        <a href="Search.jsp">Search</a>
+    <a href="showss" >ShowProduct</a>
+   <a href="cartview" >Cart</a>
+     <a href="login.jsp" style=float:right>Logout</a>
+       
     <a href="#about" data-toggle="modal" data-target="#myModal">Contact</a>
-    <a href="Userhistory.jsp" >Profile</a>
-     <a href="updatewallet.jsp">Recharge Wallet</a>
-     <a href="UserBooking.jsp"> UserHistory</a>
+    <a href="userhistory" class="active" style=float:right>Profile</a>
+      <a href="updateWallet.jsp">Recharge Wallet</a>
+     <a href="userbooking">Booking History</a>
     
        
       </div>
-   
-   
-  </div>
- 
-
           <h2 class="Userdetail">User Detail</h2>
            <div class="one">
  
- <a href="showProducts.jsp"><button type="button" class="btn btn-primary">Back</button> </a>
+ <a href="showss"><button type="button" class="btn btn-primary">Back</button> </a>
  </div>
           
         <table>

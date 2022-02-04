@@ -105,13 +105,13 @@ body {
 <body>
  <div class="topnav" id="myTopnav">
     <a href="ShowProducts.jsp" >ShowProduct</a>
-   <a href="AddCart.jsp" >Cart</a>
-     <a href="Login.jsp" style=float:right>Logout</a>
-        <a href="Search.jsp" class="active">Search</a>
+   <a href="cartview" >Cart</a>
+     <a href="login.jsp" style=float:right>Logout</a>
+  
     <a href="#about" data-toggle="modal" data-target="#myModal">Contact</a>
-    <a href="Userhistory.jsp" >user</a>
+    <a href="userhistory" >user</a>
       <a href="updatewallet.jsp">Recharge Wallet</a>
-     <a href="UserBooking.jsp">Booking History</a>
+     <a href="userbooking.">Booking History</a>
     
       </div>
       

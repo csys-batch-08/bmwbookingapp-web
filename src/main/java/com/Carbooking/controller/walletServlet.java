@@ -25,7 +25,7 @@ public class walletServlet extends HttpServlet {
 		UserDetail use=new UserDetail(wallet,userid);
 		UserDetailDaoImpl dao=new UserDetailDaoImpl();
 		dao.updatewallet(use);
-		response.sendRedirect("showProducts.jsp");
+		response.sendRedirect("showss");
 	}
 
 }

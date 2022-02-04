@@ -22,7 +22,7 @@ public class  Pricedetail {
 			}
 			public Pricedetail() {
 				super();
-				// TODO Auto-generated constructor stub
+		
 			}
 			public String getCar_id() {
 				return carid;

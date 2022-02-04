@@ -3,6 +3,8 @@
 <%@page import="com.Carbooking.daoimpl.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ page isELIgnored = "false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,10 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Toastr -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <style>
  body {
       margin: 0;
@@ -40,7 +46,7 @@
     }
 
     .active {
-      background-color: #04AA6D;
+      background-color:gray;
       color: white;
     }
 
@@ -111,13 +117,14 @@
 </head>
 <body>
 <div class="topnav" id="myTopnav">
-    <a href="ShowProducts.jsp" >ShowProduct</a>
-   <a href="AddCart.jsp">Cart</a>
-     <a href="Login.jsp" style=float:right>Logout</a>
-        <a href="Search.jsp">Search</a>
-    <a href="#" data-toggle="modal" data-target="#myModal">Contact</a>
-    <a href="Userhistory.jsp">user</a>
-     <a href="updatewallet.jsp" class="active">Recharge Wallet</a>
+    <a href="showss" >ShowProduct</a>
+   <a href="cartview">Cart</a>
+     <a href="login.jsp" style=float:right>Logout</a>
+       
+    <a href="#about" data-toggle="modal" data-target="#myModal">Contact</a>
+    <a href="userhistory"style=float:right >profile</a>
+      <a href="updateWallet.jsp" class="active">Recharge Wallet</a>
+     <a href="userbooking">Booking History</a>
     
        
       </div>
@@ -125,11 +132,11 @@
 <h2>Recharge Wallet</h2>
 <form action="wallet" method="post">
 	<div class="wall">
-	Enter recharge amount:<br>
+	<h2>Your Remaining balance:${currentUser.getWallet()}</h2>
 	<input type="number" name="amount" id="number" min="1"><br><br>
 	
 	
-	<button type="submit">wallet recharge</button></form><br><br>
+	<button type="submit" id="success">wallet recharge</button></form><br><br>
 	</div>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -150,6 +157,11 @@
       
     </div>
   </div>
+  <script type="text/javascript">
+    $('#success').click(function(event) {
+		toastr.success('Your wallet amount updated successfully');
+   });
+    </script>
 </body>
 </html>
 

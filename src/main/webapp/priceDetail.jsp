@@ -114,23 +114,23 @@ background-color:#E7E9BB;
 </style>
 </head>
 <body>
-<div class="topnav" id="myTopnav">
-    <a href="Admin.jsp" >Home</a>
-  
-     <a href="Login.jsp" style=float:right>Logout</a>
-    <a href="ViewUser.jsp">UserHistory</a>
-    <a href="BookingDetail.jsp">Booking history</a>
+ <div class="topnav" id="myTopnav">
+    <a href="#home" class="active">Home</a>
+   
+    <a href="login.jsp" style=float:right>Logout</a>
+    <a href="Viewuser">UserHistory</a>
+    <a href="AdminBooking">Booking history</a>
     <div class="dropdown">
-      <button class="dropbtn" >Dropdown
+      <button class="dropbtn">Car Details
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-        <a href="Addcar.jsp">Add car</a>
-        <a href="PriceDetail.jsp">PriceDetail </a>
+        <a href="addcar.jsp">Add car</a>
+        <a href="priceDetail.jsp">PriceDetail </a>
        
       </div>
     </div>
-   
+    
    
   </div>
   <br><br>
@@ -151,28 +151,6 @@ background-color:#E7E9BB;
 </div>
 </form>
 
-<form action="updateprice" method="post">
-<div class="two">
-<h2>Update your price detail</h2>
-<label>Enter your carid:</label><br>
-<input type="text" name="carid" required><br><br>
-<label>Enter your Exshowroom_price:</label><br>
-<input type="number" name="showroom_price"  min="1" pattern="((\\d{1,4})(((\\.)(\\d{0,2})){0,1}))" required><br>
-<label>Enter your Roadtax:</label><br>
-<input type="number" name="roadtax"  min="1" pattern="((\\d{1,4})(((\\.)(\\d{0,2})){0,1}))" required><br><br>
-<label>Enter your insurance:</label><br>
-<input type="number" name="insurance" min="1" pattern="((\\d{1,4})(((\\.)(\\d{0,2})){0,1}))" required><br><br>
-<button type="submit">update price</button>
-</div>
-</form>
 
-<form action="deleteprice" method="post">
-<div class="three">
-<h2>Delete your price detail</h2>
-<label>Enter your Carid</label><br>
-<input type="text" name="delete" required><br><br>
-<button type="submit">submit</button>
-</div>
-</form>
 </body>
 </html>

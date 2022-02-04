@@ -51,29 +51,29 @@ public class CarProduct {
 	}
 	public CarProduct(String carId, String carName, String fuelType, String carType, String carModel) {
 		
-		// TODO Auto-generated constructor stub
+	
 		this.carId = carId;
 		this.carName = carName;
 		this.fuelType = fuelType;
 		this.carType = carType;
 		this.carModel = carModel;
 	}
-	public CarProduct(String carName, String fuelType, String carType, String carModel) {
-		// TODO Auto-generated constructor stub
-		this.carName = carName;
+	public CarProduct(String carId, String fuelType, String carType, String carModel) {
+	
+		this.carId = carId;
 		this.fuelType = fuelType;
 		this.carType = carType;
 		this.carModel = carModel;
 	}
 	public CarProduct(String carId) {
-		// TODO Auto-generated constructor stub
+
 		this.carId = carId;
 	}
 	public CarProduct() {
-		// TODO Auto-generated constructor stub
+
 	}
 	public CarProduct(String  carId, String fuelType, String carType, String carModel, int price) {
-		// TODO Auto-generated constructor stub
+
 		this.carId = carId;
 		this.fuelType = fuelType;
 		this.carType = carType;

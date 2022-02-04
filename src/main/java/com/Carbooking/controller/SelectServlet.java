@@ -28,25 +28,17 @@ public class SelectServlet extends HttpServlet {
 		CarProductDaoImpl dao=new CarProductDaoImpl();
 		String carid = request.getParameter("carId");
 		CarProduct car = new CarProduct(carid);
-		try {
-			List <CarProduct> car1 = dao.selectproduct(car);
-			/* System.out.println(car1); */
-			request.setAttribute("car1", car1);
-			/* System.out.println(car1+"dfghjkl"); */
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+		List <CarProduct> car1 = dao.selectproduct(car);
+		
+		request.setAttribute("car1", car1);
+		
 
 		PriceDetailDaoImpl dan=new PriceDetailDaoImpl();
 		String carids = request.getParameter("carId");
 		Pricedetail cars = new Pricedetail(carids);
-		try {
-			List <Pricedetail> car2  = dan.selectproduct(cars);
-			request.setAttribute("car2", car2);
-			/* System.out.println(car2); */
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+		List <Pricedetail> car2  = dan.selectproduct(cars);
+		request.setAttribute("car2", car2);
+		
 	RequestDispatcher dt=request.getRequestDispatcher("selectCar.jsp");
 	dt.forward(request, response);
 

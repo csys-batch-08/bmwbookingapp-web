@@ -42,7 +42,7 @@ body {
     }
 
     .active {
-      background-color: #04AA6D;
+      background-color: gray;
       color: white;
     }
 
@@ -109,41 +109,35 @@ body {
     
     margin-top:50px;
     }
-    .car
+    span
     {
       font-size:20px;
  font-weight: bold;
   color: navy;}
+  .one
+  {
+  margin-left:1150px;
+  margin-top:50px;}
 </style>
 </head>
 <body>
  <div class="topnav" id="myTopnav">
-    <a href="ShowProducts.jsp" >ShowProduct</a>
+    <a href="showss" >ShowProduct</a>
    <a href="cartview" class="active">Cart</a>
      <a href="Login.jsp" style=float:right>Logout</a>
-        <a href="Search.jsp">Search</a>
-    <a href="#about" data-toggle="modal" data-target="#myModal">Contact</a>
-    <a href="Userhistory.jsp" >user</a>
-      <a href="updatewallet.jsp">Recharge Wallet</a>
-     <a href="UserBooking.jsp">Booking History</a>
+    <a href="userhistory" style=float:right>Profile</a>
+      <a href="updateWallet.jsp">Recharge Wallet</a>
+     <a href="userbooking">Booking History</a>
     
        
       </div>
    
    
   </div>
- <form >
-<%-- <% OrderDetailDaoImpl dao=new OrderDetailDaoImpl();
-UserDetail user=(UserDetail)session.getAttribute("currentUser");
-int userid=user.getUserId();
-OrderDetail ord=new OrderDetail();
-ord.setUserId(userid);
-List<OrderDetail> listproduct=dao.view(ord);
-
-
-%> --%>
-
-</form>
+       <div class="one">
+ 
+ <a href="showss"><button type="button" class="btn btn-primary">Back</button> </a>
+ </div>
 <h1>Cart details</h1>
 
         
@@ -154,13 +148,13 @@ List<OrderDetail> listproduct=dao.view(ord);
 				<c:set var="count" value="1" />
 				<c:forEach items="${listproduct}" var="cartview">
 
-					<td>Order${cartview.order_id}</td>
-					<td>${cartview.userId}</td>
-					<td>${cartview.carid}</td>
-					<td>${cartview.price}</td>
+					<span>Order_id:&nbsp;${cartview.order_id}</span><br><br>
+					<span>User_id:&nbsp;${cartview.userId}</span><br><br>
+					<span>Car_id:&nbsp;&nbsp;${cartview.carid}</span><br><br>
+					<span>Price:&nbsp;&nbsp;&nbsp;${cartview.price}</span><br><br><hr>
 					
 					<c:choose>
-						<c:when test="${count==5}">
+						<c:when test="${count==2}">
 			</tr>
 			<tr>
 				<c:set var="count" value="1" />
@@ -174,5 +168,6 @@ List<OrderDetail> listproduct=dao.view(ord);
 			</td>
 		</tbody>
 	</table>
+	
 </body>
 </html>

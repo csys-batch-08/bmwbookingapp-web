@@ -19,12 +19,12 @@ public class UpdateCar extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String carid=request.getParameter("carid");
+		String carid=request.getParameter("proname");
 		String fueltype=request.getParameter("fueltype");
 		String cartype=request.getParameter("cartype");
 		String carmodel=request.getParameter("carmodel");
-		int price=Integer.parseInt(request.getParameter("price"));
-		CarProduct update=new CarProduct(carid,fueltype,cartype,carmodel,price);
+		
+		CarProduct update=new CarProduct(carid,fueltype,cartype,carmodel);
 		CarProductDaoImpl adddao=new CarProductDaoImpl();
 		adddao.update(update);
 		response.sendRedirect("admin.jsp");

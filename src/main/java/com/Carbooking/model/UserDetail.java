@@ -23,6 +23,11 @@ public class UserDetail {
 		this.wallet = wallet;
 	}
 
+	public UserDetail(long wallet) {
+		super();
+		this.wallet = wallet;
+	}
+
 	public long getWallet() {
 		return wallet;
 	}
@@ -123,7 +128,7 @@ public class UserDetail {
 	}
 	public UserDetail() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	public UserDetail(int userId, String first_name, String cpassword, String email, Long phoneno, String usertype) {
 		super();
@@ -137,7 +142,7 @@ public class UserDetail {
 
 
 	public UserDetail(long wallet, int user) {
-		// TODO Auto-generated constructor stub
+
 		this.wallet=wallet;
 		this.userId=user;
 		
@@ -151,29 +156,18 @@ public class UserDetail {
 		this.userId=userid;
 		this.usertype=usertype;
 		this.wallet=wallet;
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public UserDetail(Long wallet, String Email,int userid) {
-		// TODO Auto-generated constructor stub
+
 		this.wallet=wallet;
 		this.Email=Email;
 		this.userId=userid;
 	}
 
-//	public UserDetail(String string, String string2, String string3, long parseLong, int int1, String string4) {
-//		// TODO Auto-generated constructor stub
-//		this.first_name=string;
-//		this.cpassword=string2;
-//		this.Email=string3;
-//		this.phoneno=parseLong;
-//		this.userId=int1;
-//		this.usertype=string4;
-//	}
 
-//	public UserDetail(String firstname, String string2, String string3, long long1, int int1, String string4) {
-//		// TODO Auto-generated constructor stub
-//	}
+
 
 	
 	

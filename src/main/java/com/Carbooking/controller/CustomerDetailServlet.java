@@ -88,7 +88,7 @@ public class CustomerDetailServlet extends HttpServlet {
 	         dd.forward(request, response);
 	         
 		}else {
-			response.getWriter().println("Low Balance!!");
+			response.sendRedirect("lowBalance.jsp");
 		}
 		
 		

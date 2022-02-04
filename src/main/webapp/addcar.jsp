@@ -112,34 +112,33 @@
     .back
     {
     margin-left:1250px;
-    background-color:red;
-    width:fit-content;
-    font-size:30px;
+   
     }
 </style>
 </head>
 <body>
-<div class="topnav" id="myTopnav">
-    <a href="Admin.jsp" >Home</a>
+ <div class="topnav" id="myTopnav">
+    <a href="#home" class="active">Home</a>
    
-     <a href="index.jsp" style=float:right>Logout</a>
-    <a href="ViewUser.jsp">UserHistory</a>
+    <a href="login.jsp" style=float:right>Logout</a>
+    <a href="Viewuser">UserHistory</a>
     <a href="AdminBooking">Booking history</a>
     <div class="dropdown">
-      <button class="dropbtn" >CarDetails
+      <button class="dropbtn">Car Details
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-        <a href="Addcar.jsp">Add car</a>
-        <a href="PriceDetail.jsp">PriceDetail </a>
+        <a href="addcar.jsp">Add car</a>
+        <a href="priceDetail.jsp">PriceDetail </a>
        
       </div>
     </div>
+    
    
- </div>
+  </div>
  <br><br>
  <div class="back">
- <a href="Admin.jsp">Back</a>
+ <a href="admin.jsp"><button>Back</button></a>
  </div>
   <br>
   
@@ -161,31 +160,5 @@
       <button type="submit">Add car</button>
       </div>
     </form>
-   
-    <form action="updatecar" method="Post">
-   
-    <div class="two">
-     <h2>Update car</h2>
-     <label>Enter your carid:</label><br>
-      <input type="text" name="carid" autocomplete="off" required><br><br>
-      <label>Enter your fueltype</label><br>
-      <input type="text" name="fueltype" autocomplete="off" required><br><br>
-      <label>Enter your cartype</label><br>
-      <input type="text" name="cartype" autocomplete="off"  required><br><br>
-      <label>Enter your carmodel</label><br>
-      <input type="text" name="carmodel"autocomplete="off"  required><br><br>
-   
-      <button type="submit">update car</button>
-      </div>
-    </form>
-
- <form action="deletecar" method="post">
- <div class="three">
- <h3>Delete car</h3>
- <label>Enter your carid:</label><br>
- <input type="text" name="carid" autocomplete="off" required><br><br>
- <button type="submit">Delete car</button>
- </div>
- </form>
 </body>
 </html>

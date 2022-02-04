@@ -38,17 +38,18 @@ public class OrderDetailDaoImpl {
     {
   
    	 String search1 = "select max(Order_id) from order_details";
-   	 Connection Con;
+   	 Connection Con=null;
+   	PreparedStatement statement=null;
    
    	 int order=0;
 
 			
 			 try {
 				Con = Connectionutil.getDBconnection();
-				PreparedStatement stmt=Con.prepareStatement(search1);
+				 statement=Con.prepareStatement(search1);
 
 			 
-			    	 ResultSet rs=stmt.executeQuery();
+			    	 ResultSet rs=statement.executeQuery();
 			    	
 			    	 if(rs.next())
 			    	 {
@@ -62,6 +63,24 @@ public class OrderDetailDaoImpl {
 		
 				e.printStackTrace();
 			}
+			 finally {
+					if (statement != null) {
+						try {
+							statement.close();
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+					}
+					if (Con != null) {
+						try {
+							Con.close();
+						} catch (SQLException e) {
+
+							e.printStackTrace();
+						}
+					}
+
+				}
 			return order;
 			 
     }
@@ -69,12 +88,13 @@ public class OrderDetailDaoImpl {
     public  void delete(OrderDetail obj1)
     {
     	String delete="delete from order_details where user_id=?";
-    	 Connection Con;
+    	 Connection Con=null;
+    	 PreparedStatement statement=null;
 		try {
 			Con = Connectionutil.getDBconnection();
-			 PreparedStatement stmt=Con.prepareStatement(delete);
-	    	 stmt.setInt(1, obj1.getOrder_id());
-	    	 int i=stmt.executeUpdate();
+			  statement=Con.prepareStatement(delete);
+	    	 statement.setInt(1, obj1.getOrder_id());
+	    	 int i=statement.executeUpdate();
 	    	
 		} catch (ClassNotFoundException e) {
 	
@@ -83,7 +103,24 @@ public class OrderDetailDaoImpl {
 		
 			e.printStackTrace();
 		}
-    	
+		 finally {
+				if (statement != null) {
+					try {
+						statement.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				if (Con != null) {
+					try {
+						Con.close();
+					} catch (SQLException e) {
+
+						e.printStackTrace();
+					}
+				}
+
+			}
     	
     }
     public   List<OrderDetail> view(OrderDetail obj) 
@@ -91,12 +128,13 @@ public class OrderDetailDaoImpl {
 		List<OrderDetail> productsList=new ArrayList<OrderDetail>();
 		
 		String showQuery="select Order_id,user_id,car_id,price from Order_details where user_id=?";
-		Connection con;
+		Connection Con=null;
+		PreparedStatement statement=null;
 		try {
-			con = Connectionutil.getDBconnection();
-			PreparedStatement stmt=con.prepareStatement(showQuery);
-			stmt.setInt(1, obj.getUserId());
-			ResultSet rs=stmt.executeQuery();
+			Con = Connectionutil.getDBconnection();
+			 statement=Con.prepareStatement(showQuery);
+			statement.setInt(1, obj.getUserId());
+			ResultSet rs=statement.executeQuery();
 			while(rs.next())
 			{
 				
@@ -113,6 +151,24 @@ public class OrderDetailDaoImpl {
 
 			e1.printStackTrace();
 		}
+		 finally {
+				if (statement != null) {
+					try {
+						statement.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				if (Con != null) {
+					try {
+						Con.close();
+					} catch (SQLException e) {
+
+						e.printStackTrace();
+					}
+				}
+
+			}
 		return productsList;
 	}
 //boolean cart:

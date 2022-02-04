@@ -13,22 +13,24 @@ import javax.servlet.http.HttpServletResponse;
 import com.Carbooking.daoimpl.CarProductDaoImpl;
 import com.Carbooking.model.CarProduct;
 
-@WebServlet("/showss")
-public class ShowProductServlet extends HttpServlet {
-   
+/**
+ * Servlet implementation class AdminProductServlet
+ */
+@WebServlet("/AdminProductServlet")
+public class AdminProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	@Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	
-    	CarProductDaoImpl dao=new CarProductDaoImpl();
+       
+  
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		CarProductDaoImpl dao=new CarProductDaoImpl();
+		 
 		 
 		 List<CarProduct> listproduct=dao.showview();
-		 req.setAttribute("listproduct", listproduct);
+		 request.setAttribute("listproduct", listproduct);
 		
-		 RequestDispatcher rd=req.getRequestDispatcher("showProducts.jsp");
-         rd.forward(req, resp);
-    	
-    }
+		 RequestDispatcher rd=request.getRequestDispatcher("adminProduct.jsp");
+        rd.forward(request, response);
+	
+	}
 
 }

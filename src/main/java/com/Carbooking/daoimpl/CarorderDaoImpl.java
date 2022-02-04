@@ -1,7 +1,7 @@
 package com.Carbooking.daoimpl;
 
 import java.sql.Connection;
-import java.sql.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,11 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import com.Carbooking.model.CarOrder;
-import com.Carbooking.model.UserDetail;
+
 import com.connection.Connectionutil;
 
 public class CarorderDaoImpl {
@@ -23,23 +20,22 @@ public class CarorderDaoImpl {
 		
 
 		String insert="insert into car_orders(Order_id,Car_id,Car_name,Expecteddate,address,userid) values(?,?,?,?,?,?)";
-		  Connection Con;
+		  Connection Con=null;
+		  PreparedStatement statement=null;
 		 
 		  
 		try {
 
 			Con = Connectionutil.getDBconnection();
-			PreparedStatement stmt=Con.prepareStatement(insert);
-			stmt.setInt(1, obj.getOrder_id());
-			stmt.setString(2, obj.getCar_id());		
-			stmt.setString(3, obj.getCarname());
-		
-
-		stmt.setDate(4,new java.sql.Date(obj.getExpecteddate().getTime()));
+			 statement=Con.prepareStatement(insert);
+			statement.setInt(1, obj.getOrder_id());
+			statement.setString(2, obj.getCar_id());		
+			statement.setString(3, obj.getCarname());
+		statement.setDate(4,new java.sql.Date(obj.getExpecteddate().getTime()));
 			
-			stmt.setString(5, obj.getAddress());
-			stmt.setInt(6, obj.getUserid());
-			int i=stmt.executeUpdate();
+			statement.setString(5, obj.getAddress());
+			statement.setInt(6, obj.getUserid());
+			int i=statement.executeUpdate();
 			
 		} catch (ClassNotFoundException e) {
 
@@ -48,16 +44,35 @@ public class CarorderDaoImpl {
 
 			e.printStackTrace();
 		}
+		finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (Con != null) {
+				try {
+					Con.close();
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+				}
+			}
+
+		}
 		
 	}
 	public List<CarOrder> allbook()  {
 		List<CarOrder> viewbooking=new ArrayList<CarOrder>();
 		String allbook="Select Order_id,Car_id,Car_name,Expecteddate,address,status from Car_orders";
-		Connection Con;
+		Connection Con=null;
+		PreparedStatement statement=null;
 		try {
 			Con = Connectionutil.getDBconnection();
-			PreparedStatement stmt=Con.prepareStatement(allbook);
-			ResultSet rs=stmt.executeQuery();
+			 statement=Con.prepareStatement(allbook);
+			ResultSet rs=statement.executeQuery();
 			
 			while(rs.next())
 			{
@@ -65,22 +80,70 @@ public class CarorderDaoImpl {
 			     viewbooking.add(details);
 			}
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
+		}
+		finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (Con != null) {
+				try {
+					Con.close();
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+				}
+			}
+
 		}
 		
 		return viewbooking;
 	}
-	public  void update(CarOrder obj) throws ClassNotFoundException, SQLException {
+	public  void update(CarOrder obj)  {
 		String log1 = "update Car_orders set status=? where order_id=?";
-		Connection Con = Connectionutil.getDBconnection();
-		PreparedStatement stmt = Con.prepareStatement(log1);
-		stmt.setString(1, obj.getStatus());
-		stmt.setInt(2, obj.getOrder_id());
-		int i = stmt.executeUpdate();
+		Connection Con=null;
+		PreparedStatement statement=null;
+		try {
+			Con = Connectionutil.getDBconnection();
+		 statement = Con.prepareStatement(log1);
+			statement.setString(1, obj.getStatus());
+			statement.setInt(2, obj.getOrder_id());
+			int i = statement.executeUpdate();
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (Con != null) {
+				try {
+					Con.close();
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+				}
+			}
+
+		}
+		
+		
 	
 
 	}
@@ -89,11 +152,12 @@ public class CarorderDaoImpl {
 		List<CarOrder> productsList=new ArrayList<CarOrder>();
 		
 		String showQuery="select Order_id,Car_id,Car_name,address,status from Car_orders";
-		Connection con;
+		Connection con=null;
+		Statement statement=null;
 		try {
 			con = Connectionutil.getDBconnection();
-			Statement stmt=con.createStatement();
-			ResultSet rs=stmt.executeQuery(showQuery);
+			 statement=con.createStatement();
+			ResultSet rs=statement.executeQuery(showQuery);
 			while(rs.next())
 			{
 				
@@ -104,27 +168,46 @@ public class CarorderDaoImpl {
 			
 			
 		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
+		}
+		finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+				}
+			}
+
 		}
 		return productsList;
 	}
 	public List<CarOrder> userhistory(CarOrder obj)  {
 		List<CarOrder> viewbooking=new ArrayList<CarOrder>();
-		String allbook="Select Order_id,Car_id,Car_name,Expecteddate,address,status,userid from Car_orders where userid=?";
-		Connection Con;
+		String allbook="Select Order_id,Car_id,Car_name,Expecteddate,address,status from Car_orders where userid=?";
+		Connection Con=null;
+		PreparedStatement statement=null;
 		try {
 			Con = Connectionutil.getDBconnection();
-			PreparedStatement stmt=Con.prepareStatement(allbook);
-			stmt.setInt(1, obj.getUserid());
-			ResultSet rs=stmt.executeQuery();
+		 statement=Con.prepareStatement(allbook);
+			statement.setInt(1, obj.getUserid());
+			ResultSet rs=statement.executeQuery();
 			
 			while(rs.next())
 			{
-			     CarOrder details=new CarOrder(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getInt(7));
+			     CarOrder details=new CarOrder(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6));
 			     viewbooking.add(details);
 			}
 		} catch (ClassNotFoundException e) {
@@ -133,6 +216,24 @@ public class CarorderDaoImpl {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		}
+		finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (Con != null) {
+				try {
+					Con.close();
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+				}
+			}
+
 		}
 		
 		return viewbooking;

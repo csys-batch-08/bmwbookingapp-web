@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     <title>Registration page</title>
    <style type="text/css">
    html, body{
@@ -95,15 +98,16 @@ button:hover{
             <form action="sample1"  method="post">
                <input type="text" placeholder="NAME" name="first_name" pattern="[A-Za-z]{3,}" title="minimum 3 characters should be there."  autocomplete="off" required>
             <div class="beside">
-                <input type="number" placeholder="PHONE NUMBER"  name="number" pattern="[6-9]{1}[0-9]{9}" minlength="10" maxlength="10"  autocomplete="off" required>
+                <input type="text" placeholder="PHONE NUMBER"  name="number" pattern="[6-9]{1}[0-9]{9}"  minlength="10" maxlength="10"  autocomplete="off" required>
              
             </div>
                 <input type="email" placeholder="EMAIL" name="email" pattern="[a-z0-9]+[@][a-zA-Z]+[.][a-z]+"  title="You have to insert @ and . in the username ex.abc@gmail.com"   autocomplete="off" required>
                 <input type="password" placeholder="password"  name="password" pattern="(?=.*[0-9])(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Minimum 8 characters should be there.There should be atleast one numeric,special character,capital letter and small letter." autocomplete="off" required ><br>
-                <button type="submit">Register</button>
+                <button type="submit" id="linkButton">Register</button>
             </form>
         </div>
  </div>
+   
 
 </body>
 
