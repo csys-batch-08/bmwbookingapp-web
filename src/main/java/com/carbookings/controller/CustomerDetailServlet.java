@@ -88,13 +88,10 @@ public class CustomerDetailServlet extends HttpServlet {
 	         RequestDispatcher dd=request.getRequestDispatcher("invoice");
 	         try {
 				dd.forward(request, response);
-			} catch (ServletException e) {
+			} catch (ServletException |IOException e) {
 
 				e.printStackTrace();
-			} catch (IOException e) {
-
-				e.printStackTrace();
-			}
+			} 
 	         
 		}else {
 			try {

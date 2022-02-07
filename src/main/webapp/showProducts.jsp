@@ -76,9 +76,8 @@ font-size:20px;
 </head>
 
 <body>
-</form>
        
-      </div>
+      
 
 <nav class="navbar navbar-expand-lg py-3 navbar navbar-dark bg-info shadow-sm">
   <div class="container">
@@ -117,12 +116,14 @@ font-size:20px;
   </div>
 </nav>
  
-     <h1><span style="color:red"; > Welcome</span><span style="color:red";>${sessionScope.username }</span></h1>
+     <h1><span style="color:red" > Welcome</span><span style="color:red">${sessionScope.username }</span></h1>
    <div class="one">
    <table id="carproduct">
+   <caption>showproduct</caption>
 		<tbody>
-			<td>
+			
 			<tr>
+			
 				  <c:set var="count" value="1" />
            <c:forEach items="${listproduct}" var="carProduct">
 
@@ -130,20 +131,21 @@ font-size:20px;
 					<td>
 					  <div class="car">
                                     <img src="images/${carProduct.carName}.jpg" alt="img"><br>                                  
-                                        <b><h1><span>${carProduct.carName}</span><br></h1></b>
-                                        <center>
+                                        <strong><span>${carProduct.carName}</span></strong><br>
+                                   
                                          <span><strong>FuelType</strong> &nbsp;&nbsp;</span> <span> :${carProduct.fuelType}</span><br>
                                         <span ><strong>CarType</strong> &nbsp;&nbsp;</span> <span>: ${carProduct.carType} </span><br>
                                          <span><strong>CarModel</strong></span> &nbsp;&nbsp;<span>: ${carProduct.carModel} </span><br>
                                          
                                            <span style="margin-left:70px;"> <a href="SelectServlet?carId=${carProduct.carId}"><button class="btn btn-primary">view</button></a></span>
-                                      </center>
+                                      
                                          </div>
                                        </td>  
                                          
 					
 					<c:choose>
 						<c:when test="${count==3}">
+						</c:choose>
 			</tr>
 			<tr>
 				<c:set var="count" value="1" />
@@ -151,10 +153,8 @@ font-size:20px;
 			<c:otherwise>
 				<c:set var="count" value="${count+1}" />
 			</c:otherwise>
-			</c:choose>
 			</c:forEach>
-			</tr>
-			</td>
+			
 		</tbody>
 	</table>
 
@@ -179,7 +179,6 @@ font-size:20px;
     </div>
   </div>
   
-</div>
     
 
 </body>

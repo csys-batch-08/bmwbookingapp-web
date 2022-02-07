@@ -116,16 +116,16 @@ margin-left:1150px;
         
         <div class="list">
         <table>
+        <caption>selectCar</caption>
             <tbody>
                 <tr>
                
                     <td>
-                        <table id="carproduct">
+                        <table >
                         <caption>Select Car</caption>
                             <tbody>
                                 <tr>
                                     
-                                  
                                     <td >
                                     
                                     <c:forEach items="${car1}" var="car1">

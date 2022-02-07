@@ -1,7 +1,6 @@
 package com.carbookings.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -40,42 +39,35 @@ public class CartServlet extends HttpServlet {
 		OrderDetail obj = new OrderDetail(user.getUserId(), carid, price);
 		OrderDetailDaoImpl orderdao = new OrderDetailDaoImpl();
 
-		try {
-			int res = orderdao.insert(obj);
-			CarProductDaoImpl dao = new CarProductDaoImpl();
-			String carid1 = session.getAttribute("carId").toString();
-			
+		int res = orderdao.insert(obj);
+		CarProductDaoImpl dao = new CarProductDaoImpl();
+		String carid1 = session.getAttribute("carId").toString();
+		
 
-			CarProduct car = new CarProduct(carid);
-			List<CarProduct> confirm = dao.selectproduct(car);
-			session.setAttribute("confirmview", confirm);
-			RequestDispatcher dt1 = req.getRequestDispatcher("confirmCar.jsp");
-			dt1.forward(req, resp);
+		CarProduct car = new CarProduct(carid);
+		List<CarProduct> confirm = dao.selectproduct(car);
+		session.setAttribute("confirmview", confirm);
+		RequestDispatcher dt1 = req.getRequestDispatcher("confirmCar.jsp");
+		dt1.forward(req, resp);
 
-			OrderDetailDaoImpl daon=new OrderDetailDaoImpl();
-			
-			int userid=user.getUserId();
-			OrderDetail ord=new OrderDetail();
-			ord.setUserId(userid);
-			List<OrderDetail> listproduct=daon.view(ord);
-			req.setAttribute("listproduct", listproduct);
-			
-			RequestDispatcher dt=req.getRequestDispatcher("addCart.jsp");
-			dt.forward(req, resp);
+		OrderDetailDaoImpl daon=new OrderDetailDaoImpl();
+		
+		int userid=user.getUserId();
+		OrderDetail ord=new OrderDetail();
+		ord.setUserId(userid);
+		List<OrderDetail> listproduct=daon.view(ord);
+		req.setAttribute("listproduct", listproduct);
+		
+		RequestDispatcher dt=req.getRequestDispatcher("addCart.jsp");
+		dt.forward(req, resp);
 
-			
-			  if(res > 0) { 
-				  resp.sendRedirect("confirmcar.jsp"); 
-				  }
-			  else
-				  {
-			  resp.sendRedirect("ShowProducts.jsp"); }
-			 
-
-		} catch (ClassNotFoundException | SQLException e) {
-			
-			e.printStackTrace();
-		} 
+		
+		  if(res > 0) { 
+			  resp.sendRedirect("confirmcar.jsp"); 
+			  }
+		  else
+			  {
+		  resp.sendRedirect("ShowProducts.jsp"); } 
 
 	}
 }

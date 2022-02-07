@@ -3,7 +3,6 @@ package com.carbookings.daoimpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,25 +15,42 @@ import com.connection.*;
 
 public class OrderDetailDaoImpl {
 
-	public int insert(OrderDetail obj) throws ClassNotFoundException, SQLException
+	public int insert(OrderDetail obj) 
     {
-		boolean flag = cartexist(obj.getUserId(), obj.getCarId());
-		if(!flag) {
 			
 	String insert="insert into order_details(user_id,car_id,price)values(?,?,?)";
-	Connection con=Connectionutil.getDBconnection();
-	PreparedStatement stmt=con.prepareStatement(insert);
-	stmt.setInt(1, obj.getUserId());
-	stmt.setString(2, obj.getCarId());
-	stmt.setInt(3, obj.getPrice());
-	
-	int i=stmt.executeUpdate();
-	return i;
-		}else {
-			return -1;
+	Connection con=null;
+	PreparedStatement stmt=null;
+	int rows=0;
+	try {
+		con = Connectionutil.getDBconnection();
+		boolean flag = cartexist(obj.getUserId(), obj.getCarId());
+		if(!flag) {
+			 stmt=con.prepareStatement(insert);
+			stmt.setInt(1, obj.getUserId());
+			stmt.setString(2, obj.getCarId());
+			stmt.setInt(3, obj.getPrice());
 			
-		}
-    }
+			 rows=stmt.executeUpdate();
+			return rows;
+				}else {
+					return -1;
+					
+				}
+		    }
+	catch (Exception e) {
+
+		Logger.printStackTrace(e);
+		Logger.runTimeException(e.getMessage());
+
+	} finally {
+
+		Connectionutil.close(null, stmt, con);
+	}
+	return 0;
+
+		} 
+	
 	public  int findorder() 
     {
   
@@ -131,18 +147,31 @@ public class OrderDetailDaoImpl {
 	}
 //boolean cart:
     
-    public boolean cartexist(int userid,String carid) throws ClassNotFoundException, SQLException {
-    	Connection con = Connectionutil.getDBconnection();
+    public boolean cartexist(int userid,String carid) {
+    	Connection con=null;
+    	PreparedStatement pstPreparedStatement =null;
     	String query = "select Order_id,user_id,car_id,price from order_details where user_id in ? and car_id in ?";
+		try {
+			con = Connectionutil.getDBconnection();
+			 pstPreparedStatement = con.prepareStatement(query);
+	    	pstPreparedStatement.setInt(1, userid);
+	    	pstPreparedStatement.setString(2,carid);
+	    	ResultSet rs = pstPreparedStatement.executeQuery();
+	    	if(rs.next()) {
+	    		return true;
+	    	}
+		} 
+		 catch (Exception e) {
+
+				Logger.printStackTrace(e);
+				Logger.runTimeException(e.getMessage());
+
+			} finally {
+
+				Connectionutil.close(null, pstPreparedStatement, con);
+			}
     	
-    	PreparedStatement pstPreparedStatement = con.prepareStatement(query);
-    	pstPreparedStatement.setInt(1, userid);
-    	pstPreparedStatement.setString(2,carid);
-    	ResultSet rs = pstPreparedStatement.executeQuery();
-    	if(rs.next()) {
-    		return true;
-    	}
-    	return false;
+		return false;
     }
     
 }

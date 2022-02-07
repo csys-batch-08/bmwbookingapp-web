@@ -3,7 +3,6 @@ package com.carbookings.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,13 +55,13 @@ public class LoginServlet extends HttpServlet {
 				
 }
 			
-			session.setAttribute("username", currentUser.getFirst_name());
+			session.setAttribute("username", currentUser.getFirstName());
 			session.setAttribute("wallet", currentUser.getWallet());
 			
 			
 			
 				if(currentUser!=null) {
-					if(currentUser.getUsertype().equals("user"))
+					if(currentUser.getUserType().equals("user"))
 					{
 						session.setAttribute("currentUser", currentUser);
 						 CarProductDaoImpl dao=new CarProductDaoImpl();
@@ -80,7 +79,7 @@ public class LoginServlet extends HttpServlet {
 						
 					
 					
-				}else if(currentUser.getUsertype().equals("admin")) {
+				}else if(currentUser.getUserType().equals("admin")) {
 
 					session.setAttribute("admin",currentUser);
 					resp.sendRedirect("admin.jsp");

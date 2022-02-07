@@ -22,10 +22,10 @@ public class UserDetailDaoImpl {
 		try {
 			con = Connectionutil.getDBconnection();
 			 statement = con.prepareStatement(insert);
-			statement.setString(1, obj.getFirst_name());
+			statement.setString(1, obj.getFirstName());
 			statement.setString(2, obj.getCpassword());
 			statement.setString(3, obj.getEmail());
-			statement.setLong(4, obj.getPhoneno());
+			statement.setLong(4, obj.getPhoneNo());
 			 statement.executeUpdate();
 		} catch (Exception e) {
 
@@ -317,9 +317,9 @@ public class UserDetailDaoImpl {
 	   //mobile exist:
 public  ResultSet getEmail(UserDetail obj) throws ClassNotFoundException, SQLException
 {
-	Connection Con = Connectionutil.getDBconnection();
+	Connection con = Connectionutil.getDBconnection();
 	String log="select first_name,cpassword,email,phone,user_id,usertype,userwallet  from user_details where email=?";
-	PreparedStatement pstmt=Con.prepareStatement(log);
+	PreparedStatement pstmt=con.prepareStatement(log);
 	pstmt.setString(1, obj.getEmail());
 	
 	ResultSet rs=pstmt.executeQuery();
@@ -329,10 +329,10 @@ public  ResultSet getEmail(UserDetail obj) throws ClassNotFoundException, SQLExc
 }
 public  ResultSet getphoneno(UserDetail obj) throws ClassNotFoundException, SQLException
 {
-	Connection Con = Connectionutil.getDBconnection();
+	Connection con = Connectionutil.getDBconnection();
 	String log="select first_name,cpassword,email,phone,user_id,usertype,userwallet  from user_details where phone=?";
-	PreparedStatement pstmt=Con.prepareStatement(log);
-	pstmt.setLong(1, obj.getPhoneno());
+	PreparedStatement pstmt=con.prepareStatement(log);
+	pstmt.setLong(1, obj.getPhoneNo());
 	ResultSet rs1=pstmt.executeQuery();
 	return rs1;
 	

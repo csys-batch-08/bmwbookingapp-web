@@ -1,9 +1,6 @@
 package com.carbookings.controller;
 
 import java.io.IOException;
-
-
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,14 +16,18 @@ public class ForgetServlet extends HttpServlet {
   
 	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String names=request.getParameter("forget");
-		String pass=request.getParameter("password");
-		UserDetail use=new UserDetail(names,pass);
-		UserDetailDaoImpl usedao=new UserDetailDaoImpl();
-		usedao.update(use);
-		response.sendRedirect("login.jsp");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			String names=request.getParameter("forget");
+			String pass=request.getParameter("password");
+			UserDetail use=new UserDetail(names,pass);
+			UserDetailDaoImpl usedao=new UserDetailDaoImpl();
+			usedao.update(use);
+			response.sendRedirect("login.jsp");
+		} catch (IOException e) {
+		
+			e.printStackTrace();
+		}
 		
 	}
 

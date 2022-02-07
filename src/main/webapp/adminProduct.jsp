@@ -140,7 +140,7 @@ h1 span {
      <a href="AdminPrice">PriceDetail</a>
     <div class="dropdown">
       <button class="dropbtn">Car Details
-        <i class="fa fa-caret-down"></i>
+        <em class="fa fa-caret-down"></em>
       </button>
       <div class="dropdown-content">
         <a href="addcar.jsp">Add car</a>

@@ -23,8 +23,8 @@ public class ViewuserServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		  UserDetailDaoImpl dao= new UserDetailDaoImpl();
-			List<UserDetail> view=new ArrayList<UserDetail>();
+		  
+			List<UserDetail> view=new ArrayList<>();
 			view=UserDetailDaoImpl.alluser();
 			request.setAttribute("view", view);
 			

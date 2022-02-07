@@ -152,14 +152,16 @@ span
 
      
 <table id="carproduct">
+<caption> searchCar</caption>
 		<tbody>
-			<td>
+			
 			<tr>
+			<td>
 				  <c:set var="count" value="1" />
            <c:forEach items="${Carname}" var="carProduct">
 
 					
-					<td>
+					
 					  <div class="car">
                                     <img src="images/${carProduct.carName}.jpg" alt="img"><br><br><br>
                                   
@@ -170,22 +172,10 @@ span
                                            <span style="margin-left:70px;"><a href="showss"><button class="btn btn-primary">Book</button></a></span>
                                       
                                          </div>
-                                       </td>  
-                                         
-					
-					<c:choose>
-						<c:when test="${count==2}">
-			</tr>
-			<tr>
-				<c:set var="count" value="1" />
-			</c:when>
-			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
-			</c:forEach>
-			</tr>
-			</td>
+                             </c:forEach>
+                             </td>
+                             </tr>
+                            
 		</tbody>
 	</table>
 

@@ -52,7 +52,7 @@ public class CarorderDaoImpl {
 		
 	}
 	public List<CarOrder> allbook()  {
-		List<CarOrder> viewbooking=new ArrayList<CarOrder>();
+		List<CarOrder> viewbooking=new ArrayList<>();
 		String allbook="Select Order_id,Car_id,Car_name,Expecteddate,address,status from Car_orders";
 		Connection con=null;
 		PreparedStatement statement=null;

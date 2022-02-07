@@ -1,25 +1,24 @@
 package com.carbookings.model;
 
-import java.util.Objects;
 
 public class UserDetail {
 	private int userId;
-	private String first_name;
+	private String firstName;
 	private String cpassword;
-	private String Email;
-	private Long phoneno;
-    private String usertype;
+	private String email;
+	private Long phoneNo;
+    private String userType;
     private long wallet;
 
-	public UserDetail(int userId, String first_name, String cpassword, String email, Long phoneno, String usertype,
+	public UserDetail(int userId, String firstName, String cpassword, String email, Long phoneno, String usertype,
 			long wallet) {
 		super();
 		this.userId = userId;
-		this.first_name = first_name;
+		this.firstName = firstName;
 		this.cpassword = cpassword;
-		this.Email = email;
-		this.phoneno = phoneno;
-		this.usertype = usertype;
+		this.email = email;
+		this.phoneNo = phoneno;
+		this.userType = usertype;
 		this.wallet = wallet;
 	}
 
@@ -36,17 +35,17 @@ public class UserDetail {
 		this.wallet = wallet;
 	}
 
-	public UserDetail(String first_name, String cpassword, String email, Long phoneno) {
+	public UserDetail(String firstName, String cpassword, String email, Long phoneno) {
 		super();
-		this.first_name = first_name;
+		this.firstName = firstName;
 		this.cpassword = cpassword;
-		this.Email = email;
-		this.phoneno = phoneno;
+		this.email = email;
+		this.phoneNo = phoneno;
 	}
 
 	public UserDetail(String email) {
 		
-		this.Email = email;
+		this.email = email;
 	
 	}
 	public UserDetail(int userId, String cpassword) {
@@ -62,33 +61,12 @@ public class UserDetail {
 	public UserDetail( String email,String cpassword) {
 		super();
 		
-		this.Email = email;
+		this.email = email;
 		this.cpassword = cpassword;
 	}
-	@Override
-	public String toString() {
-		return "Userdetail [userId=" + userId + ", first_name=" + first_name + ", cpassword=" + cpassword + ", Email="
-				+ Email + ", phoneno=" + phoneno + ", usertype=" + usertype + "]";
-	}
+	
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(Email, cpassword, first_name, phoneno, userId, usertype, wallet);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		UserDetail other = (UserDetail) obj;
-		return Objects.equals(Email, other.Email) && Objects.equals(cpassword, other.cpassword)
-				&& Objects.equals(first_name, other.first_name) && Objects.equals(phoneno, other.phoneno)
-				&& userId == other.userId && Objects.equals(usertype, other.usertype) && wallet == other.wallet;
-	}
+	
 
 	public int getUserId() {
 		return userId;
@@ -96,48 +74,61 @@ public class UserDetail {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public String getFirst_name() {
-		return first_name;
+	
+	
+	
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
+
 	public String getCpassword() {
 		return cpassword;
 	}
+
 	public void setCpassword(String cpassword) {
 		this.cpassword = cpassword;
 	}
+
 	public String getEmail() {
-		return Email;
+		return email;
 	}
+
 	public void setEmail(String email) {
-		this.Email = email;
+		this.email = email;
 	}
-	public Long getPhoneno() {
-		return phoneno;
+
+	public Long getPhoneNo() {
+		return phoneNo;
 	}
-	public void setPhoneno(Long phoneno) {
-		this.phoneno = phoneno;
+
+	public void setPhoneNo(Long phoneNo) {
+		this.phoneNo = phoneNo;
 	}
-	public String getUsertype() {
-		return usertype;
+
+	public String getUserType() {
+		return userType;
 	}
-	public void setUsertype(String usertype) {
-		this.usertype = usertype;
+
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
+
 	public UserDetail() {
 		super();
 
 	}
-	public UserDetail(int userId, String first_name, String cpassword, String email, Long phoneno, String usertype) {
+	public UserDetail(int userId, String firstName, String cpassword, String email, Long phoneno, String usertype) {
 		super();
 		this.userId = userId;
-		this.first_name = first_name;
+		this.firstName = firstName;
 		this.cpassword = cpassword;
-		this.Email = email;
-		this.phoneno = phoneno;
-		this.usertype = usertype;
+		this.email = email;
+		this.phoneNo = phoneno;
+		this.userType = usertype;
 	}
 
 
@@ -149,20 +140,20 @@ public class UserDetail {
 	}
 
 	public UserDetail(String firstname, String password, String email, long phone, int userid, String usertype, long wallet) {
-		this.first_name=firstname;
+		this.firstName=firstname;
 		this.cpassword=password;
-		this.Email=email;
-		this.phoneno=phone;
+		this.email=email;
+		this.phoneNo=phone;
 		this.userId=userid;
-		this.usertype=usertype;
+		this.userType=usertype;
 		this.wallet=wallet;
 
 	}
 
-	public UserDetail(Long wallet, String Email,int userid) {
+	public UserDetail(Long wallet, String email,int userid) {
 
 		this.wallet=wallet;
-		this.Email=Email;
+		this.email=email;
 		this.userId=userid;
 	}
 
