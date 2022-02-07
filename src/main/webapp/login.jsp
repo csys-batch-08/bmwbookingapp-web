@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
     <meta charset="UTF-8">
@@ -200,7 +200,7 @@ left:20px;
 </div>
  <h1>About us</h1>
  <div class="imr">
- <img src="images/bmwview1.jpg" style=width:800px;>
+ <img src="images/bmwview1.jpg" style=width:800px; alt="no image">
  </div>
  <div class="para">
  <h3>The BMW Group company profile.</h3>
@@ -224,7 +224,7 @@ understanding sustainable living in urban environments
 careers information</p>
 </div>
 <div class="imr2">
-<img src="images/bmwview.jpg" style=width:800px;>
+<img src="images/bmwview.jpg" style=width:800px; alt="no image">
 </div>
 
 

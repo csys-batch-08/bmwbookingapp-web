@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin</title>
@@ -103,7 +103,7 @@
      <a href="AdminPrice">PriceDetail</a>
     <div class="dropdown">
       <button class="dropbtn">Car Details
-        <i class="fa fa-caret-down"></i>
+        <em class="fa fa-caret-down"></em>
       </button>
       <div class="dropdown-content">
         <a href="addcar.jsp">Add car</a>
@@ -114,6 +114,6 @@
     
    
   </div>
-  <img src="https://wallpaperaccess.com/full/2805305.jpg" style=width:100% height:70%>
+  <img src="https://wallpaperaccess.com/full/2805305.jpg" style=width:100% height:70% alt="no image">
 </body>
 </html>

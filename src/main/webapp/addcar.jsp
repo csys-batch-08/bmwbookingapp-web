@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Car</title>
@@ -125,7 +125,7 @@
     <a href="AdminBooking">Booking history</a>
     <div class="dropdown">
       <button class="dropbtn">Car Details
-        <i class="fa fa-caret-down"></i>
+        <em class="fa fa-caret-down"></em>
       </button>
       <div class="dropdown-content">
         <a href="addcar.jsp">Add car</a>

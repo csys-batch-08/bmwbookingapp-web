@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="com.Carbooking.daoimpl.CarProductDaoImpl" %>
+    <%@ page import="com.carbookings.daoimpl.CarProductDaoImpl" %>
     <%@ page import="java.util.List" %>
     
     <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
      <%@ page isELIgnored = "false" %>
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Select Car</title>
@@ -121,6 +121,7 @@ margin-left:1150px;
                
                     <td>
                         <table id="carproduct">
+                        <caption>Select Car</caption>
                             <tbody>
                                 <tr>
                                     
@@ -137,7 +138,7 @@ margin-left:1150px;
                                         <span>cartype &nbsp;&nbsp;&nbsp;: ${car1.carType} </span><br>
                                         <span>fueltype&nbsp;&nbsp;&nbsp;: ${car1.fuelType}</span><br>
                                          
-                                          <%-- <%session.setAttribute("car_id", carProduct.carId; %> --%>
+                                          
                                           <c:set var="carId" value="${car1.carId}" scope="session" /> 
                                           
                                           
@@ -162,11 +163,13 @@ margin-left:1150px;
         </div>
         <div class="two">
         <table>
+        <caption>selectCar</caption>
             <tbody>
                 <tr>
                
                     <td>
                         <table id="carsecond">
+                        <caption>selectCar</caption>
                             <tbody>
                                 <tr>
                                     
@@ -177,9 +180,9 @@ margin-left:1150px;
                                         <span>roadtax &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :${car2.roadtax} </span><br>
                                         <span>insrance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:${car2.insurance}</span><br>
                                         <hr>
-                                        <span style="color:red";>Total OnroadPrice : ${car2.onroadprice} </span><br>
+                                        <span style="color:red">Total OnroadPrice : ${car2.onroadprice} </span><br>
                                         <hr>
-                                          <%-- <%session.setAttribute("price", price.getOnroadprice()); %> --%>
+                                      
                                             <c:set var="price" value="${car2.onroadprice}" scope="session" /> 
                                        </c:forEach>
                                         <span>

@@ -3,7 +3,7 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -167,7 +167,7 @@ h1 span {
 								<b><h1>
 										<span>${carProduct.carName}</span><br>
 									</h1></b>
-								<center>
+								
 									<span><strong>Car_id</strong> &nbsp;&nbsp;</span> <span>
 										:${carProduct.carId}</span><br> <span><strong>FuelType</strong>
 										&nbsp;&nbsp;</span> <span> :${carProduct.fuelType}</span><br> <span><strong>CarType</strong>

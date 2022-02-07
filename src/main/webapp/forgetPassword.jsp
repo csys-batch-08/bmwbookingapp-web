@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <html>
+    <!DOCTYPE html>
+    <html lang="en">
     <head>
     <title>Forget password</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -31,6 +32,8 @@
     <input type="text" name="password" id="password" required><br><br>
     <button type="submit" id="success">Reset password</button>
     </div>
+    </form>
+    
     <script type="text/javascript">
     $('#success').click(function(event) {
 		toastr.success('Your password is reset successfully');
@@ -39,4 +42,3 @@
     </body>
     
     </html>
-    </form>

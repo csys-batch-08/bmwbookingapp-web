@@ -3,7 +3,7 @@
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>User History</title>
@@ -137,13 +137,15 @@ body {
  </div>
           
         <table>
+        <caption>userHistory</caption>
 		<tbody>
-			<td>
+			
 			<tr>
+			<td>
 				<c:set var="count" value="1" />
 				<c:forEach items="${listproduct1}" var="profile">
 				<div class="contain">
-                    <img src="https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png " style="width:200px">
+                    <img src="https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png " style="width:200px" alt="no image">
                     <br><br>
 					<span>Name:${profile.first_name}</span><br><br>
 					<span>Email:${profile.email}</span><br><br>
@@ -152,19 +154,10 @@ body {
 					<span>Wallet:${profile.wallet}</span>
 					</div>
 					
-					<c:choose>
-						<c:when test="${count==5}">
-			</tr>
-			<tr>
-				<c:set var="count" value="1" />
-			</c:when>
-			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
-			</c:forEach>
-			</tr>
-			</td>
+				</c:forEach>
+				</td>
+				</tr>
+			
 		</tbody>
 	</table>
 	
@@ -188,6 +181,5 @@ body {
     </div>
   </div>
   
-</div>
 </body>
 </html>

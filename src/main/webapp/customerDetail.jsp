@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Customer Detail</title>
@@ -237,12 +237,12 @@ margin-left:1200px;
 <div class="row">
           <div class="col-50">
             <h3>Billing Address</h3>
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <label for="fname"><em class="fa fa-user"></em> Full Name</label>
             <input type="text" id="custname" name="custname" placeholder="John M. Doe" pattern="[A-Za-z]{3,}" autocomplete="off" required>
          
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <label for="adr"><em class="fa fa-address-card-o"></em> Address</label>
             <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" pattern="^[#.0-9a-zA-Z\s,-]+$" autocomplete="off" required>
-            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <label for="city"><em class="fa fa-institution"></em> City</label>
             <input type="text" id="city" name="city" placeholder="New York" pattern="[A-Za-z]{3,}" autocomplete="off" required>
 
             
@@ -255,12 +255,13 @@ margin-left:1200px;
                 <label for="state">Date</label>
                 <input type="Date" id="datefield" name="Expected" placeholder="NY" autocomplete="off" required>
             
-             <marquee> <h4 style="color:red">Note: Advance amount will pay more than Rs:40000</h4></marquee>
+              <h4 style="color:red">Note: Advance amount will pay more than Rs:40000</h4>
                 <label for="state">Advance pay amount</label>
                 <input type="number"  name="advance" placeholder="Enter your amount"  min="40000" autocomplete="off" required>
             
            
              <input type="submit" value="submit">
+          </div>
           </div>
          
     </form>

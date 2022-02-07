@@ -1,12 +1,12 @@
 
-<%@page import="com.Carbooking.model.UserDetail"%>
+<%@page import="com.carbookings.model.UserDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" %>
    <%@ page isELIgnored = "false" %>
     <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Show products</title>
@@ -95,11 +95,12 @@ font-size:20px;
       <ul class="navbar-nav ml-auto">
      
         <li class=" active"><a href="showss" class="nav-link">Home <span class="sr-only">(current)</span></a></li>
-        <li class="nav-item"><a href="cartview" class="nav-link">Cart</a></li>
-        <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#myModal">Contact</a></li>
+        
         <li class="nav-item"><a href="updateWallet.jsp" class="nav-link">RechargeWallet</a></li>
+        <li class="nav-item"><a href="cartview" class="nav-link">Cart</a></li>
           <li class="nav-item"><a href="userhistory" class="nav-link">Profile</a></li>
         <li class="nav-item"><a href="userbooking" class="nav-link">BookingHistory</a></li>
+         <li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#myModal">Contact</a></li>
         <form class="d-flex" action="search" method="post">
         <input class="form-control me-2" type="search" id="car" name="car" placeholder="Search" aria-label="Search" autocomplete="on" required>
         <button class="btn btn-outline-success" type="submit">Search</button>&nbsp;&nbsp;&nbsp;

@@ -6,14 +6,32 @@
      
      
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>User Booking</title>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="style"
+	href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    
+    <link rel="style"
+	href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+	
+	
+
+
 <style>
 body {
       margin: 0;
@@ -113,8 +131,21 @@ body {
  .one
  {
  margin-left:1150px;
- margin-top:20px;
+margin-top:-20px;
  }
+ label{
+float: right;
+}
+table
+{
+width:100%;}
+#myTable_length{
+float: left;
+}
+#myTable_paginate {
+background-color:black;
+
+}
  
  </style>
 </head>
@@ -132,20 +163,24 @@ body {
        
       </div>
       
-    
-       
-     
-   
-   
- 
 
           <h2 class="Userdetail">Booking Details</h2>
           <div class="one">
            <a href="showss"><button type="button" class="btn btn-primary">Back</button> </a>
         </div>
-        <table border="1">
+        <table border="1" id="myTable">
+        <caption>userbooking</caption>
+        <thead>
+        <tr>
+        <th id="one">Order_id</th>
+        <th id="two">car_id</th>
+        <th id="three">carName</th>
+        <th id="four">ExpectedDate</th>
+        <th id="five">status</th>
+        <th id="six">Address</th>
+        </tr>
+        </thead>
 		<tbody>
-			<td>
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${listproduct}" var="booking">
@@ -154,31 +189,26 @@ body {
 
 				
                       
-					<td><span>Order_id:&nbsp;&nbsp;${booking.order_id}</span></td>
-					<td><span>Car_id:&nbsp;&nbsp;${booking.car_id}</span></td>
-					<td><span>CarName:${booking.carname}</span></td>
+					<td><span>${booking.order_id}</span></td>
+					<td><span>&nbsp;&nbsp;${booking.car_id}</span></td>
+					<td><span>${booking.carname}</span></td>
 					
 					<td style="width:10%"><span><fmt:formatDate pattern="dd-MM-yyyy" value="${Expecteddate}"/></span></td>
-					<td><span>Status:${booking.status}</span></td>
+					<td><span>${booking.status}</span></td>
 					
-					<td><span>Address:${booking.address}</span></td>
+					<td><span>${booking.address}</span></td>
 					
-					<c:choose>
-						<c:when test="${count==1}">
-			</tr>
-			<tr>
-				<c:set var="count" value="1" />
-			</c:when>
-			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
-			</c:forEach>
-			</tr>
-			</td>
+				</c:forEach>
+				</tr>
+			
 		</tbody>
 	</table>
-       </div><div class="modal fade" id="myModal" role="dialog">
+	<script>
+	$(document).ready(function() {
+		$('#myTable').DataTable();
+	});
+	</script>
+       <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -198,6 +228,7 @@ body {
     </div>
   </div>
   
-</div>
+
+
 </body>
 </html>

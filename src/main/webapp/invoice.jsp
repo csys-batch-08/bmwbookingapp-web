@@ -3,7 +3,7 @@
        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Invoice bill</title>
@@ -78,36 +78,28 @@ margin-top:300px;}
  <h1 CLASS="F">RECEIPT</h1>
   <img src="images/bmw-logo.svg" alt="logo" style="width:70px;" >
       <br><br><br><br><br>
-        <p class="address"><b>East Repair Inc.</b><br>1912 Harvest Lane<br>CHENNAI</p><br><br>
+        <p class="address"><strong>East Repair Inc.</strong><br>1912 Harvest Lane<br>CHENNAI</p><br><br>
 
 </form>
     <table>
+    <caption>invoice</caption>
 		<tbody>
-			<td>
-			<tr>
 			
+			<tr>
+			<td>
 				<c:set var="count" value="1" />
 				<c:forEach items="${listproduct}" var="userproducts">
-                    	<span>Invoice_Id:"${userproducts.invoice_id}"</span><br>
+                    	<span>Invoice_Id:"${userproducts.invoiceId}"</span><br>
 					<span>User_name  &nbsp;&nbsp;     :${sessionScope.username }</span><br>
 					<span>Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: ${userproducts.price}</span><br>
-					<span>Carname &nbsp;&nbsp;&nbsp; &nbsp;:${userproducts.car_name}</span><br>
+					<span>Carname &nbsp;&nbsp;&nbsp; &nbsp;:${userproducts.carName}</span><br>
 					<span>Advance &nbsp;&nbsp;&nbsp;&nbsp; ${sessionScope.price1 }</span><br>
 					<span>RemainingAmount:${sessionScope.remain}</span><br>
 					
-					<c:choose>
-						<c:when test="${count==1}">
-			</tr>
-			<tr>
-				<c:set var="count" value="1" />
-			</c:when>
-			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
 			</c:forEach>
-			</tr>
 			</td>
+			</tr>
+			
 			
 		</tbody>
 	</table>
@@ -118,9 +110,9 @@ margin-top:300px;}
            </div>
   		<div class="row" >
   	    	
-  		      <marquee> <span><strong>Phone:</strong>+91-124-111111</span>----
+  		      <span><strong>Phone:</strong>+91-124-111111</span>----
   	    	<span>  <strong>Email:</strong> india@bmw.com</span>----<span> <strong>Website:</strong> http://webivorous.com</span>
-  	    </marquee>
+  	    
   		</div>
 
 
@@ -128,5 +120,4 @@ margin-top:300px;}
 </html>
 
    
-</body>
-</html> 
+
