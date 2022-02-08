@@ -30,7 +30,7 @@ public class InvoicepageServlet extends HttpServlet {
 			UserDetail user=(UserDetail)session.getAttribute("currentUser");
 			int userid=user.getUserId();
 			Invoice ord=new Invoice(userid);
-			String  advance=request.getParameter("advance");
+			
 			List<Invoice> listproduct=dao.view(ord);
 			session.setAttribute("listproduct", listproduct);
 			response.sendRedirect("invoice.jsp");

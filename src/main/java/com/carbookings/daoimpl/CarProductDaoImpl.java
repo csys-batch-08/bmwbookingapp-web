@@ -14,7 +14,7 @@ import com.connection.Connectionutil;
 
 public class CarProductDaoImpl {
 
-	public  static List<CarProduct> showview() 
+	public   List<CarProduct> showview() 
 	{
 		List<CarProduct> productsList=new ArrayList<>();
 		

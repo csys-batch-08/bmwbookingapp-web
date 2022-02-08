@@ -1,8 +1,9 @@
 package com.carbookings.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class OrderDetail {
+public class OrderDetail implements Serializable {
 	private  int orderId;
 	private int userId;
 	private String carId;

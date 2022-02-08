@@ -1,6 +1,8 @@
 package com.carbookings.model;
 
-public class Invoice {
+import java.io.Serializable;
+
+public class Invoice  implements Serializable{
     
 	
 	private int invoiceId;

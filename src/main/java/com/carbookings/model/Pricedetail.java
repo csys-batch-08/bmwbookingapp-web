@@ -1,8 +1,8 @@
 package com.carbookings.model;
 
+import java.io.Serializable;
 
-
-public class  Pricedetail {
+public class  Pricedetail implements Serializable{
 	 private  String carId;
 		private String carName;
 		 private int exshowroomPrice;

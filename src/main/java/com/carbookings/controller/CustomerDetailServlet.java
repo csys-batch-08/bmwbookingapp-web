@@ -78,8 +78,7 @@ public class CustomerDetailServlet extends HttpServlet {
 		OrderDetailDaoImpl dao=new OrderDetailDaoImpl();
 		dao.delete(dan);
 		//update wallet
-		UserDetail use=new UserDetail(price,userid);
-	
+		
 		UserDetailDaoImpl san=new UserDetailDaoImpl();
      
 	     int res = san.updateWallet(price, userid);

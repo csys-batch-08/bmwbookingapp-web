@@ -1,8 +1,6 @@
 package com.carbookings.controller;
 
 import java.io.IOException;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -23,8 +21,8 @@ public class ViewuserServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-			List<UserDetail> view=new ArrayList<>();
-			view=UserDetailDaoImpl.alluser();
+			 
+		List<UserDetail> view=UserDetailDaoImpl.alluser();
 			request.setAttribute("view", view);
 			
 			RequestDispatcher dt=request.getRequestDispatcher("viewUser.jsp");

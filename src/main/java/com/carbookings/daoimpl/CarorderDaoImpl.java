@@ -4,8 +4,7 @@ import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import com.connection.Connectionutil;
 
 public class CarorderDaoImpl {
 
-	public static void insert(CarOrder obj)
+	public  void insert(CarOrder obj)
 	{
 		
 

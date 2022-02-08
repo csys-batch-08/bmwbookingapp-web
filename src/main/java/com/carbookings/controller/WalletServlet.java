@@ -25,7 +25,7 @@ public class WalletServlet extends HttpServlet {
 			
 			UserDetail use=new UserDetail(wallet,userid);
 			UserDetailDaoImpl dao=new UserDetailDaoImpl();
-			dao.updatewallet(use);
+			dao.walletrecharge(use);
 			response.sendRedirect("showss");
 		} catch (IOException | NumberFormatException e) {
 			e.printStackTrace();

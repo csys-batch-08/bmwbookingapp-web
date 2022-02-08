@@ -14,9 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.carbookings.daoimpl.PriceDetailDaoImpl;
 import com.carbookings.model.Pricedetail;
 
-/**
- * Servlet implementation class AdminPriceServlet
- */
+
 @WebServlet("/AdminPrice")
 public class AdminPriceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,8 +25,7 @@ public class AdminPriceServlet extends HttpServlet {
 		
 		HttpSession session=request.getSession();
 		PriceDetailDaoImpl dan=new PriceDetailDaoImpl();
-		Pricedetail cars = new Pricedetail();
-		List <Pricedetail> car2  = dan.viewprice(cars);
+		List <Pricedetail> car2  = dan.viewPrice();
 		session.setAttribute("car2", car2);
 	
 		

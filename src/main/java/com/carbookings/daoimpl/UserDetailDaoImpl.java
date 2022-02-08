@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import java.sql.ResultSet;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -276,7 +274,7 @@ public class UserDetailDaoImpl {
 			return veiwall;
 			
 		}
-	   public  void updatewallet(UserDetail obj)
+	   public  void walletrecharge(UserDetail obj)
 	   {
 			String log1 = "update user_details set userwallet=userwallet + ? where user_id=?";
 			Connection con=null;

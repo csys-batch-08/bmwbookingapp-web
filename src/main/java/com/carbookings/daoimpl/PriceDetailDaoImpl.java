@@ -45,7 +45,7 @@ public  class PriceDetailDaoImpl {
 
 	
     }
-    public static void update(Pricedetail obj1)
+    public  void update(Pricedetail obj1)
     {
   	  String update="update price_detail set Exshowroom_price=?,road_tax=?,insurance=? where car_id=? ";
   	  Connection con=null;
@@ -71,7 +71,7 @@ public  class PriceDetailDaoImpl {
 	}
   	 
     }
-    public static void delete (Pricedetail obj) 
+    public  void delete (Pricedetail obj) 
     {
     	String delete="delete from price_detail where car_id=?";
     	Connection con=null;
@@ -166,7 +166,7 @@ return productsList;
 
 }
 	
-	 public  List<Pricedetail> viewprice(Pricedetail obj) 
+	 public  List<Pricedetail> viewPrice() 
 	 {
 		 List<Pricedetail> productsList=new ArrayList<>();
 		 Pricedetail cars=null;

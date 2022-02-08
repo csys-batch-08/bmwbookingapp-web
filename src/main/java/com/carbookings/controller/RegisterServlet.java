@@ -21,7 +21,7 @@ public class RegisterServlet extends HttpServlet {
 		PrintWriter out = null;
 		try {
 			out = resp.getWriter();
-		} catch (IOException e1) {
+		} catch (IOException | NullPointerException e1) {
 		
 			e1.printStackTrace();
 		}
@@ -64,7 +64,7 @@ public class RegisterServlet extends HttpServlet {
 				
 				e.printStackTrace();
 			}
-		} catch (EmailAlreadyExistException |NumberFormatException e) {
+		} catch (EmailAlreadyExistException |NullPointerException e) {
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('email already exist');");
 			out.println("location='index.jsp';");

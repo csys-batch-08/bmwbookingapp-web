@@ -41,7 +41,7 @@ public class CartServlet extends HttpServlet {
 
 		int res = orderdao.insert(obj);
 		CarProductDaoImpl dao = new CarProductDaoImpl();
-		String carId = session.getAttribute("carId").toString();
+		
 		
 
 		CarProduct car = new CarProduct(carid);
