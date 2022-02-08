@@ -211,7 +211,7 @@ h1 span {
 												<label for="proname">Enter your carid:</label><br> <input type="text"
 													name="proname" id="proname" value="${carProduct.carId}"
 													readonly><br> <label for="fueltype">Enter your
-													fueltype</label for="html"><br> <input type="text" name="fueltype" id="fueltype"
+													fuelType</label for="html"><br> <input type="text" name="fueltype" id="fueltype"
 													autocomplete="off" required><br> <br> <label for="cartype">Enter
 													your cartype</label><br> <input type="text" name="cartype" id="cartype"
 													autocomplete="off" required><br> <br> <label for="carmodel">Enter

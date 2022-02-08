@@ -25,8 +25,10 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		PrintWriter out=null;
+		try {
 		HttpSession session = req.getSession();
-		PrintWriter out=resp.getWriter();
+		 out=resp.getWriter();
 		String username=req.getParameter("uname");
 		String password=req.getParameter("upass");
 		
@@ -40,28 +42,18 @@ public class LoginServlet extends HttpServlet {
 				
 			currentUser = userDao.loginval(username, password);
 			if(currentUser==null) {
-				try {
+				
 					throw new InvalidUserException();
-				}catch(InvalidUserException e) {
-					
-					out.println("<script type=\"text/javascript\">");
-					out.println("alert('Invalid email id or password');");
-					out.println("location='login.jsp';");
-					out.println("</script>");
-
-					
 				}
-			
-}
 
 session.setAttribute("username", currentUser.getFirstName());
 session.setAttribute("wallet", currentUser.getWallet());
 
 
 
-			if(currentUser!=null) {
-				if(currentUser.getUserType().equals("user"))
-				{
+			if( currentUser.getUserType().equals("user")) {
+				
+				
 					session.setAttribute("currentUser", currentUser);
 					 CarProductDaoImpl dao=new CarProductDaoImpl();
 					 
@@ -85,6 +77,18 @@ session.setAttribute("wallet", currentUser.getWallet());
 			}
 			
 }
+			catch(InvalidUserException  e) {
+				
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Invalid email id or password');");
+				out.println("location='login.jsp';");
+				out.println("</script>");
+
+				
+			}
+		catch (NullPointerException e) {
+			e.printStackTrace();
+		}
 		 
 		
 		

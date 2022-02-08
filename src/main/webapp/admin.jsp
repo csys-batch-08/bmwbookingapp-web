@@ -114,6 +114,6 @@
     
    
   </div>
-  <img src="https://wallpaperaccess.com/full/2805305.jpg" style=width:100% height:70% alt="no image">
+  <img src="https://wallpaperaccess.com/full/2805305.jpg" style=width:100%  alt="no image">
 </body>
 </html>
