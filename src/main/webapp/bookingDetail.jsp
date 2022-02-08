@@ -10,7 +10,7 @@
 <title>Booking Detail</title>
  
 <link rel="style"
-	href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+	href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
 
 <script type="text/javascript"
 	src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></script>
