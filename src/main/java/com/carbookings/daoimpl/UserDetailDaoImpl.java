@@ -276,7 +276,7 @@ public class UserDetailDaoImpl {
 			return veiwall;
 			
 		}
-	   public static void updatewallet(UserDetail obj)
+	   public  void updatewallet(UserDetail obj)
 	   {
 			String log1 = "update user_details set userwallet=userwallet + ? where user_id=?";
 			Connection con=null;
@@ -288,54 +288,68 @@ public class UserDetailDaoImpl {
 				statement.setInt(2, obj.getUserId());
 				statement.executeUpdate();
 			
-			} catch (ClassNotFoundException e) {
-			
-				e.printStackTrace();
-			} catch (SQLException e) {
-		
-				e.printStackTrace();
 			}
-			finally {
-				if (statement != null) {
-					try {
-						statement.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-				if (con != null) {
-					try {
-						con.close();
-					} catch (SQLException e) {
+			catch (Exception e) {
 
-						e.printStackTrace();
-					}
-				}
+				Logger.printStackTrace(e);
+				Logger.runTimeException(e.getMessage());
+
+			} finally {
+
+				Connectionutil.close(null, statement, con);
 			}
 	   }
 	   
-	   //mobile exist:
-public  ResultSet getEmail(UserDetail obj) throws ClassNotFoundException, SQLException
-{
-	Connection con = Connectionutil.getDBconnection();
-	String log="select first_name,cpassword,email,phone,user_id,usertype,userwallet  from user_details where email=?";
-	PreparedStatement pstmt=con.prepareStatement(log);
-	pstmt.setString(1, obj.getEmail());
-	
-	ResultSet rs=pstmt.executeQuery();
-	return rs;
-	
-	
+
+public UserDetail getEmailDetails(UserDetail rp) {
+	UserDetail register = null;
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	try {
+		con = Connectionutil.getDBconnection();
+		String log="select first_name,cpassword,email,phone,user_id,usertype,userwallet  from user_details where email=?";
+		pstmt = con.prepareStatement(log);
+		pstmt.setString(1, rp.getEmail());
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			register=new UserDetail(rs.getString(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getInt(5),rs.getString(6),rs.getLong(7));
+		}
+	} catch (Exception e) {
+
+		Logger.printStackTrace(e);
+		Logger.runTimeException(e.getMessage());
+
+	} finally {
+
+		Connectionutil.close(rs, pstmt, con);
+	}
+	return register;
 }
-public  ResultSet getphoneno(UserDetail obj) throws ClassNotFoundException, SQLException
-{
-	Connection con = Connectionutil.getDBconnection();
-	String log="select first_name,cpassword,email,phone,user_id,usertype,userwallet  from user_details where phone=?";
-	PreparedStatement pstmt=con.prepareStatement(log);
-	pstmt.setLong(1, obj.getPhoneNo());
-	ResultSet rs1=pstmt.executeQuery();
-	return rs1;
-	
-	
+
+public UserDetail getPhoneDetails(UserDetail rp) {
+	UserDetail register = null;
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	try {
+		con = Connectionutil.getDBconnection();
+		String log="select first_name,cpassword,email,phone,user_id,usertype,userwallet  from user_details where phone=?";
+		pstmt = con.prepareStatement(log);
+		pstmt.setLong(1, rp.getPhoneNo());
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			register = new UserDetail(rs.getString(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getInt(5),rs.getString(6),rs.getLong(7));
+		}
+	} catch (Exception e) {
+
+		Logger.printStackTrace(e);
+		Logger.runTimeException(e.getMessage());
+
+	} finally {
+
+		Connectionutil.close(rs, pstmt, con);
+	}
+	return register;
 }
 	}

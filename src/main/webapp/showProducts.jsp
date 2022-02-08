@@ -120,6 +120,14 @@ font-size:20px;
    <div class="one">
    <table id="carproduct">
    <caption>showproduct</caption>
+   <thead>
+   <tr>
+   <th id="one"></th>
+   <th id="two"></th>
+   <th id="three"></th>
+   </tr>
+   </thead>
+   
 		<tbody>
 			
 			<tr>
@@ -143,20 +151,19 @@ font-size:20px;
                                        </td>  
                                          
 					
-					<c:choose>
-						<c:when test="${count==3}">
-						</c:choose>
-			</tr>
+			<c:choose>
+                        <c:when test="${count==3}">
+                        <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
+			</c:choose>
 			</c:forEach>
-			
-		</tbody>
+			</tr>	
 	</table>
+			
 
  </div>
     <div class="modal fade" id="myModal" role="dialog">

@@ -38,60 +38,53 @@ public class LoginServlet extends HttpServlet {
 			UserDetail currentUser = null;
 			
 				
-			try {
-				currentUser = userDao.loginval(username, password);
-				if(currentUser==null) {
-					try {
-						throw new InvalidUserException();
-					}catch(InvalidUserException e) {
-						
-						out.println("<script type=\"text/javascript\">");
-						out.println("alert('Invalid email id or password');");
-						out.println("location='login.jsp';");
-						out.println("</script>");
-
-						
-					}
-				
-}
-			
-			session.setAttribute("username", currentUser.getFirstName());
-			session.setAttribute("wallet", currentUser.getWallet());
-			
-			
-			
-				if(currentUser!=null) {
-					if(currentUser.getUserType().equals("user"))
-					{
-						session.setAttribute("currentUser", currentUser);
-						 CarProductDaoImpl dao=new CarProductDaoImpl();
-						 
-						 
-						 List<CarProduct> listproduct=dao.showview();
-						 req.setAttribute("listproduct", listproduct);
-						 
-						 RequestDispatcher rd=req.getRequestDispatcher("showProducts.jsp");
-                         rd.forward(req, resp);
-						
-						
-                          
-						
-						
+			currentUser = userDao.loginval(username, password);
+			if(currentUser==null) {
+				try {
+					throw new InvalidUserException();
+				}catch(InvalidUserException e) {
 					
-					
-				}else if(currentUser.getUserType().equals("admin")) {
+					out.println("<script type=\"text/javascript\">");
+					out.println("alert('Invalid email id or password');");
+					out.println("location='login.jsp';");
+					out.println("</script>");
 
-					session.setAttribute("admin",currentUser);
-					resp.sendRedirect("admin.jsp");
+					
 				}
+			
+}
+
+session.setAttribute("username", currentUser.getFirstName());
+session.setAttribute("wallet", currentUser.getWallet());
+
+
+
+			if(currentUser!=null) {
+				if(currentUser.getUserType().equals("user"))
+				{
+					session.setAttribute("currentUser", currentUser);
+					 CarProductDaoImpl dao=new CarProductDaoImpl();
+					 
+					 
+					 List<CarProduct> listproduct=dao.showview();
+					 req.setAttribute("listproduct", listproduct);
+					 
+					 RequestDispatcher rd=req.getRequestDispatcher("showProducts.jsp");
+			         rd.forward(req, resp);
+					
+					
+			          
+					
+					
 				
-		}
 				
+			}else if(currentUser.getUserType().equals("admin")) {
+
+				session.setAttribute("admin",currentUser);
+				resp.sendRedirect("admin.jsp");
 			}
-			catch(Exception e) {
-				
-				e.printStackTrace();
-			}
+			
+}
 		 
 		
 		

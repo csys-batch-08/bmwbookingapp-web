@@ -153,20 +153,27 @@ h1 span {
   </div>
 	<div class="one">
 		<table id="carproduct">
+		<caption>adminproduct</caption>
+		<thead>
+					<tr>
+						<th id="one"></th>
+						<th id="two"></th>
+						<th id="three"></th>
+					</tr>
+				</thead>
 			<tbody>
 				<td>
 				<tr>
 					<c:set var="count" value="1" />
 					<c:forEach items="${listproduct}" var="carProduct">
 
-
 						<td>
 							<div class="car">
 								<img src="images/${carProduct.carName}.jpg" alt="img"><br>
 
-								<b><h1>
+								<strong><h1>
 										<span>${carProduct.carName}</span><br>
-									</h1></b>
+									</h1></strong>
 								
 									<span><strong>Car_id</strong> &nbsp;&nbsp;</span> <span>
 										:${carProduct.carId}</span><br> <span><strong>FuelType</strong>

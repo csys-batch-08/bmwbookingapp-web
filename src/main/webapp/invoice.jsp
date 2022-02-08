@@ -83,6 +83,13 @@ margin-top:300px;}
 </form>
     <table>
     <caption>invoice</caption>
+    <thead>
+					<tr>
+						<th id="one"></th>
+						<th id="two"></th>
+						<th id="three"></th>
+					</tr>
+				</thead>
 		<tbody>
 			
 			<tr>

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.carbookings.daoimpl.UserDetailDaoImpl;
 import com.carbookings.model.UserDetail;
 @WebServlet("/wallet")
-public class walletServlet extends HttpServlet {
+public class WalletServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
 	@Override

@@ -14,4 +14,6 @@ public interface UserDetailDao {
 	public  List<UserDetail> alluser(UserDetail obj1);
 	public  Long wallte(UserDetail obj);
 	public void updateWallet(UserDetail obj);
+	public UserDetail getEmailDetails(UserDetail rp);
+	public UserDetail getPhoneDetails(UserDetail rp);
 }

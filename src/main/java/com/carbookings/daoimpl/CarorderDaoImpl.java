@@ -111,11 +111,12 @@ public class CarorderDaoImpl {
 		
 		String showQuery="select Order_id,Car_id,Car_name,address,status from Car_orders";
 		Connection con=null;
-		Statement statement=null;
+		PreparedStatement statement=null;
+		ResultSet rs=null;
 		try {
 			con = Connectionutil.getDBconnection();
-			 statement=con.createStatement();
-			ResultSet rs=statement.executeQuery(showQuery);
+			 statement=con.prepareStatement(showQuery);
+			 rs=statement.executeQuery();
 			while(rs.next())
 			{
 				
@@ -125,30 +126,15 @@ public class CarorderDaoImpl {
 			}
 			
 			
-		} catch (ClassNotFoundException e1) {
+		} 
+		catch (Exception e) {
 
-			e1.printStackTrace();
-		} catch (SQLException e1) {
-              
-			e1.printStackTrace();
-		}
-		finally {
-			if (statement != null) {
-				try {
-					statement.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
-					e.printStackTrace();
-				}
-			}
+		} finally {
 
+			Connectionutil.close(rs, statement, con);
 		}
 		return productsList;
 	}

@@ -153,6 +153,13 @@ span
      
 <table id="carproduct">
 <caption> searchCar</caption>
+<thead>
+					<tr>
+						<th id="one"></th>
+						<th id="two"></th>
+						<th id="three"></th>
+					</tr>
+				</thead>
 		<tbody>
 			
 			<tr>

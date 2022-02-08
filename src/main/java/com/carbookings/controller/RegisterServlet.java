@@ -2,10 +2,6 @@ package com.carbookings.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,19 +39,19 @@ public class RegisterServlet extends HttpServlet {
 				UserDetailDaoImpl udd=new UserDetailDaoImpl();
 				
 				try {
-					ResultSet rs=udd.getEmail(ud);
-					ResultSet rs1=udd.getphoneno(ud);
-					if(rs.next())
+					UserDetail rs=udd.getEmailDetails(ud);
+					UserDetail rs1=udd.getPhoneDetails(ud);
+					if(rs!=null)
 					{
 					
-						if(email.equals(rs.getString(3)))
+						if(email.equals(rs.getEmail()))
 						{
 							throw new EmailAlreadyExistException();
 						}
 					}
-					if(rs1.next())
+					if(rs1!=null)
 					{
-						if(phone.equals(rs1.getLong(4)))
+						if(phone.equals(rs1.getPhoneNo()))
 						{
 							throw new PhoenNumberExistException();
 						}
@@ -68,10 +64,7 @@ public class RegisterServlet extends HttpServlet {
 				
 				e.printStackTrace();
 			}
-		} catch (ClassNotFoundException |SQLException  e) {
-
-			e.printStackTrace();
-		}  catch (EmailAlreadyExistException e) {
+		} catch (EmailAlreadyExistException |NumberFormatException e) {
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('email already exist');");
 			out.println("location='index.jsp';");

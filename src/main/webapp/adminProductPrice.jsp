@@ -153,8 +153,16 @@ h1 span {
   </div>
 	<div class="one">
 		<table id="carproduct">
+		<caption>AdminProduct</caption>
+		<thead>
+					<tr>
+						<th id="one"></th>
+						<th id="two"></th>
+						<th id="three"></th>
+					</tr>
+				</thead>
 			<tbody>
-				<td>
+		
 				<tr>
 					<c:set var="count" value="1" />
 					<c:forEach items="${car2}" var="car2">
