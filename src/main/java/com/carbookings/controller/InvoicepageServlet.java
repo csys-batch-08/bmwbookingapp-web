@@ -36,7 +36,7 @@ public class InvoicepageServlet extends HttpServlet {
 			response.sendRedirect("invoice.jsp");
 		} catch (IOException e) {
 			
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 	}

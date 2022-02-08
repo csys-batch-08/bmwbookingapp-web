@@ -97,7 +97,7 @@ public class CustomerDetailServlet extends HttpServlet {
 				response.sendRedirect("lowBalance.jsp");
 			} catch (IOException e) {
 			
-				e.printStackTrace();
+				e.getMessage();
 			}
 		}
 		

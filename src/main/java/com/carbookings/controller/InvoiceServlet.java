@@ -38,7 +38,7 @@ public class InvoiceServlet extends HttpServlet {
 			
 		} catch (NumberFormatException e) {
 			
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 }

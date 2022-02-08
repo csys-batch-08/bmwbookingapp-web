@@ -31,7 +31,7 @@ public class UpdateCar extends HttpServlet {
 			response.sendRedirect("admin.jsp");
 		} catch (IOException e) {
 			
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

@@ -73,7 +73,7 @@ public class RegisterServlet extends HttpServlet {
 		}
 			 catch (NullPointerException | NumberFormatException e1) {
 					
-					e1.printStackTrace();
+					e1.getMessage();
 				}
 			
 			

@@ -26,7 +26,7 @@ public class DeleteServlet extends HttpServlet {
 			response.sendRedirect("admin.jsp");
 		} catch (IOException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

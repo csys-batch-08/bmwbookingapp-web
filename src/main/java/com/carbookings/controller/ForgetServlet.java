@@ -26,7 +26,7 @@ public class ForgetServlet extends HttpServlet {
 			response.sendRedirect("login.jsp");
 		} catch (IOException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 	}

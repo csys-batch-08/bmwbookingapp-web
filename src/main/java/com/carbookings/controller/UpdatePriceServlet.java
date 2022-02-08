@@ -30,7 +30,7 @@ public class UpdatePriceServlet extends HttpServlet {
 			response.sendRedirect("admin.jsp");
 		} catch (IOException | NumberFormatException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 	}

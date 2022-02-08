@@ -33,7 +33,7 @@ public class AddCarServlet extends HttpServlet {
 			response.sendRedirect("admin.jsp");
 		} catch (IOException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

@@ -22,7 +22,7 @@ public class UpdateCarNewServlet extends HttpServlet {
 			response.sendRedirect("adminProduct.jsp");
 		} catch (IOException e) {
 	
-			e.printStackTrace();
+			e.getMessage();
 		}
 
 		

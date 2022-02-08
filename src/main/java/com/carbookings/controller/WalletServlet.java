@@ -28,7 +28,7 @@ public class WalletServlet extends HttpServlet {
 			dao.walletrecharge(use);
 			response.sendRedirect("showss");
 		} catch (IOException | NumberFormatException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

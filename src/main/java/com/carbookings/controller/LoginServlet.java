@@ -87,7 +87,7 @@ session.setAttribute("wallet", currentUser.getWallet());
 				
 			}
 		catch (NullPointerException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		 
 		
