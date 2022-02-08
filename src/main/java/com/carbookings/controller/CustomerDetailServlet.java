@@ -54,15 +54,10 @@ public class CustomerDetailServlet extends HttpServlet {
 		try {
 			dt = sdf.parse(request.getParameter("Expected"));
 		} catch (ParseException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 		String address=custname+","+addres+","+city+","+pincode;
-		
-		
-		
-		
-		
 		
 		String carIds=(String)session.getAttribute("carId");
 		String carnames=(String)session.getAttribute("carname");

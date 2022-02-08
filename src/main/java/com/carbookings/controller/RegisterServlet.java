@@ -54,7 +54,7 @@ public class RegisterServlet extends HttpServlet {
 				resp.sendRedirect("login.jsp");
 			}catch (IOException e) {
 				
-				e.printStackTrace();
+				e.getMessage();
 			}
 		 catch (EmailAlreadyExistException   e) {
 			out.println("<script type=\"text/javascript\">");
