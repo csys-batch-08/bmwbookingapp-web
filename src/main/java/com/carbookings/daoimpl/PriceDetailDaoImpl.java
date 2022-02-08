@@ -132,7 +132,7 @@ public  class PriceDetailDaoImpl {
 		 List<Pricedetail> productsList=new ArrayList<>();
 		 Pricedetail cars=null;
 		 PreparedStatement statement=null;
-		 ResultSet rs=null;
+		 ResultSet resultset=null;
 		 String search="Select * from Price_detail where car_id=?";
    	 Connection con=null;
 	try {
@@ -140,13 +140,13 @@ public  class PriceDetailDaoImpl {
 		  statement=con.prepareStatement(search);
 		  
 		   	statement.setString(1, obj.getCarId());
-		   	  rs=statement.executeQuery();
+		   	  resultset=statement.executeQuery();
 		   	 
 		   	 
-		   	 while(rs.next())
+		   	 while(resultset.next())
 		   	 {
 		   		
-		   		 cars =new Pricedetail(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
+		   		 cars =new Pricedetail(resultset.getString(1),resultset.getString(2),resultset.getInt(3),resultset.getInt(4),resultset.getInt(5),resultset.getInt(6));
 		   		 productsList.add(cars);
 		   	 }
 	} 
@@ -157,7 +157,7 @@ public  class PriceDetailDaoImpl {
 
 	} finally {
 
-		Connectionutil.close(rs, statement, con);
+		Connectionutil.close(resultset, statement, con);
 	}
 	
    	

@@ -39,14 +39,11 @@ public class SearchCarServlet extends HttpServlet {
  
 			  
 				response.getWriter().print("Search Suceessfully");
-			}catch (IOException e) {
+			}catch (IOException | ServletException e) {
 				
 				e.printStackTrace();
 			}
-			catch (ServletException e) {
-				
-				e.printStackTrace();
-			} 
+			 
 
 			}
 }

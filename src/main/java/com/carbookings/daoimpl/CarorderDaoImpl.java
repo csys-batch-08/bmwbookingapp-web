@@ -142,15 +142,16 @@ public class CarorderDaoImpl {
 		String allbook="Select Order_id,Car_id,Car_name,Expecteddate,address,status from Car_orders where userid=?";
 		Connection con=null;
 		PreparedStatement statement=null;
+		ResultSet resultset=null;
 		try {
 			con = Connectionutil.getDBconnection();
 		 statement=con.prepareStatement(allbook);
 			statement.setInt(1, obj.getUserid());
-			ResultSet rs=statement.executeQuery();
+			 resultset=statement.executeQuery();
 			
-			while(rs.next())
+			while(resultset.next())
 			{
-			     CarOrder details=new CarOrder(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6));
+			     CarOrder details=new CarOrder(resultset.getInt(1),resultset.getString(2),resultset.getString(3),resultset.getDate(4),resultset.getString(5),resultset.getString(6));
 			     viewbooking.add(details);
 			}
 		} catch (Exception e) {
@@ -160,7 +161,7 @@ public class CarorderDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, statement, con);
+			Connectionutil.close(resultset, statement, con);
 		}
 		
 		return viewbooking;
