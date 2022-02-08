@@ -145,18 +145,18 @@
     <form action="addcar" method="post">
     <div class="one">
     <h2>Add a car</h2>
-      <label>Enter your carid:</label><br>
-      <input type="text" name="carid" autocomplete="off" required><br><br>
-      <label>Enter your Carname</label><br>
-      <input type="text" name="carname" autocomplete="off" required ><br><br>
-      <label>Enter your fueltype</label><br>
-      <input type="text" name="fueltype" autocomplete="off"  required><br><br>
-      <label>Enter your cartype</label><br>
-      <input type="text" name="cartype" autocomplete="off"  required><br><br>
-      <label>Enter your carmodel</label><br>
-      <input type="text" name="carmodel" autocomplete="off"  required><br><br>
-      <label>Car Photo</label><br>
-     <input type="file" name="carimage" required><br><br>
+      <label for="carid">Enter your carid:</label><br>
+      <input type="text" name="carid" id="carid" autocomplete="off" required><br><br>
+      <label for="carname">Enter your Carname</label><br>
+      <input type="text" name="carname" id="carname" autocomplete="off" required ><br><br>
+      <label for="fueltype">Enter your fueltype</label><br>
+      <input type="text" name="fueltype" id="fueltype" autocomplete="off"  required><br><br>
+      <label for="cartype">Enter your cartype</label><br>
+      <input type="text" name="cartype" id="cartype" autocomplete="off"  required><br><br>
+      <label for="carmodel">Enter your carmodel</label><br>
+      <input type="text" name="carmodel" id="carmodel" autocomplete="off"  required><br><br>
+      <label for="carimage">Car Photo</label><br>
+     <input type="file" name="carimage" id="carimage" required><br><br>
       <button type="submit">Add car</button>
       </div>
     </form>

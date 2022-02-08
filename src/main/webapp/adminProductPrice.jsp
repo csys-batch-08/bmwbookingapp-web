@@ -177,7 +177,8 @@ h1 span {
 								<span>insrance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:${car2.insurance}</span><br>
 								<hr>
-								<span style="color: red";>Total OnroadPrice :
+								</div>
+								<span style="color: red">Total OnroadPrice :
 									${car2.onroadprice} </span><br>
 										<button type="button" class="btn btn-primary" data-toggle="modal"
 							data-target="#myModal${car2.car_id}">Update car</button>
@@ -199,19 +200,19 @@ h1 span {
 										<form action="updateprice" method="post">
 											<div class="two">
 												<h2>Update your price detail</h2>
-												<label>Enter your carid:</label><br> <input type="text"
-													name="carid" value="${car2.car_id}" required><br>
-												<br> <label>Enter your Exshowroom_price:</label><br>
+												<label for="carid">Enter your carid:</label><br> <input type="text"
+													name="carid" id="carid" value="${car2.car_id}" required><br>
+												<br> <label for="roadtax">Enter your Exshowroom_price:</label><br>
 												<input type="number" name="showroom_price" min="1"
+													pattern="((\\d{1,4})(((\\.)(\\d{0,2})){0,1}))"  id="c" required><br>
+												<label for="roadtax">Enter your Roadtax:</label><br> <input
+													type="number" name="roadtax" id="roadtax" min="1"
 													pattern="((\\d{1,4})(((\\.)(\\d{0,2})){0,1}))" required><br>
-												<label>Enter your Roadtax:</label><br> <input
-													type="number" name="roadtax" min="1"
-													pattern="((\\d{1,4})(((\\.)(\\d{0,2})){0,1}))" required><br>
-												<br> <label>Enter your insurance:</label><br> <input
-													type="number" name="insurance" min="1"
+												<br> <label for="insurance">Enter your insurance:</label><br> <input
+													type="number" name="insurance" id="insurance" min="1"
 													pattern="((\\d{1,4})(((\\.)(\\d{0,2})){0,1}))" required><br>
 												<br>
-												<button type="submit">update price</button>
+												<button type="submit" id="submit">update price</button>
 											</div>
 										</form>
 									</div>
@@ -222,7 +223,7 @@ h1 span {
 								</div>
 							</div>
 						</div>
-						</div>
+						
 						<div class="modal fade" id="myModals${car2.car_id}"
 							role="dialog">
 							<div class="modal-dialog modal-lg">
@@ -236,9 +237,9 @@ h1 span {
 											<div class="three">
 												<h2>Delete your price detail</h2>
 												<label>Enter your Carid</label><br> <input type="text"
-													name="delete" value="${car2.car_id}" required><br>
+													name="delete" id="delete" value="${car2.car_id}" required><br>
 												<br>
-												<button type="submit">submit</button>
+												<button type="submit" id="submit">submit</button>
 											</div>
 										</form>
 									</div>
@@ -249,28 +250,24 @@ h1 span {
 								</div>
 							</div>
 						</div>
-						</center>
-						</div>
-						</td>
-
-
-						<c:choose>
-							<c:when test="${count==3}">
-				</tr>
-				<tr>
-					<c:set var="count" value="1" />
-					</c:when>
-					<c:otherwise>
-						<c:set var="count" value="${count+1}" />
-					</c:otherwise>
-					</c:choose>
-					</c:forEach>
-				</tr>
-				</td>
-			</tbody>
-
-
-		</table>
+						
+					
+				                    
+                                         
+					
+			<c:choose>
+                        <c:when test="${count==3}">
+                        <c:set var="count" value="1" />
+			<tr>
+			</c:when>
+			<c:otherwise>
+			<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>	
+	</table>
+		
 
 	</div>
 </body>

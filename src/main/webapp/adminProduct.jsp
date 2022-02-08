@@ -162,8 +162,9 @@ h1 span {
 					</tr>
 				</thead>
 			<tbody>
-				<td>
+				
 				<tr>
+				<td>
 					<c:set var="count" value="1" />
 					<c:forEach items="${listproduct}" var="carProduct">
 
@@ -171,9 +172,9 @@ h1 span {
 							<div class="car">
 								<img src="images/${carProduct.carName}.jpg" alt="img"><br>
 
-								<strong><h1>
+								<strong>
 										<span>${carProduct.carName}</span><br>
-									</h1></strong>
+									</strong>
 								
 									<span><strong>Car_id</strong> &nbsp;&nbsp;</span> <span>
 										:${carProduct.carId}</span><br> <span><strong>FuelType</strong>
@@ -187,8 +188,10 @@ h1 span {
 									<button type="button" class="btn btn-primary"
 										data-toggle="modal" data-target="#myModals${carProduct.carId}">Delete
 										car</button>
+										</div>
 
 </td>
+
 									
 										
 						
@@ -226,7 +229,7 @@ h1 span {
 								</div>
 							</div>
 						</div>
-						</div>
+					
 						<div class="modal fade" id="myModals${carProduct.carId}"
 							role="dialog">
 							<div class="modal-dialog modal-lg">
@@ -253,28 +256,22 @@ h1 span {
 								</div>
 							</div>
 						</div>
-						</center>
-						</div>
-						</td>
-
-
-						<c:choose>
-							<c:when test="${count==3}">
-				</tr>
-				<tr>
-					<c:set var="count" value="1" />
-					</c:when>
-					<c:otherwise>
-						<c:set var="count" value="${count+1}" />
-					</c:otherwise>
-					</c:choose>
-					</c:forEach>
-				</tr>
-				</td>
-			</tbody>
-
-
-		</table>
+						
+					                   
+                                         
+					
+			<c:choose>
+                        <c:when test="${count==3}">
+                        <c:set var="count" value="1" />
+			<tr>
+			</c:when>
+			<c:otherwise>
+			<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>	
+	</table>
 
 	</div>
 </body>
