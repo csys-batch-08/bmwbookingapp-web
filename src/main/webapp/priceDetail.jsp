@@ -137,17 +137,17 @@ background-color:#E7E9BB;
 <form action="addprice" method="post">
 <div class="one">
 <h2>Add your price detail</h2>
-<label>Enter your carid:</label><br>
-<input type="text" name="carid" required><br><br>
-<label>Enter your carname:</label><br>
-<input type="text" name="carname"  required><br><br>
-<label>Enter your Exshowroom_price:</label><br>
-<input type="number" name="showroom_price"  min="1" required><br>
-<label>Enter your Roadtax:</label><br>
-<input type="number" name="roadtax" min="1"  required><br><br>
-<label>Enter your insurance:</label><br>
-<input type="number" name="insurance"  min="1"  required><br><br>
-<button type="submit">add price</button>
+<label for="carid">Enter your carid:</label><br>
+<input type="text" name="carid" id="carid" required><br><br>
+<label for="carname">Enter your carname:</label><br>
+<input type="text" name="carname" id="carname" required><br><br>
+<label for="showroom_price">Enter your Exshowroom_price:</label><br>
+<input type="number" name="showroom_price" id="showroom_price" min="1" required><br>
+<label for="roadtax">Enter your Roadtax:</label><br>
+<input type="number" name="roadtax" id="roadtax" min="1"  required><br><br>
+<label for="insurance">Enter your insurance:</label><br>
+<input type="number" name="insurance" id="insurance"  min="1"  required><br><br>
+<button type="submit" id="submit">add price</button>
 </div>
 </form>
 

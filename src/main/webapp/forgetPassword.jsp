@@ -26,10 +26,10 @@
     <form action="forget" method="Post">
     <div class="forget">
     <h1>Forget password</h1>
-    <label>Enter your  Email:</label><br>
+    <label for="forget">Enter your  Email:</label><br>
     <input type="text" name="forget" id="forget" required><br><br>
-    <label>Enter your new password:</label><br>
-    <input type="text" name="password" id="password" required><br><br>
+    <label for="html">Enter your new password:</label><br>
+    <input type="password" name="password" id="password" required><br><br>
     <button type="submit" id="success">Reset password</button>
     </div>
     </form>

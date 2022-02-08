@@ -208,17 +208,17 @@ h1 span {
 
 											<div class="two">
 												<h2>Update car(${carProduct.carName})</h2>
-												<label>Enter your carid:</label><br> <input type="text"
+												<label for="proname">Enter your carid:</label><br> <input type="text"
 													name="proname" id="proname" value="${carProduct.carId}"
-													readonly><br> <label>Enter your
-													fueltype</label><br> <input type="text" name="fueltype"
-													autocomplete="off" required><br> <br> <label>Enter
-													your cartype</label><br> <input type="text" name="cartype"
-													autocomplete="off" required><br> <br> <label>Enter
-													your carmodel</label><br> <input type="text" name="carmodel"
+													readonly><br> <label for="fueltype">Enter your
+													fueltype</label for="html"><br> <input type="text" name="fueltype" id="fueltype"
+													autocomplete="off" required><br> <br> <label for="cartype">Enter
+													your cartype</label><br> <input type="text" name="cartype" id="cartype"
+													autocomplete="off" required><br> <br> <label for="carmodel">Enter
+													your carmodel</label><br> <input type="text" name="carmodel" id="carmodel"
 													autocomplete="off" required><br> <br>
 
-												<button type="submit">update car</button>
+												<button type="submit" id="submit">update car</button>
 											</div>
 										</form>
 									</div>
@@ -242,8 +242,8 @@ h1 span {
 										<form action="deletecar" method="post">
 											<div class="three">
 												<h3>Delete car</h3>
-												<label>Enter your carid:</label><br> <input type="text"
-													name="carid" value="${carProduct.carId}" autocomplete="off" required><br>
+												<label for="html">Enter your carid:</label><br> <input type="text"
+													name="carid" id="carid" value="${carProduct.carId}" autocomplete="off" required><br>
 												<br>
 												<button type="submit">Delete car</button>
 											</div>

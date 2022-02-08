@@ -133,11 +133,12 @@
 <form action="wallet" method="post">
 	<div class="wall">
 	<h2>Your Remaining balance:${currentUser.getWallet()}</h2>
+	<label for="number">Enter your amount</label>
 	<input type="number" name="amount" id="number" min="1"><br><br>
 	
-	
-	<button type="submit" id="success">wallet recharge</button></form><br><br>
 	</div>
+	<button type="submit" id="success">wallet recharge</button></form><br><br>
+	
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     

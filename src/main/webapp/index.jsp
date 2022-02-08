@@ -96,13 +96,14 @@ button:hover{
        <img src="https://res.cloudinary.com/debbsefe/image/upload/f_auto,c_fill,dpr_auto,e_grayscale/image_fz7n7w.webp" alt="header-image" class="cld-responsive">
             <h1 class="form-title">Register Here</h1 >
             <form action="sample1"  method="post">
-               <input type="text" placeholder="NAME" name="first_name" pattern="[A-Za-z]{3,}" title="minimum 3 characters should be there."  autocomplete="off" required>
+               <input type="text" placeholder="NAME" name="first_name" id="first_name" pattern="[A-Za-z]{3,}" title="minimum 3 characters should be there."  autocomplete="off" required>
             <div class="beside">
-                <input type="text" placeholder="PHONE NUMBER"  name="number" pattern="[6-9]{1}[0-9]{9}"  minlength="10" maxlength="10"  autocomplete="off" required>
+                <input type="text" placeholder="PHONE NUMBER"  name="number" id="number" pattern="[6-9]{1}[0-9]{9}"  minlength="10" maxlength="10"  autocomplete="off" required>
              
             </div>
-                <input type="email" placeholder="EMAIL" name="email" pattern="[a-z0-9]+[@][a-zA-Z]+[.][a-z]+"  title="You have to insert @ and . in the username ex.abc@gmail.com"   autocomplete="off" required>
-                <input type="password" placeholder="password"  name="password" pattern="(?=.*[0-9])(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Minimum 8 characters should be there.There should be atleast one numeric,special character,capital letter and small letter." autocomplete="off" required ><br>
+            
+                <input type="email" placeholder="EMAIL" name="email" id="email" pattern="[a-z0-9]+[@][a-zA-Z]+[.][a-z]+"  title="You have to insert @ and . in the username ex.abc@gmail.com"   autocomplete="off" required>
+                <input type="password" placeholder="password"  name="password" id="password" pattern="(?=.*[0-9])(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Minimum 8 characters should be there.There should be atleast one numeric,special character,capital letter and small letter." autocomplete="off" required ><br>
                 <button type="submit" id="linkButton">Register</button>
             </form>
         </div>
