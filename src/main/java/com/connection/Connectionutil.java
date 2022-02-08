@@ -9,14 +9,24 @@ import java.sql.SQLException;
 import com.carbookings.logger.Logger;
 
 public class Connectionutil {
+	private Connectionutil() {
+
+	}
+
 	public static Connection getDBconnection() throws ClassNotFoundException, SQLException
 	  {
-		  Class.forName("oracle.jdbc.OracleDriver");
-		  
-		  Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-		  
-		  return con;
-	  }
+		Connection con = null;
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "oracle");
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+
+		return con;
+	}
+
+	 
 	public static void close(ResultSet rs, PreparedStatement pstmt, Connection con) {
 
 		try {

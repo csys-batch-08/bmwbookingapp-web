@@ -1,7 +1,8 @@
 package com.carbookings.model;
 
+import java.io.Serializable;
 
-public class UserDetail {
+public class UserDetail implements Serializable {
 	private int userId;
 	private String firstName;
 	private String cpassword;

@@ -1,10 +1,11 @@
 package com.carbookings.model;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 
-public class CarOrder {
+public class CarOrder implements Serializable {
 	
 	private int orderId;
 	private String carId;

@@ -35,25 +35,21 @@ public class SearchCarServlet extends HttpServlet {
 					   session.setAttribute("Carname",searchlist );
 					
 						RequestDispatcher requestDispatcher=request.getRequestDispatcher("searchCar.jsp");
-					requestDispatcher.forward(request, response);
-				} catch (ServletException e) {
-				
-					e.printStackTrace();
-				} catch (IOException e) {
-					
-					e.printStackTrace();
-				}      
+					requestDispatcher.forward(request, response);    
  
-			  try {
+			  
 				response.getWriter().print("Search Suceessfully");
-			} catch (IOException e) {
+			}catch (IOException e) {
 				
 				e.printStackTrace();
 			}
-	}
-}
+			catch (ServletException e) {
+				
+				e.printStackTrace();
+			} 
 
-			
+			}
+}
 
 				
 			

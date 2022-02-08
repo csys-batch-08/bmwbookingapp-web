@@ -19,15 +19,9 @@ public class RegisterServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)  {
 		PrintWriter out = null;
-		try {
-			out = resp.getWriter();
-		} catch (IOException | NullPointerException e1) {
 		
-			e1.printStackTrace();
-		}
-	
 			try {
-				
+				out = resp.getWriter();
 				
 				String firstName=req.getParameter("first_name");
 				String email=req.getParameter("email");
@@ -38,33 +32,31 @@ public class RegisterServlet extends HttpServlet {
 				UserDetail ud=new UserDetail(firstName,password,email,phone);
 				UserDetailDaoImpl udd=new UserDetailDaoImpl();
 				
-				try {
+				
 					UserDetail rs=udd.getEmailDetails(ud);
 					UserDetail rs1=udd.getPhoneDetails(ud);
-					if(rs!=null)
+					if(rs!=null && email.equals(rs.getEmail()))
 					{
+						
+						
+					throw new EmailAlreadyExistException();
 					
-						if(email.equals(rs.getEmail()))
-						{
-							throw new EmailAlreadyExistException();
-						}
 					}
-					if(rs1!=null)
+					if(rs1!=null && phone.equals(rs1.getPhoneNo()))
 					{
-						if(phone.equals(rs1.getPhoneNo()))
-						{
+						
 							throw new PhoenNumberExistException();
-						}
+						
 					}
 					
 					
 					udd.insert(ud);
 				resp.sendRedirect("login.jsp");
-			} catch (IOException e) {
+			}catch (IOException e) {
 				
 				e.printStackTrace();
 			}
-		} catch (EmailAlreadyExistException |NullPointerException e) {
+		 catch (EmailAlreadyExistException   e) {
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('email already exist');");
 			out.println("location='index.jsp';");
@@ -79,5 +71,11 @@ public class RegisterServlet extends HttpServlet {
 			out.println("</script>");
 		
 		}
+			 catch (NullPointerException | NumberFormatException e1) {
+					
+					e1.printStackTrace();
+				}
+			
+			
 	}
 }
