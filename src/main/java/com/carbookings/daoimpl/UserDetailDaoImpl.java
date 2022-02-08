@@ -185,24 +185,32 @@ public class UserDetailDaoImpl {
 	} 
 
 	public int updateWallet(long wallet,int userid) {
+		PreparedStatement pstmt=null;
+		Connection con=null;
 		long flag =  (wallet(userid) - wallet);
 		if(flag > 0) {
 		if(wallet(userid) > 0) {
 		String query="update user_details set userwallet =userwallet - ? where user_id = ?";
 		
 		try {
-			Connection con=Connectionutil.getDBconnection();
+			con=Connectionutil.getDBconnection();
 			int i=0;
 			
-			PreparedStatement pstmt=con.prepareStatement(query);
+			 pstmt=con.prepareStatement(query);
 			pstmt.setLong(1,wallet);
 			pstmt.setInt(2, userid);
 			i=pstmt.executeUpdate();
 			return i;
 			
-		}catch (Exception e) {
+		}
+		catch (Exception e) {
 
-			e.printStackTrace();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
+
+		} finally {
+
+			Connectionutil.close(null, pstmt, con);
 		}
 		}
 		

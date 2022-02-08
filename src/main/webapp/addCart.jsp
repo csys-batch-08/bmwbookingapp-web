@@ -1,6 +1,8 @@
 <%@page import="org.apache.catalina.connector.Request"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	 <%@ page isELIgnored = "false" %>
+    <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!DOCTYPE html>
@@ -121,7 +123,7 @@ span {
 <body>
 	<div class="topnav" id="myTopnav">
 		<a href="showss">ShowProduct</a> <a href="cartview" class="active">Cart</a>
-		<a href="Login.jsp" style="float: right">Logout</a> <a
+		<a href="login.jsp" style="float: right">Logout</a> <a
 			href="userhistory" style="float: right">Profile</a> <a
 			href="updateWallet.jsp">Recharge Wallet</a> <a href="userbooking">Booking
 			History</a>
@@ -142,7 +144,7 @@ span {
 	<caption>Cart items</caption>
 		<thead>
 			<tr>
-				<th id="one">Order_id</th>
+				<th id="one">OrderId</th>
 				<th id="two">User_id</th>
 				<th id="three">Car_id</th>
 				<th id="four">price</th>
@@ -154,13 +156,13 @@ span {
 				 <c:forEach
 						items="${listproduct}" var="cartview">
 
-						<span>Order_id:&nbsp;${cartview.order_id}</span>
+						<span>Order_id:&nbsp;${cartview.orderId}</span>
 						<br>
 						<br>
 						<span>User_id:&nbsp;${cartview.userId}</span>
 						<br>
 						<br>
-						<span>Car_id:&nbsp;&nbsp;${cartview.carid}</span>
+						<span>Car_id:&nbsp;&nbsp;${cartview.carId}</span>
 						<br>
 						<br>
 						<span>Price:&nbsp;&nbsp;&nbsp;${cartview.price}</span>

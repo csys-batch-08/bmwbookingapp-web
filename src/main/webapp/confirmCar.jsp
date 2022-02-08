@@ -118,11 +118,11 @@ button {
 		<caption>confirmcar</caption>
 			<thead>
 				<tr>
-					<th id="one">carid</th>
-					<th id="two">carName</th>
-					<th id="three">carModel</th>
-					<th id="four">cartype</th>
-					<th id="five">fueltype</th>
+					<th id="one"></th>
+					<th id="two"></th>
+					<th id="three"></th>
+					<th id="four"></th>
+					<th id="five"></th>
 					
 				</tr>
 			</thead>
@@ -131,11 +131,11 @@ button {
 
 					<tr>
 						<td><img src="images/${car1.carName}.jpg" alt="maari"></td>
-						<td class="car"><span> ${car1.carId} </span><br>
-						<br> <span> ${car1.carName} </span><br>
-						<br> <span> ${car1.carModel} </span><br>
-						<br> <span> ${car1.carType} </span><br>
-						<br> <span> ${car1.fuelType}</span><br>
+						<td class="car"><span>carid ${car1.carId} </span><br>
+						<br> <span>carName: ${car1.carName} </span><br>
+						<br> <span>carModel: ${car1.carModel} </span><br>
+						<br> <span> cartype:${car1.carType} </span><br>
+						<br> <span>fueltype: ${car1.fuelType}</span><br>
 						<br> <span>price: ${price}</span><br>
 						<br> <c:set var="carname" value="${car1.carName}"
 								scope="session" />

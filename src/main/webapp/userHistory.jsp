@@ -154,9 +154,9 @@ body {
 				<div class="contain">
                     <img src="https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png " style="width:200px" alt="no image">
                     <br><br>
-					<span>Name:${profile.first_name}</span><br><br>
+					<span>Name:${profile.firstName}</span><br><br>
 					<span>Email:${profile.email}</span><br><br>
-					<span>phonenumber:${profile.phoneno}</span><br><br>
+					<span>phonenumber:${profile.phoneNo}</span><br><br>
 					<span>UserId:${profile.userId}</span><br><br>
 					<span>Wallet:${profile.wallet}</span>
 					</div>

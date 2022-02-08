@@ -206,21 +206,21 @@ span {
 
 										<td class="car"><c:forEach items="${car2}" var="car2">
 
-												<span>showroomprice :${car2.exshowroomprice} </span>
+												<span>showroomprice :${car2.exshowroomPrice} </span>
 												<br>
 												<span>roadtax &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :${car2.roadtax} </span>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :${car2.roadTax} </span>
 												<br>
 												<span>insrance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:${car2.insurance}</span>
 												<br>
 												<hr>
 												<span style="color: red">Total OnroadPrice :
-													${car2.onroadprice} </span>
+													${car2.onroadPrice} </span>
 												<br>
 												<hr>
 
-												<c:set var="price" value="${car2.onroadprice}"
+												<c:set var="price" value="${car2.onroadPrice}"
 													scope="session" />
 											</c:forEach> <span> </span></td>
 									</tr>

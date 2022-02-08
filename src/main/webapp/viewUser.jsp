@@ -175,9 +175,9 @@ table {
 				<c:set var="count" value="1" />
 				<c:forEach items="${view}" var="user">
 				<tr>
-					<td><span>${user.first_name}</span></td>
+					<td><span>${user.firstName}</span></td>
 					<td><span>${user.email}</span></td>
-					<td><span>${user.phoneno}</span></td>
+					<td><span>${user.phoneNo}</span></td>
 					</tr>
 					</c:forEach>
 					

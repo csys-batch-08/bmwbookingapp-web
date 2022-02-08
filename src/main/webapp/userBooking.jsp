@@ -187,10 +187,10 @@ background-color:black;
 				<fmt:parseDate pattern="yyyy-MM-dd" value="${booking.expecteddate}"
 				var="Expecteddate" />
 
-				
+			
                       
-					<td><span>${booking.order_id}</span></td>
-					<td><span>&nbsp;&nbsp;${booking.car_id}</span></td>
+					<td><span>${booking.orderId}</span></td>
+					<td><span>&nbsp;&nbsp;${booking.carId}</span></td>
 					<td><span>${booking.carname}</span></td>
 					
 					<td style="width:10%"><span><fmt:formatDate pattern="dd-MM-yyyy" value="${Expecteddate}"/></span></td>
@@ -198,10 +198,18 @@ background-color:black;
 					
 					<td><span>${booking.address}</span></td>
 					
-				</c:forEach>
-				</tr>
-			
-		</tbody>
+						
+			<c:choose>
+                        <c:when test="${count==1}">
+                        <c:set var="count" value="1" />
+			<tr>
+			</c:when>
+			<c:otherwise>
+			<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>	
 	</table>
 	<script>
 	$(document).ready(function() {
@@ -227,8 +235,5 @@ background-color:black;
       
     </div>
   </div>
-  
-
-
 </body>
 </html>

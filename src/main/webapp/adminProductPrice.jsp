@@ -170,25 +170,25 @@ h1 span {
 
 						<td>
 							<div class="car">
-								<span>showroomprice :${car2.car_id} </span><br> <span>showroomprice
-									:${car2.exshowroomprice} </span><br> <span>roadtax
+								<span>showroomprice :${car2.carId} </span><br> <span>showroomprice
+									:${car2.exshowroomPrice} </span><br> <span>roadtax
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :${car2.roadtax} </span><br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :${car2.roadTax} </span><br>
 								<span>insrance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:${car2.insurance}</span><br>
 								<hr>
 								</div>
 								<span style="color: red">Total OnroadPrice :
-									${car2.onroadprice} </span><br>
+									${car2.onroadPrice} </span><br>
 										<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target="#myModal${car2.car_id}">Update car</button>
+							data-target="#myModal${car2.carId}">Update car</button>
 
 						<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target="#myModals${car2.car_id}">Delete car</button>
+							data-target="#myModals${car2.carId}">Delete car</button>
 						</td>
 					
 
-						<div class="modal fade" id="myModal${car2.car_id}"
+						<div class="modal fade" id="myModal${car2.carId}"
 							role="dialog">
 							<div class="modal-dialog modal-lg">
 								<div class="modal-content">
@@ -201,7 +201,7 @@ h1 span {
 											<div class="two">
 												<h2>Update your price detail</h2>
 												<label for="carid">Enter your carid:</label><br> <input type="text"
-													name="carid" id="carid" value="${car2.car_id}" required><br>
+													name="carid" id="carid" value="${car2.carId}" required><br>
 												<br> <label for="roadtax">Enter your Exshowroom_price:</label><br>
 												<input type="number" name="showroom_price" min="1"
 													pattern="((\\d{1,4})(((\\.)(\\d{0,2})){0,1}))"  id="c" required><br>
@@ -224,7 +224,7 @@ h1 span {
 							</div>
 						</div>
 						
-						<div class="modal fade" id="myModals${car2.car_id}"
+						<div class="modal fade" id="myModals${car2.carId}"
 							role="dialog">
 							<div class="modal-dialog modal-lg">
 								<div class="modal-content">
@@ -237,7 +237,7 @@ h1 span {
 											<div class="three">
 												<h2>Delete your price detail</h2>
 												<label>Enter your Carid</label><br> <input type="text"
-													name="delete" id="delete" value="${car2.car_id}" required><br>
+													name="delete" id="delete" value="${car2.carId}" required><br>
 												<br>
 												<button type="submit" id="submit">submit</button>
 											</div>
