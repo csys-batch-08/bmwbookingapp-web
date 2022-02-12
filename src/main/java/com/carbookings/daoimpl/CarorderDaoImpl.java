@@ -1,17 +1,12 @@
 package com.carbookings.daoimpl;
-
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import com.carbookings.logger.Logger;
 import com.carbookings.model.CarOrder;
-import com.connection.Connectionutil;
-
+import com.connection.ConnectionUtil;
 public class CarorderDaoImpl {
 
 	public  void insert(CarOrder obj)
@@ -26,7 +21,7 @@ public class CarorderDaoImpl {
 		  
 		try {
 
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			 statement=con.prepareStatement(insert);
 			statement.setInt(1, obj.getOrderId());
 			statement.setString(2, obj.getCarId());		
@@ -45,7 +40,7 @@ public class CarorderDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, statement, con);
+			ConnectionUtil.close(null, statement, con);
 		}
 
 		
@@ -56,13 +51,13 @@ public class CarorderDaoImpl {
 		Connection con=null;
 		PreparedStatement statement=null;
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			 statement=con.prepareStatement(allbook);
 			ResultSet rs=statement.executeQuery();
 			
 			while(rs.next())
 			{
-			     CarOrder details=new CarOrder(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6));
+			     CarOrder details=new CarOrder(rs.getInt("Order_id"),rs.getString("Car_id"),rs.getString("Car_name"),rs.getDate("Expecteddate"),rs.getString("address"),rs.getString("status"));
 			     viewbooking.add(details);
 			}
 		}
@@ -73,7 +68,7 @@ public class CarorderDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, statement, con);
+			ConnectionUtil.close(null, statement, con);
 		}
 		
 		
@@ -85,7 +80,7 @@ public class CarorderDaoImpl {
 		
 		PreparedStatement statement=null;
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 		 statement = con.prepareStatement(log1);
 			statement.setString(1, obj.getStatus());
 			statement.setInt(2, obj.getOrderId());
@@ -98,7 +93,7 @@ public class CarorderDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, statement, con);
+			ConnectionUtil.close(null, statement, con);
 		}
 		
 	
@@ -113,13 +108,13 @@ public class CarorderDaoImpl {
 		PreparedStatement statement=null;
 		ResultSet rs=null;
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			 statement=con.prepareStatement(showQuery);
 			 rs=statement.executeQuery();
 			while(rs.next())
 			{
 				
-				CarOrder product=new CarOrder(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+				CarOrder product=new CarOrder(rs.getInt("Order_id"),rs.getString("Car_id"),rs.getString("Car_name"),rs.getString("address"),rs.getString("status"));
 				productsList.add(product);
 				
 			}
@@ -133,7 +128,7 @@ public class CarorderDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(rs, statement, con);
+			ConnectionUtil.close(rs, statement, con);
 		}
 		return productsList;
 	}
@@ -144,14 +139,14 @@ public class CarorderDaoImpl {
 		PreparedStatement statement=null;
 		ResultSet resultset=null;
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 		 statement=con.prepareStatement(allbook);
 			statement.setInt(1, obj.getUserid());
 			 resultset=statement.executeQuery();
 			
 			while(resultset.next())
 			{
-			     CarOrder details=new CarOrder(resultset.getInt(1),resultset.getString(2),resultset.getString(3),resultset.getDate(4),resultset.getString(5),resultset.getString(6));
+			     CarOrder details=new CarOrder(resultset.getInt("Order_id"),resultset.getString("Car_id"),resultset.getString("Car_name"),resultset.getDate("Expecteddate"),resultset.getString("address"),resultset.getString("status"));
 			     viewbooking.add(details);
 			}
 		} catch (Exception e) {
@@ -161,7 +156,7 @@ public class CarorderDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(resultset, statement, con);
+			ConnectionUtil.close(resultset, statement, con);
 		}
 		
 		return viewbooking;

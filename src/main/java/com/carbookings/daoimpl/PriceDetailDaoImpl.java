@@ -22,7 +22,7 @@ public  class PriceDetailDaoImpl {
 	Connection con=null;
 	PreparedStatement statement=null;
 	try {
-		con = Connectionutil.getDBconnection();
+		con = ConnectionUtil.getDBconnection();
 		 statement=con.prepareStatement(insert);
 		statement.setString(1, obj.getCarId());
 		statement.setString(2, obj.getCarName());
@@ -39,7 +39,7 @@ public  class PriceDetailDaoImpl {
 
 	} finally {
 
-		Connectionutil.close(null, statement, con);
+		ConnectionUtil.close(null, statement, con);
 	}
 	
 
@@ -51,7 +51,7 @@ public  class PriceDetailDaoImpl {
   	  Connection con=null;
   	 PreparedStatement statement=null;
 	try {
-		con = Connectionutil.getDBconnection();
+		con = ConnectionUtil.getDBconnection();
 		 statement=con.prepareStatement(update);
 	     statement.setInt(1, obj1.getExshowroomPrice());
 	     statement.setInt(2, obj1.getRoadTax());
@@ -67,7 +67,7 @@ public  class PriceDetailDaoImpl {
 
 	} finally {
 
-		Connectionutil.close(null, statement, con);
+		ConnectionUtil.close(null, statement, con);
 	}
   	 
     }
@@ -77,7 +77,7 @@ public  class PriceDetailDaoImpl {
     	Connection con=null;
     	PreparedStatement statement=null;
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 		 statement=con.prepareStatement(delete);
 	    	statement.setString(1, obj.getCarId());
 	    	statement.executeUpdate();
@@ -88,7 +88,7 @@ public  class PriceDetailDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, statement, con);
+			ConnectionUtil.close(null, statement, con);
 		}
     	
     }
@@ -103,7 +103,7 @@ public  class PriceDetailDaoImpl {
    	 int onprice=0;
 		try {
 			
-			 con = Connectionutil.getDBconnection();
+			 con = ConnectionUtil.getDBconnection();
 			statement=con.prepareStatement(search);
 		    	statement.setString(1, obj);
 		 
@@ -121,7 +121,7 @@ public  class PriceDetailDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(rs, statement, con);
+			ConnectionUtil.close(rs, statement, con);
 		}
 		
 		
@@ -136,7 +136,7 @@ public  class PriceDetailDaoImpl {
 		 String search="Select * from Price_detail where car_id=?";
    	 Connection con=null;
 	try {
-		con = Connectionutil.getDBconnection();
+		con = ConnectionUtil.getDBconnection();
 		  statement=con.prepareStatement(search);
 		  
 		   	statement.setString(1, obj.getCarId());
@@ -157,7 +157,7 @@ public  class PriceDetailDaoImpl {
 
 	} finally {
 
-		Connectionutil.close(resultset, statement, con);
+		ConnectionUtil.close(resultset, statement, con);
 	}
 	
    	
@@ -175,7 +175,7 @@ return productsList;
    	ResultSet rs=null;
    	 PreparedStatement statement=null;
 	try {
-		con = Connectionutil.getDBconnection();
+		con = ConnectionUtil.getDBconnection();
 		 statement=con.prepareStatement(search);
 	   	  rs=statement.executeQuery();
 	   	 
@@ -193,7 +193,7 @@ return productsList;
 
 	} finally {
 
-		Connectionutil.close(rs, statement, con);
+		ConnectionUtil.close(rs, statement, con);
 	}
    	
 return productsList;

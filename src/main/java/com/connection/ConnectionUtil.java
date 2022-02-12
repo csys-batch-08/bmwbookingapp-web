@@ -8,8 +8,8 @@ import java.sql.SQLException;
 
 import com.carbookings.logger.Logger;
 
-public class Connectionutil {
-	private Connectionutil() {
+public class ConnectionUtil {
+	private ConnectionUtil() {
 
 	}
 

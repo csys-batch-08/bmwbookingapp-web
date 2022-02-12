@@ -10,8 +10,10 @@
 <meta charset="ISO-8859-1">
 <title>Confirm Car</title>
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></script>
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+	>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <script
@@ -91,31 +93,17 @@ button {
 					<li class="nav-item"><a href="userbooking" class="nav-link">BookingHistory</a></li>
 
 					<li class="nav-item"><a href="login.jsp" class="nav-link">Logout</a></li>
-
-
-
 				</ul>
-
-
 			</div>
-
 		</div>
 	</nav>
-
-
-
-
 	<div class="one">
 		<a href="showss"><button type="button" class="btn btn-primary">Back</button>
 		</a>
 	</div>
 	<form method="post">
-
-
-
-
 		<table id="carproduct">
-		<caption>confirmcar</caption>
+			<caption>confirmcar</caption>
 			<thead>
 				<tr>
 					<th id="one"></th>
@@ -123,7 +111,7 @@ button {
 					<th id="three"></th>
 					<th id="four"></th>
 					<th id="five"></th>
-					
+
 				</tr>
 			</thead>
 			<tbody>
@@ -131,13 +119,12 @@ button {
 
 					<tr>
 						<td><img src="images/${car1.carName}.jpg" alt="maari"></td>
-						<td class="car"><span>carid ${car1.carId} </span><br>
-						<br> <span>carName: ${car1.carName} </span><br>
-						<br> <span>carModel: ${car1.carModel} </span><br>
-						<br> <span> cartype:${car1.carType} </span><br>
-						<br> <span>fueltype: ${car1.fuelType}</span><br>
-						<br> <span>price: ${price}</span><br>
-						<br> <c:set var="carname" value="${car1.carName}"
+						<td class="car"><span>carid ${car1.carId} </span><br> <br>
+							<span>carName: ${car1.carName} </span><br> <br> <span>carModel:
+								${car1.carModel} </span><br> <br> <span>
+								cartype:${car1.carType} </span><br> <br> <span>fueltype:
+								${car1.fuelType}</span><br> <br> <span>price: ${price}</span><br>
+							<br> <c:set var="carname" value="${car1.carName}"
 								scope="session" />
 						<td>
 							<button>
@@ -155,8 +142,5 @@ button {
 			</tbody>
 		</table>
 	</form>
-
-
-
 </body>
 </html>

@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.carbookings.logger.Logger;
 import com.carbookings.model.CarProduct;
-import com.connection.Connectionutil;
+import com.connection.ConnectionUtil;
 
 
 public class CarProductDaoImpl {
@@ -23,13 +23,13 @@ public class CarProductDaoImpl {
 		PreparedStatement statement=null;
 		ResultSet rs=null;
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			 statement=con.prepareStatement(showQuery);
 			 rs=statement.executeQuery();
 			while(rs.next())
 			{
 				
-				CarProduct product=new CarProduct(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+				CarProduct product=new CarProduct(rs.getString("car_id"),rs.getString("car_name"),rs.getString("fueltype"),rs.getString("cartype"),rs.getString("car_model"));
 				productsList.add(product);
 				
 			}
@@ -43,7 +43,7 @@ public class CarProductDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(rs, statement, con);
+			ConnectionUtil.close(rs, statement, con);
 		}
 		return productsList;
 	}
@@ -55,7 +55,7 @@ public class CarProductDaoImpl {
    	PreparedStatement statement=null;
    
 	try {
-		con = Connectionutil.getDBconnection();
+		con = ConnectionUtil.getDBconnection();
 	 statement=con.prepareStatement(update);
 	   	statement.setString(1, obj1.getFuelType());
 	   	statement.setString(2, obj1.getCarType());
@@ -72,7 +72,7 @@ public class CarProductDaoImpl {
 
 	} finally {
 
-		Connectionutil.close(null, statement, con);
+		ConnectionUtil.close(null, statement, con);
 	}
      }
      public  void insert(CarProduct obj1) 
@@ -82,7 +82,7 @@ public class CarProductDaoImpl {
     	 PreparedStatement statement=null;
     	
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			 statement=con.prepareStatement(insert);
 	    	 statement.setString(1, obj1.getCarId());
 	    	 statement.setString(2, obj1.getCarName());
@@ -100,7 +100,7 @@ public class CarProductDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, statement, con);
+			ConnectionUtil.close(null, statement, con);
 		}
      }
      public  void delete(CarProduct obj1) 
@@ -110,7 +110,7 @@ public class CarProductDaoImpl {
     	 PreparedStatement statement=null;
     	 
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 		 statement=con.prepareStatement(delete);
 	    	 statement.setString(1, obj1.getCarId());
 	    	 statement.executeUpdate();
@@ -122,7 +122,7 @@ public class CarProductDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, statement, con);
+			ConnectionUtil.close(null, statement, con);
 		}
 		
     	
@@ -139,7 +139,7 @@ public class CarProductDaoImpl {
         	 PreparedStatement statement=null;
         	 ResultSet rs=null;
 			try {
-				con = Connectionutil.getDBconnection();
+				con = ConnectionUtil.getDBconnection();
 				  statement=con.prepareStatement(search);
 		        	
 		        	statement.setString(1, obj.getCarId());
@@ -149,7 +149,7 @@ public class CarProductDaoImpl {
 		        	 while(rs.next())
 		        	 {
 		        		 
-		        		 cars =new CarProduct(rs.getString(1),rs.getString(2),rs.getString(3) ,rs.getString(4), rs.getString(5));
+		        		 cars =new CarProduct(rs.getString("car_id"),rs.getString("car_name"),rs.getString("fueltype") ,rs.getString("cartype"), rs.getString("car_model"));
 		        		 productsList.add(cars);
 		        	 }
 			} 
@@ -160,7 +160,7 @@ public class CarProductDaoImpl {
 
 				} finally {
 
-					Connectionutil.close(rs, statement, con);
+					ConnectionUtil.close(rs, statement, con);
 				}
         	
    return productsList;
@@ -180,7 +180,7 @@ public class CarProductDaoImpl {
     					 PreparedStatement statement =null;
     					 ResultSet rs=null;
 						try {
-							con = Connectionutil.getDBconnection();
+							con = ConnectionUtil.getDBconnection();
 							 statement =con.prepareStatement(showQuery);
 	    					 statement.setString(1, carname);
 	    					 rs=statement.executeQuery();
@@ -190,7 +190,7 @@ public class CarProductDaoImpl {
 	    					{
 	    						
 	    						
-	    				    car=new  CarProduct(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
+	    				    car=new  CarProduct(rs.getString("car_name"),rs.getString("fueltype"),rs.getString("cartype"),rs.getString("car_model"));
 	    				    searchcar.add(car);
 	    				  
 	    					}
@@ -202,7 +202,7 @@ public class CarProductDaoImpl {
 
 						} finally {
 
-							Connectionutil.close(rs, statement, con);
+							ConnectionUtil.close(rs, statement, con);
 						}
     					return searchcar;        
     		}

@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.carbookings.logger.Logger;
 import com.carbookings.model.Invoice;
-import com.connection.Connectionutil;
+import com.connection.ConnectionUtil;
 
 public class InvoiceDaoImpl {
 	public void insert (Invoice obj)
@@ -19,7 +19,7 @@ public class InvoiceDaoImpl {
 		
 		
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			statement=con.prepareStatement(insert);
 			statement.setString(1, obj.getCarId());
 			statement.setInt(2, obj.getUserId());
@@ -37,7 +37,7 @@ public class InvoiceDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, statement, con);
+			ConnectionUtil.close(null, statement, con);
 		}
 		
 		
@@ -53,7 +53,7 @@ public class InvoiceDaoImpl {
 		PreparedStatement statement=null;
 		ResultSet rs=null;
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			statement=con.prepareStatement(showQuery);
 			statement.setInt(1, obj.getUserId());
 			 rs=statement.executeQuery();
@@ -73,7 +73,7 @@ public class InvoiceDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, statement, con);
+			ConnectionUtil.close(rs, statement, con);
 		}
 		return productsList;
 	}

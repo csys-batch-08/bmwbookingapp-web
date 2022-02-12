@@ -11,21 +11,21 @@
 <link rel="style"
 	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
 <script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></script>
+	src="https://code.jquery.com/jquery-3.5.1.js"
+	></script>
 <script type="text/javascript"
-	src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-		<link rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"></script>
+	src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"></script>
-    
-    
-    <link rel="style"
-	href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link rel="style"
+	href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
 <script type="text/javascript"
-	src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"></script>
+	src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 <style>
 body {
 	margin: 0;
@@ -129,7 +129,6 @@ table {
 	color: black;
 	font-weight: bold;
 }
-
 </style>
 
 </head>
@@ -137,9 +136,8 @@ table {
 	<div class="topnav" id="myTopnav">
 		<a href="#home" class="active">Home</a> <a href="login.jsp"
 			style="float: right">Logout</a> <a href="Viewuser">UserHistory</a> <a
-			href="AdminBooking">Booking history</a>
-			 <a href="AdminProductServlet">Product</a>
-     <a href="AdminPrice">PriceDetail</a>
+			href="AdminBooking">Booking history</a> <a href="AdminProductServlet">Product</a>
+		<a href="AdminPrice">PriceDetail</a>
 		<div class="dropdown">
 			<button class="dropbtn">
 				Car Details <em class="fa fa-caret-down"></em>
@@ -162,30 +160,30 @@ table {
 
 
 	<table id="myTable" border="1">
-	<caption>view user</caption>
+		<caption>view user</caption>
 		<thead>
 			<tr>
 				<th id="one">Name</th>
 				<th id="two">Email</th>
 				<th id="three">phone</th>
 			</tr>
-			</thead>
-			<tbody>
-			
-				<c:set var="count" value="1" />
-				<c:forEach items="${view}" var="user">
+		</thead>
+		<tbody>
+
+			<c:set var="count" value="1" />
+			<c:forEach items="${view}" var="user">
 				<tr>
 					<td><span>${user.firstName}</span></td>
 					<td><span>${user.email}</span></td>
 					<td><span>${user.phoneNo}</span></td>
-					</tr>
-					</c:forEach>
-					
-			
+				</tr>
+			</c:forEach>
+
+
 		</tbody>
 	</table>
 
-<script>
+	<script>
 	$(document).ready(function() {
 		$('#myTable').DataTable();
 	});

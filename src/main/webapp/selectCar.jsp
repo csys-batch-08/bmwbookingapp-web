@@ -12,10 +12,12 @@
 <meta charset="ISO-8859-1">
 <title>Select Car</title>
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></script>
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+	>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	></script>
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
 
@@ -99,32 +101,21 @@ span {
 					<li class="nav-item"><a href="userbooking" class="nav-link">BookingHistory</a></li>
 
 					<li class="nav-item"><a href="login.jsp" class="nav-link">Logout</a></li>
-
-
-
 				</ul>
-
-
 			</div>
 
 		</div>
 	</nav>
 
 	<form action="cart" method="post">
-
-
-
-
 		<h2 class="CarProducts">Car Details</h2>
 		<div class="one">
-
 			<a href="showss"><button type="button" class="btn btn-primary">Back</button>
 			</a>
 		</div>
-
 		<div class="list">
 			<table>
-				<caption>selectCar</caption>
+				<caption></caption>
 				<thead>
 					<tr>
 						<th id="one"></th>
@@ -137,14 +128,14 @@ span {
 
 						<td>
 							<table id="carproduct">
-								<caption>Select Car</caption>
+								<caption></caption>
 								<thead>
-					<tr>
-						<th id="one"></th>
-						<th id="two"></th>
-						<th id="three"></th>
-					</tr>
-				</thead>
+									<tr>
+										<th id="one"></th>
+										<th id="two"></th>
+										<th id="three"></th>
+									</tr>
+								</thead>
 								<tbody>
 									<tr>
 
@@ -160,11 +151,10 @@ span {
 												${car1.fuelType}</span><br> <c:set var="carId"
 												value="${car1.carId}" scope="session" /> <a
 											href="cart?carId=${car1.carId}"> <br>
-											<button type="submit" style="margin-left: 300px;"
+												<button type="submit" style="margin-left: 300px;"
 													class="btn btn-primary">Add to cart</button></a> </c:forEach>
 
-											</form>
-											</span></td>
+											</form> </span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -180,7 +170,7 @@ span {
 		</div>
 		<div class="two">
 			<table>
-				<caption>selectCar</caption>
+				<caption></caption>
 				<thead>
 					<tr>
 						<th id="one"></th>
@@ -193,14 +183,14 @@ span {
 
 						<td>
 							<table id="carsecond">
-								<caption>selectCar</caption>
+								<caption></caption>
 								<thead>
-					<tr>
-						<th id="one"></th>
-						<th id="two"></th>
-						<th id="three"></th>
-					</tr>
-				</thead>
+									<tr>
+										<th id="one"></th>
+										<th id="two"></th>
+										<th id="three"></th>
+									</tr>
+								</thead>
 								<tbody>
 									<tr>
 

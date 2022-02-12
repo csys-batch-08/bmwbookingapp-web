@@ -23,7 +23,7 @@ public class OrderDetailDaoImpl {
 	PreparedStatement stmt=null;
 	int rows=0;
 	try {
-		con = Connectionutil.getDBconnection();
+		con = ConnectionUtil.getDBconnection();
 		boolean flag = cartexist(obj.getUserId(), obj.getCarId());
 		if(!flag) {
 			 stmt=con.prepareStatement(insert);
@@ -45,7 +45,7 @@ public class OrderDetailDaoImpl {
 
 	} finally {
 
-		Connectionutil.close(null, stmt, con);
+		ConnectionUtil.close(null, stmt, con);
 	}
 	return 0;
 
@@ -63,7 +63,7 @@ public class OrderDetailDaoImpl {
 
 			
 			 try {
-				con = Connectionutil.getDBconnection();
+				con = ConnectionUtil.getDBconnection();
 				 statement=con.prepareStatement(search1);
 
 			 
@@ -82,7 +82,7 @@ public class OrderDetailDaoImpl {
 
 				} finally {
 
-					Connectionutil.close(rs, statement, con);
+					ConnectionUtil.close(rs, statement, con);
 				}
 			return order;
 			 
@@ -95,7 +95,7 @@ public class OrderDetailDaoImpl {
     	 PreparedStatement statement=null;
     	 
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			  statement=con.prepareStatement(delete);
 	    	 statement.setInt(1, obj1.getOrderId());
 	    	statement.executeUpdate();
@@ -108,7 +108,7 @@ public class OrderDetailDaoImpl {
 
 			} finally {
 
-				Connectionutil.close(null, statement, con);
+				ConnectionUtil.close(null, statement, con);
 			}
     	
     }
@@ -121,14 +121,14 @@ public class OrderDetailDaoImpl {
 		ResultSet rs=null;
 		PreparedStatement statement=null;
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			 statement=con.prepareStatement(showQuery);
 			statement.setInt(1, obj.getUserId());
 			 rs=statement.executeQuery();
 			while(rs.next())
 			{
 				
-				OrderDetail product=new OrderDetail(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4));
+				OrderDetail product=new OrderDetail(rs.getInt("Order_id"),rs.getInt("user_id"),rs.getString("car_id"),rs.getInt("price"));
 				productsList.add(product);
 				
 			}
@@ -141,7 +141,7 @@ public class OrderDetailDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(rs, statement, con);
+			ConnectionUtil.close(rs, statement, con);
 		}
 		return productsList;
 	}
@@ -152,7 +152,7 @@ public class OrderDetailDaoImpl {
     	PreparedStatement pstPreparedStatement =null;
     	String query = "select Order_id,user_id,car_id,price from order_details where user_id in ? and car_id in ?";
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			 pstPreparedStatement = con.prepareStatement(query);
 	    	pstPreparedStatement.setInt(1, userid);
 	    	pstPreparedStatement.setString(2,carid);
@@ -168,7 +168,7 @@ public class OrderDetailDaoImpl {
 
 			} finally {
 
-				Connectionutil.close(null, pstPreparedStatement, con);
+				ConnectionUtil.close(null, pstPreparedStatement, con);
 			}
     	
 		return false;

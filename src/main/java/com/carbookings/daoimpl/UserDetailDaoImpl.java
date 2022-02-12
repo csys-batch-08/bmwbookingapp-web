@@ -18,7 +18,7 @@ public class UserDetailDaoImpl {
 		Connection con=null;
 		PreparedStatement statement=null;
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			 statement = con.prepareStatement(insert);
 			statement.setString(1, obj.getFirstName());
 			statement.setString(2, obj.getCpassword());
@@ -32,7 +32,7 @@ public class UserDetailDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, statement, con);
+			ConnectionUtil.close(null, statement, con);
 		}
 
 		
@@ -45,14 +45,14 @@ public class UserDetailDaoImpl {
 		ResultSet resultset=null;
 		PreparedStatement statement=null;
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			statement=con.prepareStatement(query);
 			statement.setString(1, email);
 			statement.setString(2, password);
 			
 			 resultset = statement.executeQuery();
 			if(resultset.next()) {
-				return new UserDetail(resultset.getString(1),resultset.getString(2),resultset.getString(3),resultset.getLong(4),resultset.getInt(5),resultset.getString(6),resultset.getInt(7));
+				return new UserDetail(resultset.getString("first_name"),resultset.getString("cpassword"),resultset.getString("email"),resultset.getLong("phone"),resultset.getInt("user_id"),resultset.getString("usertype"),resultset.getInt("userwallet"));
 			}
 			else {
 				return null;
@@ -65,7 +65,7 @@ public class UserDetailDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, statement, con);
+			ConnectionUtil.close(null, statement, con);
 		}
 		
 
@@ -83,7 +83,7 @@ public class UserDetailDaoImpl {
 		Connection con=null;
 		PreparedStatement statement=null;
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			 statement = con.prepareStatement(log1);
 			statement.setString(1, obj.getCpassword());
 			statement.setString(2, obj.getEmail());
@@ -96,7 +96,7 @@ public class UserDetailDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, statement, con);
+			ConnectionUtil.close(null, statement, con);
 		}
 		
 	
@@ -108,7 +108,7 @@ public class UserDetailDaoImpl {
 		Connection con=null;
 		PreparedStatement statement=null;
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			 statement = con.prepareStatement(log2);
 			statement.setInt(1, obj1.getUserId());
 			 statement.executeUpdate();
@@ -120,7 +120,7 @@ public class UserDetailDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, statement, con);
+			ConnectionUtil.close(null, statement, con);
 		}
 
 			
@@ -133,12 +133,12 @@ public class UserDetailDaoImpl {
 		Connection con=null;
 		PreparedStatement statement=null;
 		try {
-			con = Connectionutil.getDBconnection();
+			con = ConnectionUtil.getDBconnection();
 			 statement=con.prepareStatement(alluser);
 			ResultSet rs=statement.executeQuery();
 			while(rs.next())
 			{
-			     UserDetail detail=new UserDetail(rs.getString(1),rs.getString(2),rs.getString(3),rs.getLong(4));
+			     UserDetail detail=new UserDetail(rs.getString("first_name"),rs.getString("cpassword"),rs.getString("email"),rs.getLong("phone"));
 			     veiwall.add(detail);
 			}
 		} catch (Exception e) {
@@ -148,7 +148,7 @@ public class UserDetailDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, statement, con);
+			ConnectionUtil.close(null, statement, con);
 		}
 		return veiwall;
 	}
@@ -160,7 +160,7 @@ public class UserDetailDaoImpl {
 		PreparedStatement statement=null;
 		ResultSet rs=null;
 		try {
-			 con = Connectionutil.getDBconnection();
+			 con = ConnectionUtil.getDBconnection();
 			 statement=con.prepareStatement(query);
 			statement.setInt(1, userid);
 			 rs=statement.executeQuery();
@@ -177,7 +177,7 @@ public class UserDetailDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(rs, statement, con);
+			ConnectionUtil.close(rs, statement, con);
 		}
 		
 		return wallet;
@@ -193,7 +193,7 @@ public class UserDetailDaoImpl {
 		String query="update user_details set userwallet =userwallet - ? where user_id = ?";
 		
 		try {
-			con=Connectionutil.getDBconnection();
+			con=ConnectionUtil.getDBconnection();
 			int i=0;
 			
 			 pstmt=con.prepareStatement(query);
@@ -210,7 +210,7 @@ public class UserDetailDaoImpl {
 
 		} finally {
 
-			Connectionutil.close(null, pstmt, con);
+			ConnectionUtil.close(null, pstmt, con);
 		}
 		}
 		
@@ -228,7 +228,7 @@ public class UserDetailDaoImpl {
 	    	
 	    	 int userid=0;
 			try {
-				 con = Connectionutil.getDBconnection();
+				 con = ConnectionUtil.getDBconnection();
 				  stmt=con.prepareStatement(search);
 			    	stmt.setString(1, obj3.getEmail());
 			    
@@ -247,7 +247,7 @@ public class UserDetailDaoImpl {
 
 			} finally {
 
-				Connectionutil.close(rs, stmt, con);
+				ConnectionUtil.close(rs, stmt, con);
 			}
 			return userid;
 	    	
@@ -259,13 +259,13 @@ public class UserDetailDaoImpl {
 			PreparedStatement statement=null;
 			ResultSet rs=null;
 			try {
-				con = Connectionutil.getDBconnection();
+				con = ConnectionUtil.getDBconnection();
 				 statement=con.prepareStatement(alluser);
 				statement.setInt(1, obj.getUserId());
 			 rs=statement.executeQuery();
 				while(rs.next())
 				{
-				     UserDetail detail=new UserDetail(rs.getString(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getInt(5),rs.getString(6),rs.getLong(7));
+				     UserDetail detail=new UserDetail(rs.getString("first_name"),rs.getString("cpassword"),rs.getString("email"),rs.getLong("phone"),rs.getInt("user_id"),rs.getString("usertype"),rs.getLong("userwallet"));
 				     veiwall.add(detail);
 				}
 			} 
@@ -276,7 +276,7 @@ public class UserDetailDaoImpl {
 
 			} finally {
 
-				Connectionutil.close(rs, statement, con);
+				ConnectionUtil.close(rs, statement, con);
 			}
 			
 			return veiwall;
@@ -288,7 +288,7 @@ public class UserDetailDaoImpl {
 			Connection con=null;
 			PreparedStatement statement=null;
 			try {
-				con = Connectionutil.getDBconnection();
+				con = ConnectionUtil.getDBconnection();
 				 statement = con.prepareStatement(log1);
 				statement.setLong(1, obj.getWallet());
 				statement.setInt(2, obj.getUserId());
@@ -302,7 +302,7 @@ public class UserDetailDaoImpl {
 
 			} finally {
 
-				Connectionutil.close(null, statement, con);
+				ConnectionUtil.close(null, statement, con);
 			}
 	   }
 	   
@@ -313,7 +313,7 @@ public UserDetail getEmailDetails(UserDetail rp) {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	try {
-		con = Connectionutil.getDBconnection();
+		con = ConnectionUtil.getDBconnection();
 		String log="select first_name,cpassword,email,phone,user_id,usertype,userwallet  from user_details where email=?";
 		pstmt = con.prepareStatement(log);
 		pstmt.setString(1, rp.getEmail());
@@ -328,7 +328,7 @@ public UserDetail getEmailDetails(UserDetail rp) {
 
 	} finally {
 
-		Connectionutil.close(rs, pstmt, con);
+		ConnectionUtil.close(rs, pstmt, con);
 	}
 	return register;
 }
@@ -339,13 +339,13 @@ public UserDetail getPhoneDetails(UserDetail rp) {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	try {
-		con = Connectionutil.getDBconnection();
+		con = ConnectionUtil.getDBconnection();
 		String log="select first_name,cpassword,email,phone,user_id,usertype,userwallet  from user_details where phone=?";
 		pstmt = con.prepareStatement(log);
 		pstmt.setLong(1, rp.getPhoneNo());
 		rs = pstmt.executeQuery();
 		if (rs.next()) {
-			register = new UserDetail(rs.getString(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getInt(5),rs.getString(6),rs.getLong(7));
+			register = new UserDetail(rs.getString("first_name"),rs.getString("cpassword"),rs.getString("email"),rs.getLong("phone"),rs.getInt("user_id"),rs.getString("usertype"),rs.getLong("userwallet"));
 		}
 	} catch (Exception e) {
 
@@ -354,7 +354,7 @@ public UserDetail getPhoneDetails(UserDetail rp) {
 
 	} finally {
 
-		Connectionutil.close(rs, pstmt, con);
+		ConnectionUtil.close(rs, pstmt, con);
 	}
 	return register;
 }

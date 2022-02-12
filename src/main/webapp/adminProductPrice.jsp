@@ -8,96 +8,95 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
- body {
-      margin: 0;
-      font-family: Arial;
+body {
+	margin: 0;
+	font-family: Arial;
+}
 
-    }
+.topnav {
+	overflow: hidden;
+	background-color: #333;
+}
 
-    .topnav {
-      overflow: hidden;
-      background-color: #333;
-    }
+.topnav a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
 
-    .topnav a {
-      float: left;
-      display: block;
-      color: #f2f2f2;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 17px;
-    }
+.active {
+	background-color: gray;
+	color: white;
+}
 
-    .active {
-      background-color: gray;
-      color: white;
-    }
+.topnav .icon {
+	display: none;
+}
 
-    .topnav .icon {
-      display: none;
-    }
+.dropdown {
+	float: left;
+	overflow: hidden;
+}
 
-    .dropdown {
-      float: left;
-      overflow: hidden;
-    }
+.dropdown .dropbtn {
+	font-size: 17px;
+	border: none;
+	outline: none;
+	color: white;
+	padding: 14px 16px;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+}
 
-    .dropdown .dropbtn {
-      font-size: 17px;
-      border: none;
-      outline: none;
-      color: white;
-      padding: 14px 16px;
-      background-color: inherit;
-      font-family: inherit;
-      margin: 0;
-    }
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
 
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-    }
+.dropdown-content a {
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
 
-    .dropdown-content a {
-      float: none;
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      text-align: left;
-    }
+.topnav a:hover, .dropdown:hover .dropbtn {
+	background-color: #555;
+	color: white;
+}
 
-    .topnav a:hover,
-    .dropdown:hover .dropbtn {
-      background-color: #555;
-      color: white;
-    }
+.dropdown-content a:hover {
+	background-color: #ddd;
+	color: black;
+}
 
-    .dropdown-content a:hover {
-      background-color: #ddd;
-      color: black;
-    }
+.dropdown:hover .dropdown-content {
+	display: block;
+}
 
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
+.topnav a.icon {
+	float: right;
+	display: block;
+}
 
-
-    .topnav a.icon {
-      float: right;
-      display: block;
-    }
 img {
 	width: 300px;
 	padding: 10px;
@@ -130,44 +129,38 @@ h1 span {
 </style>
 </head>
 <body>
-   <div class="topnav" id="myTopnav">
-    <a href="#home" class="active">Home</a>
-   
-    <a href="login.jsp" style=float:right>Logout</a>
-    <a href="Viewuser">UserHistory</a>
-    <a href="AdminBooking">Booking history</a>
-     <a href="AdminProductServlet">Product</a>
-     <a href="AdminPrice">PriceDetail</a>
-    <div class="dropdown">
-      <button class="dropbtn">Car Details
-        <em class="fa fa-caret-down"></em>
-      </button>
-      <div class="dropdown-content">
-        <a href="addcar.jsp">Add car</a>
-        <a href="priceDetail.jsp">PriceDetail </a>
-       
-      </div>
-    </div>
-    
-   
-  </div>
+	<div class="topnav" id="myTopnav">
+		<a href="#home" class="active">Home</a> <a href="login.jsp"
+			style="float: right">Logout</a> <a href="Viewuser">UserHistory</a> <a
+			href="AdminBooking">Booking history</a> <a href="AdminProductServlet">Product</a>
+		<a href="AdminPrice">PriceDetail</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				Car Details <em class="fa fa-caret-down"></em>
+			</button>
+			<div class="dropdown-content">
+				<a href="addcar.jsp">Add car</a> <a href="priceDetail.jsp">PriceDetail
+				</a>
+
+			</div>
+		</div>
+
+
+	</div>
 	<div class="one">
 		<table id="carproduct">
-		<caption>AdminProduct</caption>
-		<thead>
-					<tr>
-						<th id="one"></th>
-						<th id="two"></th>
-						<th id="three"></th>
-					</tr>
-				</thead>
+			<caption>AdminProduct</caption>
+			<thead>
+				<tr>
+					<th id="one"></th>
+					<th id="two"></th>
+					<th id="three"></th>
+				</tr>
+			</thead>
 			<tbody>
-		
 				<tr>
 					<c:set var="count" value="1" />
 					<c:forEach items="${car2}" var="car2">
-
-
 						<td>
 							<div class="car">
 								<span>showroomprice :${car2.carId} </span><br> <span>showroomprice
@@ -177,19 +170,15 @@ h1 span {
 								<span>insrance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:${car2.insurance}</span><br>
 								<hr>
-								</div>
-								<span style="color: red">Total OnroadPrice :
-									${car2.onroadPrice} </span><br>
-										<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target="#myModal${car2.carId}">Update car</button>
+							</div> <span style="color: red">Total OnroadPrice :
+								${car2.onroadPrice} </span><br>
+							<button type="button" class="btn btn-primary" data-toggle="modal"
+								data-target="#myModal${car2.carId}">Update car</button>
 
-						<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target="#myModals${car2.carId}">Delete car</button>
+							<button type="button" class="btn btn-primary" data-toggle="modal"
+								data-target="#myModals${car2.carId}">Delete car</button>
 						</td>
-					
-
-						<div class="modal fade" id="myModal${car2.carId}"
-							role="dialog">
+						<div class="modal fade" id="myModal${car2.carId}" role="dialog">
 							<div class="modal-dialog modal-lg">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -200,16 +189,19 @@ h1 span {
 										<form action="updateprice" method="post">
 											<div class="two">
 												<h2>Update your price detail</h2>
-												<label for="carid">Enter your carid:</label><br> <input type="text"
-													name="carid" id="carid" value="${car2.carId}" required><br>
-												<br> <label for="roadtax">Enter your Exshowroom_price:</label><br>
-												<input type="number" name="showroom_price" min="1"
-													pattern="((\\d{1,4})(((\\.)(\\d{0,2})){0,1}))"  id="c" required><br>
-												<label for="roadtax">Enter your Roadtax:</label><br> <input
-													type="number" name="roadtax" id="roadtax" min="1"
+												<label for="carid">Enter your carid:</label><br> <input
+													type="text" name="carid" id="carid" value="${car2.carId}"
+													required><br> <br> <label for="roadtax">Enter
+													your Exshowroom_price:</label><br> <input type="number"
+													name="showroom_price" min="1"
+													pattern="((\\d{1,4})(((\\.)(\\d{0,2})){0,1}))" id="c"
+													required><br> <label for="roadtax">Enter
+													your Roadtax:</label><br> <input type="number" name="roadtax"
+													id="roadtax" min="1"
 													pattern="((\\d{1,4})(((\\.)(\\d{0,2})){0,1}))" required><br>
-												<br> <label for="insurance">Enter your insurance:</label><br> <input
-													type="number" name="insurance" id="insurance" min="1"
+												<br> <label for="insurance">Enter your
+													insurance:</label><br> <input type="number" name="insurance"
+													id="insurance" min="1"
 													pattern="((\\d{1,4})(((\\.)(\\d{0,2})){0,1}))" required><br>
 												<br>
 												<button type="submit" id="submit">update price</button>
@@ -223,9 +215,7 @@ h1 span {
 								</div>
 							</div>
 						</div>
-						
-						<div class="modal fade" id="myModals${car2.carId}"
-							role="dialog">
+						<div class="modal fade" id="myModals${car2.carId}" role="dialog">
 							<div class="modal-dialog modal-lg">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -250,25 +240,18 @@ h1 span {
 								</div>
 							</div>
 						</div>
-						
-					
-				                    
-                                         
-					
-			<c:choose>
-                        <c:when test="${count==3}">
-                        <c:set var="count" value="1" />
-			<tr>
-			</c:when>
-			<c:otherwise>
-			<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
-			</c:forEach>
-			</tr>	
-	</table>
-		
-
+						<c:choose>
+							<c:when test="${count==3}">
+								<c:set var="count" value="1" />
+								<tr>
+							</c:when>
+							<c:otherwise>
+								<c:set var="count" value="${count+1}" />
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</tr>
+		</table>
 	</div>
 </body>
 </html>

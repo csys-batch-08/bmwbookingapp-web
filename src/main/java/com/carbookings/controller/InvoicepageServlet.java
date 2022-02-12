@@ -20,11 +20,10 @@ public class InvoicepageServlet extends HttpServlet {
        
   
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+	protected void service(HttpServletRequest request, HttpServletResponse response) {
 	
-		
+		System.out.println("haii");
 		try {
-
 			HttpSession session=request.getSession();
 			 InvoiceDaoImpl dao=new InvoiceDaoImpl();
 			UserDetail user=(UserDetail)session.getAttribute("currentUser");
@@ -32,7 +31,10 @@ public class InvoicepageServlet extends HttpServlet {
 			Invoice ord=new Invoice(userid);
 			
 			List<Invoice> listproduct=dao.view(ord);
+			System.out.println(listproduct);
+			
 			session.setAttribute("listproduct", listproduct);
+			System.out.println(listproduct);
 			response.sendRedirect("invoice.jsp");
 		} catch (IOException e) {
 			
